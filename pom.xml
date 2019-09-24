@@ -33,7 +33,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>wwi.fallstudie.px.Test</mainClass>
+							<mainClass>App</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

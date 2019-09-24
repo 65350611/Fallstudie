@@ -4,7 +4,7 @@ package wwi.fallstudie.px;
  * Hello world!
  *
  */
-public class Test 
+public class App 
 {
     public static void main( String[] args )
     {
