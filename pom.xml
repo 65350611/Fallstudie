@@ -32,7 +32,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>App</mainClass>
+							<mainClass>wwi.fallstudie.px.App</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
