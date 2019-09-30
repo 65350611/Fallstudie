@@ -49,7 +49,7 @@
 						<configuration>
 							<archive>
 								<manifest>
-									<mainClass>wwi.fallstudie.px.App</mainClass>
+									<mainClass>wwi.fallstudie.App</mainClass>
 								</manifest>
 							</archive>
 							<descriptorRefs>
