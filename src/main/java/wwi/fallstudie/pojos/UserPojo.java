@@ -2,24 +2,27 @@ package wwi.fallstudie.pojos;
 
 public class UserPojo {
 	private int userId;
-	private char name;
-	private char passwort;
-	private int funktion;
+	private String name;
+	private String passwort;
+//	private int funktion;
+	private boolean angemeldet;
+	
 
 	/**
 	 * 
 	 */
-	public UserPojo(int userId, char name, char passwort, int funktion) {
+	public UserPojo(int userId, String name, String passwort) {
 		this.userId = userId;
 		this.name = name;
 		this.passwort = passwort;
-		this.funktion = funktion;
+//		this.funktion = funktion;
+		this.angemeldet = false;
 	}
 
 	/**
 	 * @return the userId
 	 */
-	 int getUserId() {
+	int getUserId() {
 		return userId;
 	}
 
@@ -33,43 +36,69 @@ public class UserPojo {
 	/**
 	 * @return the name
 	 */
-	char getName() {
+	String getName() {
 		return name;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
-	void setName(char name) {
+	void setName(String name) {
 		this.name = name;
 	}
 
 	/**
 	 * @return the passwort
 	 */
-	char getPasswort() {
+	String getPasswort() {
 		return passwort;
 	}
 
 	/**
 	 * @param passwort the passwort to set
 	 */
-	void setPasswort(char passwort) {
+	void setPasswort(String passwort) {
 		this.passwort = passwort;
 	}
 
+//	/**
+//	 * @return the funktion
+//	 */
+//	int getFunktion() {
+//		return funktion;
+//	}
+//
+//	/**
+//	 * @param funktion the funktion to set
+//	 */
+//	/**
+//	 * @param funktion
+//	 */
+//	void setFunktion(int funktion) {
+//		this.funktion = funktion;
+//	}
+
 	/**
-	 * @return the funktion
+	 * @return the angemeldet
 	 */
-	int getFunktion() {
-		return funktion;
+	boolean isAngemeldet() {
+		return angemeldet;
 	}
 
 	/**
-	 * @param funktion the funktion to set
+	 * @param angemeldet the angemeldet to set
 	 */
-	void setFunktion(int funktion) {
-		this.funktion = funktion;
+	public boolean setAngemeldet(String passwd) {
+		if (this.passwort.equals(passwd)) {
+			this.angemeldet = true;
+			return true;
+		} else
+			return false;
 	}
 
+	void unsetAngemeldet() {
+		this.angemeldet = false;
+	}
+
+	
 }
