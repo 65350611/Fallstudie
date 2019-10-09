@@ -27,7 +27,7 @@ public class LoginPanel extends JPanel{
         passwortVergessen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //TODO login
+                new LoginPopUpPasswortVergessen();
             }
         });
 

@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
-
+/*TODO von Nico @Flo: fix fehler damit der Build wieder läuft. Brauchst du die Main klasse wirklich?
 public class nutzerImpl implements nutzerDAO {
 
 	public static void main(String[] args)
@@ -97,4 +97,4 @@ public class nutzerImpl implements nutzerDAO {
 		return false;
 	}
 }
-
+*/

@@ -1,7 +1,7 @@
 package haushaltsbuch;
 
 import java.util.*;
-
+/*
 public class ausgabenDAOimpl implements ausgabenDAO {
 	
    //list is working as a database
@@ -60,3 +60,5 @@ public boolean deleteExp(ausgaben ausgaben) {
 	return false;
 }
 }
+
+ */
