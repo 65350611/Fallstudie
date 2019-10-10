@@ -44,11 +44,13 @@ public class LoginPanel extends JPanel{
         //nameLabel
         gc.gridx = 0;
         gc.gridy = 0;
+        gc.fill = GridBagConstraints.EAST;
         add(nameLabel, gc);
 
         //name
         gc.gridx = 1;
         gc.gridy = 0;
+        gc.fill = GridBagConstraints.HORIZONTAL;
         add(name, gc);
 
         ////////////////////// reihe 2 ///////////////////////
@@ -56,18 +58,21 @@ public class LoginPanel extends JPanel{
         //passwortLabel
         gc.gridx = 0;
         gc.gridy = 1;
+        gc.fill = GridBagConstraints.EAST;
         add(passqortLabel, gc);
 
         //passwort
         gc.gridx = 1;
         gc.gridy = 1;
+        gc.fill = GridBagConstraints.HORIZONTAL;
         add(passwort, gc);
 
         ////////////////////// reihe 3 ///////////////////////
 
-        //login
+        //passwortvergessen
         gc.gridx = 1;
         gc.gridy = 2;
+        gc.fill = GridBagConstraints.HORIZONTAL;
         add(passwortVergessen, gc);
     }
 }
