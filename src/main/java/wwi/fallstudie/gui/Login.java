@@ -18,7 +18,7 @@ public class Login extends JFrame {
         setLayout(new BorderLayout()); //set Layout Manager
 
         //initialise variables
-        logoIcon = new ImageIcon("src/images/BoB_Logo128.png"); //TODO logo ändern
+        logoIcon = new ImageIcon("src/images/IMG_1020.JPG"); //TODO logo ändern <<src/images/BoB_Logo128.png
         logo = new JLabel(logoIcon);
         loginPanel = new LoginPanel();
         einloggen = new JButton("Einloggen");

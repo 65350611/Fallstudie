@@ -2,6 +2,8 @@ package wwi.fallstudie.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
@@ -18,8 +20,8 @@ public class AdminOberflaechePopUpUserHinzufuegen extends JFrame {
 
         //initialise variables
         usernameField = new JTextField();
-        hinzufuegen = new JButton();
-        abbrechen = new JButton();
+        hinzufuegen = new JButton("Hinzufügen");
+        abbrechen = new JButton("Abbrechen");
 
 
         //edit usernameField
@@ -31,6 +33,21 @@ public class AdminOberflaechePopUpUserHinzufuegen extends JFrame {
                 source.setText("");
                 source.setForeground(Color.BLACK);
                 source.removeFocusListener(this);
+            }
+        });
+
+        //set buttons on clicklistener
+        hinzufuegen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                //TODO füge neuen nutzer hinzu
+            }
+        });
+
+        abbrechen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                dispose();
             }
         });
 
