@@ -55,6 +55,31 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
         });
 
         //TODO einfügen von attributen in layout
+         /*
+        setting variables to Layout
+         */
+        GridBagConstraints gc = new GridBagConstraints();
+
+        gc.weightx = 1;
+        gc.weighty = 1;
+        gc.fill = GridBagConstraints.HORIZONTAL;
+
+        ////////////////////// reihe 1 ///////////////////////
+
+        //usernameField
+        gc.ipady = 20;
+        gc.gridx = 0;
+        gc.gridy = 0;
+        gc.gridwidth = 2;
+        add(usernameField, gc);
+
+        ////////////////////// reihe 2 ///////////////////////
+
+
+        //set JFrame
+        setSize(320, 300);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setVisible(true);
     }
 
 }
