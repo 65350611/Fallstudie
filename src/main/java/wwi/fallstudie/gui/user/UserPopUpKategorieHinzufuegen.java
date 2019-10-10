@@ -62,7 +62,7 @@ public class UserPopUpKategorieHinzufuegen extends JFrame{
 
         ////////////////////// reihe 1 ///////////////////////
 
-        //usernameField
+        //kategorie
         gc.ipady = 20;
         gc.gridx = 0;
         gc.gridy = 0;
