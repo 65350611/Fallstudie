@@ -27,7 +27,9 @@ public class Login extends JFrame {
         einloggen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //TODO login
+                //TODO eingegebene Daten prüfen
+
+                //dispose(); //Login Fenster schließen
             }
         });
         //add to content pane

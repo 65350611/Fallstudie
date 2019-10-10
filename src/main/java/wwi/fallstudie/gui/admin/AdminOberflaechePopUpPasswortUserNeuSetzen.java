@@ -18,7 +18,7 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
     private JButton abbrechen;
 
     public AdminOberflaechePopUpPasswortUserNeuSetzen(){
-        super("Passwort neu setzten");
+        super("Passwort neu setzen");
 
         setLayout(new GridBagLayout()); //set Layout Manager
 
@@ -32,7 +32,7 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
 
         //edit usernameField
         usernameField.setForeground(Color.LIGHT_GRAY);
-        usernameField.setText("Nutzername:");
+        usernameField.setText("Nutzername");
         usernameField.addFocusListener(new FocusAdapter() {
             public void focusGained(FocusEvent e) {
                 JTextField source = (JTextField)e.getComponent();
@@ -143,8 +143,9 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
         gc.gridy = 3;
         add(abbrechen, gc);
 
+
         //set JFrame
-        setSize(320, 300);
+        setSize(320, 200);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }

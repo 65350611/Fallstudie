@@ -1,4 +1,4 @@
-package wwi.fallstudie.gui.admin;
+package wwi.fallstudie.gui.user;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,27 +7,26 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
-public class AdminOberflaechePopUpUserHinzufuegen extends JFrame {
-
-    private JTextField usernameField;
+public class UserPopUpKategorieHinzufuegen extends JFrame{
+    private JTextField kategorie;
     private JButton hinzufuegen;
     private JButton abbrechen;
 
-    public AdminOberflaechePopUpUserHinzufuegen(){
-        super("Nutzer hinzufügen");
+    public UserPopUpKategorieHinzufuegen(){
+        super("Kategorie hinzufügen");
 
         setLayout(new GridBagLayout()); //set Layout Manager
 
         //initialise variables
-        usernameField = new JTextField();
+        kategorie = new JTextField();
         hinzufuegen = new JButton("Hinzufügen");
         abbrechen = new JButton("Abbrechen");
 
 
         //edit usernameField
-        usernameField.setForeground(Color.LIGHT_GRAY);
-        usernameField.setText("Nutzername");
-        usernameField.addFocusListener(new FocusAdapter() {
+        kategorie.setForeground(Color.LIGHT_GRAY);
+        kategorie.setText("Kategorie");
+        kategorie.addFocusListener(new FocusAdapter() {
             public void focusGained(FocusEvent e) {
                 JTextField source = (JTextField)e.getComponent();
                 source.setText("");
@@ -68,7 +67,7 @@ public class AdminOberflaechePopUpUserHinzufuegen extends JFrame {
         gc.gridx = 0;
         gc.gridy = 0;
         gc.gridwidth = 2;
-        add(usernameField, gc);
+        add(kategorie, gc);
 
         ////////////////////// reihe 2 ///////////////////////
 
