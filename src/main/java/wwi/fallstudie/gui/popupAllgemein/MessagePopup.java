@@ -1,4 +1,4 @@
-package wwi.fallstudie.gui;
+package wwi.fallstudie.gui.popupAllgemein;
 
 import javax.swing.*;
 

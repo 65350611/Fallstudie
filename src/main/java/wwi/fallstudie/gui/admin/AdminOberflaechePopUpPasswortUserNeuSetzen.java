@@ -1,6 +1,6 @@
-package wwi.fallstudie.gui;
+package wwi.fallstudie.gui.admin;
 
-import wwi.fallstudie.gui.MessagePopup;
+import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
 import wwi.fallstudie.gui.plausi.Comparator;
 
 import javax.swing.*;
@@ -10,22 +10,37 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
-public class PopUpPasswortAendern extends JFrame{
+public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
+    private JTextField usernameField;
     private JPasswordField passwordField;
     private JPasswordField wdhPasswordField;
     private JButton hinzufuegen;
     private JButton abbrechen;
 
-    public PopUpPasswortAendern(){
-        super("Passwort ändern");
+    public AdminOberflaechePopUpPasswortUserNeuSetzen(){
+        super("Passwort neu setzten");
 
         setLayout(new GridBagLayout()); //set Layout Manager
 
         //initialise variables
+        usernameField = new JTextField();
         passwordField = new JPasswordField();
         wdhPasswordField = new JPasswordField();
         hinzufuegen = new JButton("Hinzufügen");
         abbrechen = new JButton("Abbrechen");
+
+
+        //edit usernameField
+        usernameField.setForeground(Color.LIGHT_GRAY);
+        usernameField.setText("Nutzername:");
+        usernameField.addFocusListener(new FocusAdapter() {
+            public void focusGained(FocusEvent e) {
+                JTextField source = (JTextField)e.getComponent();
+                source.setText("");
+                source.setForeground(Color.BLACK);
+                source.removeFocusListener(this);
+            }
+        });
 
         //edit passwordField
         passwordField.setEchoChar((char)0);
@@ -55,6 +70,7 @@ public class PopUpPasswortAendern extends JFrame{
                 source.removeFocusListener(this);
             }
         });
+
 
         //set buttons on clicklistener
         hinzufuegen.addActionListener(new ActionListener() {
@@ -87,41 +103,50 @@ public class PopUpPasswortAendern extends JFrame{
 
         ////////////////////// reihe 1 ///////////////////////
 
-        //passwordField
+        //usernameField
         gc.ipady = 20;
         gc.gridx = 0;
         gc.gridy = 0;
         gc.gridwidth = 2;
-        add(passwordField, gc);
+        add(usernameField, gc);
 
         ////////////////////// reihe 2 ///////////////////////
 
-        //wdhPasswordField
+        //passwordField
         gc.ipady = 20;
         gc.gridx = 0;
         gc.gridy = 1;
         gc.gridwidth = 2;
-        add(wdhPasswordField, gc);
+        add(passwordField, gc);
 
         ////////////////////// reihe 3 ///////////////////////
+
+        //wdhPasswordField
+        gc.ipady = 20;
+        gc.gridx = 0;
+        gc.gridy = 2;
+        gc.gridwidth = 2;
+        add(wdhPasswordField, gc);
+
+        ////////////////////// reihe 4 ///////////////////////
 
         gc.gridwidth = 1;
         gc.ipady = 0;
 
         //hinzufuegen
         gc.gridx = 0;
-        gc.gridy = 2;
+        gc.gridy = 3;
         add(hinzufuegen, gc);
 
         //abbrechen
         gc.gridx = 1;
-        gc.gridy = 2;
+        gc.gridy = 3;
         add(abbrechen, gc);
 
-
         //set JFrame
-        setSize(320, 150);
+        setSize(320, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }
+
 }

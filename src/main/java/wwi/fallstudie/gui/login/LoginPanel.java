@@ -1,4 +1,6 @@
-package wwi.fallstudie.gui;
+package wwi.fallstudie.gui.login;
+
+import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +29,8 @@ public class LoginPanel extends JPanel{
         passwortVergessen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                new LoginPopUpPasswortVergessen();
+                new MessagePopup("Passwort vergessen?\n" + "Kein Problem!\n" + "Bitte wende dich an deinen Administrator um ein neues Passwort zu erhalten. \n" +
+                        "Keine Sorge, du kannst es danach jederzeit ändern.");
             }
         });
 

@@ -1,4 +1,4 @@
-package wwi.fallstudie.gui;
+package wwi.fallstudie.gui.popupAllgemein;
 
 import wwi.fallstudie.gui.plausi.Comparator;
 
@@ -9,37 +9,22 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
-public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
-    private JTextField usernameField;
+public class PopUpPasswortAendern extends JFrame{
     private JPasswordField passwordField;
     private JPasswordField wdhPasswordField;
     private JButton hinzufuegen;
     private JButton abbrechen;
 
-    public AdminOberflaechePopUpPasswortUserNeuSetzen(){
-        super("Passwort neu setzten");
+    public PopUpPasswortAendern(){
+        super("Passwort ändern");
 
         setLayout(new GridBagLayout()); //set Layout Manager
 
         //initialise variables
-        usernameField = new JTextField();
         passwordField = new JPasswordField();
         wdhPasswordField = new JPasswordField();
         hinzufuegen = new JButton("Hinzufügen");
         abbrechen = new JButton("Abbrechen");
-
-
-        //edit usernameField
-        usernameField.setForeground(Color.LIGHT_GRAY);
-        usernameField.setText("Nutzername:");
-        usernameField.addFocusListener(new FocusAdapter() {
-            public void focusGained(FocusEvent e) {
-                JTextField source = (JTextField)e.getComponent();
-                source.setText("");
-                source.setForeground(Color.BLACK);
-                source.removeFocusListener(this);
-            }
-        });
 
         //edit passwordField
         passwordField.setEchoChar((char)0);
@@ -69,7 +54,6 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
                 source.removeFocusListener(this);
             }
         });
-
 
         //set buttons on clicklistener
         hinzufuegen.addActionListener(new ActionListener() {
@@ -102,50 +86,41 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
 
         ////////////////////// reihe 1 ///////////////////////
 
-        //usernameField
+        //passwordField
         gc.ipady = 20;
         gc.gridx = 0;
         gc.gridy = 0;
         gc.gridwidth = 2;
-        add(usernameField, gc);
-
-        ////////////////////// reihe 2 ///////////////////////
-
-        //passwordField
-        gc.ipady = 20;
-        gc.gridx = 0;
-        gc.gridy = 1;
-        gc.gridwidth = 2;
         add(passwordField, gc);
 
-        ////////////////////// reihe 3 ///////////////////////
+        ////////////////////// reihe 2 ///////////////////////
 
         //wdhPasswordField
         gc.ipady = 20;
         gc.gridx = 0;
-        gc.gridy = 2;
+        gc.gridy = 1;
         gc.gridwidth = 2;
         add(wdhPasswordField, gc);
 
-        ////////////////////// reihe 4 ///////////////////////
+        ////////////////////// reihe 3 ///////////////////////
 
         gc.gridwidth = 1;
         gc.ipady = 0;
 
         //hinzufuegen
         gc.gridx = 0;
-        gc.gridy = 3;
+        gc.gridy = 2;
         add(hinzufuegen, gc);
 
         //abbrechen
         gc.gridx = 1;
-        gc.gridy = 3;
+        gc.gridy = 2;
         add(abbrechen, gc);
 
+
         //set JFrame
-        setSize(320, 300);
+        setSize(320, 150);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }
-
 }
