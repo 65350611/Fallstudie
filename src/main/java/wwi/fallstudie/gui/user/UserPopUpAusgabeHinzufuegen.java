@@ -4,8 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class UserPopUpAusgabeHinzufuegen extends JFrame {
+
+    private String momentaneKategorie;
 
     private JComboBox kategorie;
     private JTextField datum;
@@ -32,6 +36,15 @@ public class UserPopUpAusgabeHinzufuegen extends JFrame {
         abbrechen = new JButton("Abbrechen");
 
         //edit kategorie
+        //TODO methode aufrufen die Kategorien als String[] zurückgibt => kategorie.addItem();
+        kategorie.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent itemEvent) {
+                if(!momentaneKategorie.equals(kategorie.getSelectedItem())){
+                    setMomentaneKategorie((String) kategorie.getSelectedItem()); //setze einen neue Kategorie
+                }
+            }
+        });
 
         //edit datum
 
@@ -135,5 +148,13 @@ public class UserPopUpAusgabeHinzufuegen extends JFrame {
         setSize(320, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
+    }
+
+    public String getMomentaneKategorie() {
+        return momentaneKategorie;
+    }
+
+    public void setMomentaneKategorie(String momentaneKategorie) {
+        this.momentaneKategorie = momentaneKategorie;
     }
 }
