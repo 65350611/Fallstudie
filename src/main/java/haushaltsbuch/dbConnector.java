@@ -41,7 +41,9 @@ public class dbConnector {
 				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName);
 				rs.next();
 				
+				exp.expID=rs.getInt("Ausgaben ID");
 				exp.expLabel=rs.getString("Bezeichnung");
+				exp.name=rs.getString("Nutzer");
 				exp.category=rs.getInt("Kategorie");
 				exp.amount=rs.getFloat("Betrag");
 				exp.date=rs.getDate("Datum");
@@ -53,13 +55,94 @@ public class dbConnector {
 			}
 			return exp;
 		}
+		
+		public ausgaben zeigeAusgabenProZeitraum(String userName)  //diese Methode sollte funktionieren
+		{	ausgaben exp = new ausgaben();
+		
+			try
+			{
+				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+"and date between "+beginDate+" and "+endDate); //woher kommen beginDate und endDate?
+				rs.next();
+				
+				exp.expID=rs.getInt("Ausgaben ID");
+				exp.expLabel=rs.getString("Bezeichnung");
+				exp.name=rs.getString("Nutzer");
+				exp.category=rs.getInt("Kategorie");
+				exp.amount=rs.getFloat("Betrag");
+				exp.date=rs.getDate("Datum");
+							
+			}
+			catch (SQLException e)
+			{
+				System.out.println("Ausgaben können nicht angezeigt werden");
+			}
+			return exp;
+		}
+		
+		public nutzer zeigeNutzer()  //diese Methode sollte funktionieren
+		{	nutzer user = new nutzer();
+		
+			try
+			{
+				ResultSet rs = stmt.executeQuery("select * from nutzer");
+				rs.next();
+				
+				user.userRole=rs.getInt("Rolle des Nutzers");
+				user.name=rs.getString("Benutzername");
+				user.password=rs.getString("Passwort");
+							
+			}
+			catch (SQLException e)
+			{
+				System.out.println("Nutzer können nicht angezeigt werden");
+			}
+			return user;
+		}
+		
+		public kategorien zeigeKategorien()  //diese Methode sollte funktionieren
+		{	kategorien cat = new kategorien();
+		
+			try
+			{
+				ResultSet rs = stmt.executeQuery("select * from kategorien");
+				rs.next();
+				
+				cat.catID=rs.getInt("Kategorien ID");
+				cat.catLabel=rs.getString("Name der Kategorie");
 			
-			public int loescheAusgaben(int expID)  //diese Methode sollte funktionieren
+			}
+			catch (SQLException e)
+			{
+				System.out.println("Kategorien können nicht angezeigt werden");
+			}
+			return cat;
+		}
+		
+		public rollen zeigeRollen()  //diese Methode sollte funktionieren
+		{	rollen role = new rollen();
+		
+			try
+			{
+				ResultSet rs = stmt.executeQuery("select * from rollen");
+				rs.next();
+				
+				role.roleID=rs.getInt("Rollen ID");
+				role.roleLabel=rs.getString("Name der Rolle");
+			
+			}
+			catch (SQLException e)
+			{
+				System.out.println("Kategorien können nicht angezeigt werden");
+			}
+			return role;
+		}
+			
+		public int loescheAusgaben(int expID)  //diese Methode sollte funktionieren
 			{	int anzahl=0;
 			
 				try
 				{
-					anzahl = stmt.executeUpdate("delete * from ausgaben where expID="+expID);
+					anzahl = stmt.executeUpdate("delete from ausgaben where expID="+expID);
 													
 				}
 				catch (SQLException e)
@@ -69,7 +152,52 @@ public class dbConnector {
 				return anzahl;
 		}
 			
-			public boolean neueAusgaben(ausgaben newExp)
+		public int loescheNutzer(int name)  //diese Methode sollte funktionieren
+			{	int anzahl=0;
+			
+				try
+				{
+					anzahl = stmt.executeUpdate("delete from nutzer where name="+name);
+													
+				}
+				catch (SQLException e)
+				{
+					System.out.println("Nutzer konnte nicht gelöscht werden");
+				}
+				return anzahl;
+		}
+			
+		public int loescheKategorien(int catID)  //diese Methode sollte funktionieren
+			{	int anzahl=0;
+			
+				try
+				{
+					anzahl = stmt.executeUpdate("delete from kategorien where catID="+catID);
+													
+				}
+				catch (SQLException e)
+				{
+					System.out.println("Kategorie konnte nicht gelöscht werden");
+				}
+				return anzahl;
+		}
+			
+		public int loescheRollen(int roleID)  //diese Methode sollte funktionieren
+			{	int anzahl=0;
+			
+				try
+				{
+					anzahl = stmt.executeUpdate("delete from rollen where roleID="+roleID);
+													
+				}
+				catch (SQLException e)
+				{
+					System.out.println("Rolle konnte nicht gelöscht werden");
+				}
+				return anzahl;
+		}
+			
+		public boolean neueAusgaben(ausgaben newExp)
 			{	int anzahl=0;
 				boolean ok = false;
 			
@@ -94,35 +222,73 @@ public class dbConnector {
 				}
 				return ok;
 		}
+			
+		public boolean neuerNutzer(nutzer newUser)
+			{	int anzahl=0;
+				boolean ok = false;
+			
+				try
+				{
+					PreparedStatement prepState = con.prepareStatement
+							("insert into nutzer values (?,?)");
+					prepState.setInt(1, newUser.userRole);
+					prepState.setString(2, newUser.name);
+					prepState.setString(3, newUser.password);
+					
+					anzahl = prepState.executeUpdate();
+					ok = true;
+					System.out.println("Neuer Nutzer hinzugefügt");
+				}
+				catch (SQLException e)
+				{
+					System.out.println("Nutzer konnte nicht hinzugefügt werden");
+				}
+				return ok;
+		}
+		
+		public boolean neueKategorie(kategorien newCat)
+		{	int anzahl=0;
+			boolean ok = false;
+		
+			try
+			{
+				PreparedStatement prepState = con.prepareStatement
+						("insert into kategorien values (?,?)");
+				prepState.setInt(1, newCat.catID);
+				prepState.setString(2, newCat.catLabel);
+				
+				anzahl = prepState.executeUpdate();
+				ok = true;
+				System.out.println("Neue Kategorie hinzugefügt");
+			}
+			catch (SQLException e)
+			{
+				System.out.println("Kategorie konnte nicht hinzugefügt werden");
+			}
+			return ok;
+	}
+			
+		public boolean neueRolle(rollen newRole)
+			{	int anzahl=0;
+				boolean ok = false;
+			
+				try
+				{
+					PreparedStatement prepState = con.prepareStatement
+							("insert into rollen values (?,?)");
+					prepState.setInt(1, newRole.roleID);
+					prepState.setString(2, newRole.roleLabel);
+					
+					anzahl = prepState.executeUpdate();
+					ok = true;
+					System.out.println("Neue Rolle hinzugefügt");
+				}
+				catch (SQLException e)
+				{
+					System.out.println("Rolle konnte nicht hinzugefügt werden");
+				}
+				return ok;
+		}
 		
 }
-
-/* try {
-String name1 = "test";
-String pass1 = "12345";
-int rollNr = 1;
-
-PreparedStatement ps = con.prepareStatement("INSERT INTO kategorien (userName, password, userRole) VALUES (?, ?, ?)");
-for (int i=0; i < 1; i++)
- { 
- 
- ps.setString(1, name1);
- ps.setString(2, pass1);
- ps.setInt(3, 1);
-
- ps.executeUpdate();
- }
- ps.close(); 
-}
-
-catch(Exception e){System.out.println(e.toString());}
-con.close();}*/
-
-
-		
-		
-		
-		
-	
-	
 	

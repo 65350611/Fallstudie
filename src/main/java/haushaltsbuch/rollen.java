@@ -1,8 +1,8 @@
 package haushaltsbuch;
 
 public class rollen {
-    private Integer roleID;
-    private String roleLabel;
+	public Integer roleID;
+	public String roleLabel;
     
     rollen() {
     }

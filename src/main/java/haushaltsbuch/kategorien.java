@@ -1,8 +1,8 @@
 package haushaltsbuch;
 
 public class kategorien {
-    private int catID;
-    private String catLabel;
+    public int catID;
+    public String catLabel;
     
     kategorien() {
     }
