@@ -56,12 +56,12 @@ public class dbConnector {
 			return exp;
 		}
 		
-		public ausgaben zeigeAusgabenProZeitraum(String userName)  //diese Methode sollte funktionieren
+		public ausgaben zeigeAusgabenProZeitraum(String userName, Date beginDate, Date endDate)  //diese Methode sollte funktionieren
 		{	ausgaben exp = new ausgaben();
 		
 			try
 			{
-				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+"and date between "+beginDate+" and "+endDate); //woher kommen beginDate und endDate?
+				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" and date between "+beginDate+" and "+endDate); //woher kommen beginDate und endDate?
 				rs.next();
 				
 				exp.expID=rs.getInt("Ausgaben ID");
@@ -78,6 +78,30 @@ public class dbConnector {
 			}
 			return exp;
 		}
+		
+		public ausgaben zeigeAusgabenProKategorie(String userName, int catID)  //diese Methode sollte funktionieren
+		{	ausgaben exp = new ausgaben();
+		
+			try
+			{
+				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" and category="+catID);
+				rs.next();
+				
+				exp.expID=rs.getInt("Ausgaben ID");
+				exp.expLabel=rs.getString("Bezeichnung");
+				exp.name=rs.getString("Nutzer");
+				exp.category=rs.getInt("Kategorie");
+				exp.amount=rs.getFloat("Betrag");
+				exp.date=rs.getDate("Datum");
+							
+			}
+			catch (SQLException e)
+			{
+				System.out.println("Ausgaben können nicht angezeigt werden");
+			}
+			return exp;
+		}
+
 		
 		public nutzer zeigeNutzer()  //diese Methode sollte funktionieren
 		{	nutzer user = new nutzer();
