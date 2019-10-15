@@ -69,27 +69,32 @@ public class dbConnector {
 				return anzahl;
 		}
 			
-			/*public boolean neueAusgaben(ausgaben newExp)
+			public boolean neueAusgaben(ausgaben newExp)
 			{	int anzahl=0;
 				boolean ok = false;
 			
 				try
 				{
 					PreparedStatement prepState = con.prepareStatement
-							("insert into ausgaben values (null,?,?,?,?,?)");
+							("insert into ausgaben values (?,?,?,?,?,?)");
 					prepState.setInt(1, newExp.expID);
 					prepState.setString(2, newExp.expLabel);
 					prepState.setString(3, newExp.name);
 					prepState.setInt(4, newExp.category);
-					prepState.setInt(1, newExp.expID);
+					prepState.setFloat(5, newExp.amount);
+					prepState.setDate(6, newExp.date);
+					
+					anzahl = prepState.executeUpdate();
+					ok = true;
+					System.out.println("Neue Ausgabe hinzugefügt");
 				}
 				catch (SQLException e)
 				{
 					System.out.println("Ausgaben können nicht hinzugefügt werden");
 				}
-				return anzahl;
+				return ok;
 		}
-		*/
+		
 }
 
 /* try {
