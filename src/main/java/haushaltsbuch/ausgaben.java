@@ -10,7 +10,7 @@ public class ausgaben {
     public Float amount;
     public Date date;
     
-    ausgaben() {
+    public ausgaben() {
     }
     
     ausgaben(String expLabel, String name, Integer category, Float amount, Date date) {
