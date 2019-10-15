@@ -13,6 +13,7 @@ public class Logik {
 
 	}
 	public void ausgabenAnzeigen() {
+		
 		ausgaben ag = con.zeigeAusgaben(usr.getName());
 		
 		
