@@ -1,33 +1,24 @@
 package haushaltsbuch;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.*;
 
 public class nutzerImpl implements nutzerDAO {
-
-	public static void main(String[] args)
-    {
-    }
     
-	private nutzerTest extractUserFromResultSet(ResultSet rs) throws SQLException {
-    		nutzerTest user = new nutzerTest();
-    	    user.setPersnr( rs.getInt("persnr") );
-    	    user.setNachname( rs.getString("nachname") );
-    	    user.setVorname( rs.getString("vorname") );
-    	    user.setGehalt( rs.getFloat("gehalt") );
+	private nutzer extractUserFromResultSet(ResultSet rs) throws SQLException {
+    		nutzer user = new nutzer();
+    	    user.setUserRole( rs.getInt("userRole") );
+    	    user.setName( rs.getString("name") );
+    	    user.setPassword( rs.getString("password") );
     	    return user;
     	}
     
-    public nutzerTest getUser(int persnr) 
+    public nutzer getUser(Integer userID) throws SQLException 
 	{
-    Connection connection = conntest.getConnection();
+    Connection con = DriverManager.getConnection(null);
         try {
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM mitarbeiter3 WHERE persnr=" + persnr);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(null);
             if(rs.next())
             {
             	return extractUserFromResultSet(rs);
@@ -37,16 +28,16 @@ public class nutzerImpl implements nutzerDAO {
         }
     return null;
 }
-    public List<nutzerTest> getAllUsers() {
-       // Connector connector = new Connector();
-        Connection connection = conntest.getConnection();
+    /*public List<nutzer> getAllUsers() {
+        Connector dbConnector = new dbConnector();
+        Connection con = DriverManager.getConnection(null);
         try {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM mitarbeiter3");
-            List<nutzerTest> users = (List<nutzerTest>) new HashSet<nutzerTest>();
+            List<nutzer> users = (List<nutzer>) new HashSet<nutzer>();
             while(rs.next())
             {
-            	nutzerTest user = extractUserFromResultSet(rs);
+            	nutzer user = extractUserFromResultSet(rs);
                 users.add(user);
             }
             return users;
@@ -54,15 +45,15 @@ public class nutzerImpl implements nutzerDAO {
             ex.printStackTrace();
         }
     return null;
-}
-    public boolean insertUser(nutzerTest user) {
+}*/
+    public boolean insertUser(nutzer user) {
        // Connector connector = new Connector();
-        Connection connection = conntest.getConnection();
+        Connection con = DriverManager.getConnection(null);
         try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO user VALUES (NULL, ?, ?, ?)");
-            ps.setString(1, user.getNachname());
-            ps.setString(2, user.getVorname());
-            ps.setFloat(3, user.getGehalt());
+            PreparedStatement ps = con.prepareStatement("INSERT INTO nutzer (userRole, userName, password) VALUES (?, ?, ?)");
+            ps.setInt(1, user.getUserRole());
+            ps.setString(2, user.getName());
+            ps.setString(3, user.getPassword());
             int i = ps.executeUpdate();
           if(i == 1) {
             return true;
@@ -74,27 +65,34 @@ public class nutzerImpl implements nutzerDAO {
     }
 
 	@Override
-	public nutzerTest getUser() {
+	public nutzer getUser() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public nutzerTest getUserByUserNachname() {
+	public nutzer getUserByUserName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean updateUser(nutzerTest nutzerTest) {
+	public boolean updateUser(nutzer nutzer) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean deleteUser(nutzerTest nutzerTest) {
+	public boolean deleteUser(nutzer nutzer) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public List<nutzer> getAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }
-
+	

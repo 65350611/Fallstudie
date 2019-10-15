@@ -1,49 +1,40 @@
 package haushaltsbuch;
 
 public class nutzer {
-    private Integer userID;
-    private Integer userRole;
-    private String name;
-    private String password;
+    private static Integer userRole;
+    private static String name;
+    private static String password;
     
     nutzer() {
     }
     
     nutzer(Integer userRole, String name, String password) {
-        this.userRole = userRole;
-        this.name = name;
-        this.password = password;
+        nutzer.userRole = userRole;
+        nutzer.password = password;
     }
     
     nutzer(Integer userID, Integer userRole, String name, String password) {
-        this.userID = userID;
-        this.userRole = userRole;
-        this.name = name;
-        this.password = password;
+        nutzer.userRole = userRole;
+        nutzer.name = name;
+        nutzer.password = password;
     }
     
-    public Integer getUserID() {
-        return userID;
-    }
-    public void setUserID(Integer userID) {
-        this.userID = userID;
-    }
-    public Integer getUserRole() {
+    public static Integer getUserRole() {
         return userRole;
     }
     public void setUserRole(Integer userRole) {
-        this.userRole = userRole;
+        nutzer.userRole = userRole;
     }
-    public String getName() {
+    public static String getName() {
         return name;
     }
     public void setName(String name) {
-        this.name = name;
+        nutzer.name = name;
     }
-    public String getPassword() {
+    public static String getPassword() {
         return password;
     }
     public void setPassword(String password) {
-        this.password = password;
+        nutzer.password = password;
     }
 }

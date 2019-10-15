@@ -1,7 +1,7 @@
 package haushaltsbuch;
 
 public class kategorien {
-    private Integer catID;
+    private int catID;
     private String catLabel;
     
     kategorien() {
@@ -11,16 +11,16 @@ public class kategorien {
         this.catLabel = catLabel;
     }
     
-    kategorien(Integer catID, String catLabel) {
+    kategorien(int catID, String catLabel) {
         this.catID = catID;
         this.catLabel = catLabel;
     }
     
-    public Integer getCatID() {
+    public int getCatID() {
         return catID;
     }
     
-    public void setCatID(Integer catID) {
+    public void setCatID(int catID) {
         this.catID = catID;
     }
     
@@ -31,4 +31,5 @@ public class kategorien {
     public void setCatLabel(String catLabel) {
         this.catLabel = catLabel;
     }
+
 }

@@ -1,7 +1,7 @@
 package haushaltsbuch;
 
 import java.sql.*;
-
+/*
 public class nutzerAenderung {
 	Connection connection = null;
 	PreparedStatement ptmt = null;
@@ -27,7 +27,7 @@ public class nutzerAenderung {
 			ptmt.setString(3, nutzer.getName());
 			ptmt.setString(4, nutzer.getPassword());
 			ptmt.executeUpdate();
-			System.out.println("Nutzer erfolgreich hinzugefügt");
+			System.out.println("Nutzer erfolgreich hinzugefï¿½gt");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -130,3 +130,6 @@ public class nutzerAenderung {
 		}
 	}
 }
+
+
+ */

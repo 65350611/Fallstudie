@@ -1,5 +1,5 @@
 package haushaltsbuch;
-
+/*
 public class nutzerDemo {
 	public static void main(String[] args) {
 	      nutzerDAO nutzerDAO = new nutzerImpl();
@@ -16,3 +16,6 @@ public class nutzerDemo {
 	      System.out.println(nutzerTest.getNachname());
 }
 }
+
+
+ */

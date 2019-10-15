@@ -1,7 +1,7 @@
 package haushaltsbuch;
 
 import java.sql.*;
-
+/*
 public class rollenAenderung {
 	Connection connection = null;
 	PreparedStatement ptmt = null;
@@ -128,3 +128,4 @@ public class rollenAenderung {
 		}
 	}
 }
+*/
