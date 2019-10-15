@@ -69,7 +69,7 @@ public class dbConnector {
 				return anzahl;
 		}
 			
-			public boolean neueAusgaben(ausgaben newExp)
+			/*public boolean neueAusgaben(ausgaben newExp)
 			{	int anzahl=0;
 				boolean ok = false;
 			
@@ -85,7 +85,7 @@ public class dbConnector {
 				}
 				return anzahl;
 		}
-		
+		*/
 }
 
 /* try {
