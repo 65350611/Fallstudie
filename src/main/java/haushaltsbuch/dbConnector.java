@@ -38,7 +38,7 @@ public class dbConnector {
 		
 			try
 			{
-				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" group by date");
+				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" order by date");
 				rs.next();
 				
 				exp.expID=rs.getInt("Ausgaben ID");
@@ -61,7 +61,7 @@ public class dbConnector {
 		
 			try
 			{
-				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" and date between "+beginDate+" and "+endDate+" group by date"); //woher kommen beginDate und endDate?
+				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" and date between "+beginDate+" and "+endDate+" order by date"); //woher kommen beginDate und endDate?
 				rs.next();
 				
 				exp.expID=rs.getInt("Ausgaben ID");
@@ -79,12 +79,35 @@ public class dbConnector {
 			return exp;
 		}
 		
-		public ausgaben zeigeAusgabenProKategorie(String userName, int catID)  //diese Methode sollte funktionieren
+		public ausgaben zeigeAusgabenProKategorieNachDatum(String userName, int catID)  //diese Methode sollte funktionieren
 		{	ausgaben exp = new ausgaben();
 		
 			try
 			{
-				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" and category="+catID+" group by date");
+				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" and category="+catID+" order by date desc");
+				rs.next();
+				
+				exp.expID=rs.getInt("Ausgaben ID");
+				exp.expLabel=rs.getString("Bezeichnung");
+				exp.name=rs.getString("Nutzer");
+				exp.category=rs.getInt("Kategorie");
+				exp.amount=rs.getFloat("Betrag");
+				exp.date=rs.getDate("Datum");
+							
+			}
+			catch (SQLException e)
+			{
+				System.out.println("Ausgaben können nicht angezeigt werden");
+			}
+			return exp;
+		}
+		
+		public ausgaben zeigeAusgabenProKategorieNachKategorie(String userName, int catID)  //diese Methode sollte funktionieren
+		{	ausgaben exp = new ausgaben();
+		
+			try
+			{
+				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" and category="+catID+" order by category desc");
 				rs.next();
 				
 				exp.expID=rs.getInt("Ausgaben ID");
