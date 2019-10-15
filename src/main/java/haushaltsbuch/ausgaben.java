@@ -5,7 +5,7 @@ import java.sql.*;
 public class ausgaben {
     public Integer expID;
     public String expLabel;
-    public Integer user;
+    public String name;
     public Integer category;
     public Float amount;
     public Date date;
@@ -13,18 +13,18 @@ public class ausgaben {
     public ausgaben() {
     }
     
-    ausgaben(String expLabel, Integer user, Integer category, Float amount, Date date) {
+    ausgaben(String expLabel, String name, Integer category, Float amount, Date date) {
         this.expLabel = expLabel;
-        this.user = user;
+        this.name = name;
         this.category = category;
         this.amount = amount;
         this.date = date;
     }
     
-    ausgaben(Integer expID, String expLabel, Integer user, Integer category, Float amount, Date date) {
+    ausgaben(Integer expID, String expLabel, String name, Integer category, Float amount, Date date) {
         this.expID = expID;
     	this.expLabel = expLabel;
-        this.user = user;
+        this.name = name;
         this.category = category;
         this.amount = amount;
         this.date = date;
@@ -46,12 +46,12 @@ public class ausgaben {
         this.expLabel = expLabel;
     }
     
-    public Integer getUser() {
-        return user;
+    public String getName() {
+        return name;
     }
     
-    public void setUser(Integer user) {
-        this.user = user;
+    public void setName(String name) {
+        this.name = name;
     }
     
     public Integer getCategory() {
