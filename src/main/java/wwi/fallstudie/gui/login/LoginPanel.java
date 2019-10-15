@@ -1,4 +1,6 @@
-package wwi.fallstudie.gui;
+package wwi.fallstudie.gui.login;
+
+import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +29,8 @@ public class LoginPanel extends JPanel{
         passwortVergessen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                new LoginPopUpPasswortVergessen();
+                new MessagePopup("Passwort vergessen?\n" + "Kein Problem!\n" + "Bitte wende dich an deinen Administrator um ein neues Passwort zu erhalten. \n" +
+                        "Keine Sorge, du kannst es danach jederzeit ändern.");
             }
         });
 
@@ -44,11 +47,13 @@ public class LoginPanel extends JPanel{
         //nameLabel
         gc.gridx = 0;
         gc.gridy = 0;
+        gc.fill = GridBagConstraints.EAST;
         add(nameLabel, gc);
 
         //name
         gc.gridx = 1;
         gc.gridy = 0;
+        gc.fill = GridBagConstraints.HORIZONTAL;
         add(name, gc);
 
         ////////////////////// reihe 2 ///////////////////////
@@ -56,18 +61,21 @@ public class LoginPanel extends JPanel{
         //passwortLabel
         gc.gridx = 0;
         gc.gridy = 1;
+        gc.fill = GridBagConstraints.EAST;
         add(passqortLabel, gc);
 
         //passwort
         gc.gridx = 1;
         gc.gridy = 1;
+        gc.fill = GridBagConstraints.HORIZONTAL;
         add(passwort, gc);
 
         ////////////////////// reihe 3 ///////////////////////
 
-        //login
+        //passwortvergessen
         gc.gridx = 1;
         gc.gridy = 2;
+        gc.fill = GridBagConstraints.HORIZONTAL;
         add(passwortVergessen, gc);
     }
 }

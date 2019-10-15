@@ -1,4 +1,4 @@
-package wwi.fallstudie.gui;
+package wwi.fallstudie.gui.user;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,27 +7,26 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
-public class AdminOberflaechePopUpUserHinzufuegen extends JFrame {
-
-    private JTextField usernameField;
+public class UserPopUpKategorieHinzufuegen extends JFrame{
+    private JTextField kategorie;
     private JButton hinzufuegen;
     private JButton abbrechen;
 
-    public AdminOberflaechePopUpUserHinzufuegen(){
-        super("Nutzer hinzufügen");
+    public UserPopUpKategorieHinzufuegen(){
+        super("Kategorie hinzufügen");
 
         setLayout(new GridBagLayout()); //set Layout Manager
 
         //initialise variables
-        usernameField = new JTextField();
+        kategorie = new JTextField();
         hinzufuegen = new JButton("Hinzufügen");
         abbrechen = new JButton("Abbrechen");
 
 
         //edit usernameField
-        usernameField.setForeground(Color.LIGHT_GRAY);
-        usernameField.setText("Nutzername:");
-        usernameField.addFocusListener(new FocusAdapter() {
+        kategorie.setForeground(Color.LIGHT_GRAY);
+        kategorie.setText("Kategorie");
+        kategorie.addFocusListener(new FocusAdapter() {
             public void focusGained(FocusEvent e) {
                 JTextField source = (JTextField)e.getComponent();
                 source.setText("");
@@ -41,6 +40,7 @@ public class AdminOberflaechePopUpUserHinzufuegen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //TODO füge neuen nutzer hinzu
+                //dispose(); // popup schließen
             }
         });
 
@@ -58,15 +58,21 @@ public class AdminOberflaechePopUpUserHinzufuegen extends JFrame {
 
         gc.weightx = 1;
         gc.weighty = 1;
+        gc.fill = GridBagConstraints.HORIZONTAL;
 
         ////////////////////// reihe 1 ///////////////////////
 
-        //usernameField
+        //kategorie
+        gc.ipady = 20;
         gc.gridx = 0;
         gc.gridy = 0;
-        add(usernameField, gc);
+        gc.gridwidth = 2;
+        add(kategorie, gc);
 
         ////////////////////// reihe 2 ///////////////////////
+
+        gc.gridwidth = 1;
+        gc.ipady = 0;
 
         //hinzufuegen
         gc.gridx = 0;
