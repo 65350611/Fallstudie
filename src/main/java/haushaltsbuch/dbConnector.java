@@ -29,11 +29,11 @@ public class dbConnector {
 		}
 		catch (SQLException e) {
 			System.out.println("Statement NICHT erzeugt");
-		}
+		}  //Konstruktor für die Verbindung
 		
 		}
 		
-		public ausgaben zeigeAusgaben(String userName)
+		public ausgaben zeigeAusgaben(String userName)  //diese Methode sollte funktionieren
 		{	ausgaben exp = new ausgaben();
 		
 			try
@@ -54,7 +54,7 @@ public class dbConnector {
 			return exp;
 		}
 			
-			public int loescheAusgaben(int expID)
+			public int loescheAusgaben(int expID)  //diese Methode sollte funktionieren
 			{	int anzahl=0;
 			
 				try
