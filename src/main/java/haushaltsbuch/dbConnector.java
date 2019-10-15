@@ -76,12 +76,16 @@ public class dbConnector {
 				try
 				{
 					PreparedStatement prepState = con.prepareStatement
-							("insert into ausgaben values (?,?,?,?,?)");
-													
+							("insert into ausgaben values (null,?,?,?,?,?)");
+					prepState.setInt(1, newExp.expID);
+					prepState.setString(2, newExp.expLabel);
+					prepState.setString(3, newExp.name);
+					prepState.setInt(4, newExp.category);
+					prepState.setInt(1, newExp.expID);
 				}
 				catch (SQLException e)
 				{
-					System.out.println("Ausgaben können nicht gelöscht werden");
+					System.out.println("Ausgaben können nicht hinzugefügt werden");
 				}
 				return anzahl;
 		}
