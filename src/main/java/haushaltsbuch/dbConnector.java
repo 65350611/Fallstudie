@@ -38,7 +38,7 @@ public class dbConnector {
 		
 			try
 			{
-				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName);
+				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" group by date");
 				rs.next();
 				
 				exp.expID=rs.getInt("Ausgaben ID");
@@ -61,7 +61,7 @@ public class dbConnector {
 		
 			try
 			{
-				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" and date between "+beginDate+" and "+endDate); //woher kommen beginDate und endDate?
+				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" and date between "+beginDate+" and "+endDate+" group by date"); //woher kommen beginDate und endDate?
 				rs.next();
 				
 				exp.expID=rs.getInt("Ausgaben ID");
@@ -84,7 +84,7 @@ public class dbConnector {
 		
 			try
 			{
-				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" and category="+catID);
+				ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" and category="+catID+" group by date");
 				rs.next();
 				
 				exp.expID=rs.getInt("Ausgaben ID");
