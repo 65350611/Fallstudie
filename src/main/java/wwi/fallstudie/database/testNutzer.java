@@ -1,6 +1,7 @@
 package wwi.fallstudie.database;
 
 import backend.Anmeldung;
+import backend.Logik;
 
 public class testNutzer {
 
@@ -8,8 +9,9 @@ public class testNutzer {
 		
 		DbAbfragen.baueVerbindungAuf();
 		
-		//Anmeldung.anmelden("tester", "12345");
-		System.out.println(DbAbfragen.gibRolle("tester"));
+		Anmeldung.anmelden("tester3", "666");
+		System.out.println(DbAbfragen.gibRolle("tester3"));
+		System.out.println(Logik.istAdmin());
 	}
 	
 }

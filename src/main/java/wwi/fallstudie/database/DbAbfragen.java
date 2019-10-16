@@ -2,6 +2,8 @@ package wwi.fallstudie.database;
 
 import java.sql.*;
 
+import haushaltsbuch.nutzer;
+
 public class DbAbfragen {
 	
 	static Connection con;
@@ -91,6 +93,30 @@ public class DbAbfragen {
 		return p;
 
 	}
+	
+	public static boolean neuerNutzer(int userRole, String name, String password)
+	{	
+		int anzahl = 0;
+		boolean ok = false;
+	
+		try
+		{
+			PreparedStatement prepState = con.prepareStatement
+					("insert into nutzer values (?,?,?)");
+			prepState.setInt(1, userRole);
+			prepState.setString(2, name);
+			prepState.setString(3, password);
+			
+			anzahl = prepState.executeUpdate();
+			ok = true;
+			System.out.println("Neuer Nutzer hinzugefügt");
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Nutzer konnte nicht hinzugefügt werden");
+		}
+		return ok;
+}
 	
 }
 
