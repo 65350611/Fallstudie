@@ -13,7 +13,7 @@ public class NeuerNutzerTest {
 	public NeuerNutzerTest() {
 
 	}
-
+/*
 	public void add(nutzer nutzer) {
 		try {
 			String queryString = "INSERT INTO student(RollNo, Name, Course, Address) VALUES(?,?,?,?)";
@@ -42,7 +42,10 @@ public class NeuerNutzerTest {
 		}
 
 	}
+ */
 
+
+/*
 	public void update(StudentBean studentBean) {
 
 		try {
@@ -71,6 +74,7 @@ public class NeuerNutzerTest {
 			}
 		}
 	}
+ */
 
 	/*public void delete(int rollNo) {
 

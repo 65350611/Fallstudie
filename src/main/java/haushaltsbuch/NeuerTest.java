@@ -8,7 +8,8 @@ public class NeuerTest {
 	public static void main(String[] args) {
 		
 		NeuerDBTest.baueVerbindungAuf();
-		
+
+		/*
 		public nutzer getName() {
 		    try {
 		        Statement stmt = connection.createStatement();
@@ -22,6 +23,7 @@ public class NeuerTest {
 		    }
 		    return null;
 		}
+		 */
 	}
 	
 }
