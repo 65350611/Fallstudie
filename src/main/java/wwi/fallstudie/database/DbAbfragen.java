@@ -45,10 +45,10 @@ public class DbAbfragen {
 			ResultSet rs = stmt.executeQuery("select password from nutzer where name="+name);
 			while (rs.next())
 			{
-				String n = rs.getString("Benutzername");
+				//String n = rs.getString("Benutzername");
 				p = rs.getString("Passwort");
-				int rid = rs.getInt("Rolle des Benutzers");
-				System.out.println(n+" "+p+" "+rid);
+				//int rid = rs.getInt("Rolle des Benutzers");
+				//System.out.println(n+" "+p+" "+rid);
 			}
 						
 		}
