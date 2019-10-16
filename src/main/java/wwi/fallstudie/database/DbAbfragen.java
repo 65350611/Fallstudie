@@ -94,7 +94,7 @@ public class DbAbfragen {
 
 	}
 	
-	public static boolean neuerNutzer(int userRole, String name, String password)
+	public static boolean neuerNutzer(int userRole, String password, String name)
 	{	
 		int anzahl = 0;
 		boolean ok = false;
@@ -104,8 +104,8 @@ public class DbAbfragen {
 			PreparedStatement prepState = con.prepareStatement
 					("insert into nutzer values (?,?,?)");
 			prepState.setInt(1, userRole);
-			prepState.setString(2, name);
-			prepState.setString(3, password);
+			prepState.setString(2, password);
+			prepState.setString(3, name);
 			
 			anzahl = prepState.executeUpdate();
 			ok = true;
