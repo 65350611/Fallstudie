@@ -9,12 +9,12 @@ public interface Anmeldung {
 		System.out.print("passwort stimmt");
 		
 		}
-		if (admin == 1) { 
-			Logik.admMelden(userId, userName);
-		} else {
-			Logik.usrMelden(userId, userName);
-
-		}
+//		if (admin == 1) { 
+//			Logik.admMelden(userId, userName);
+//		} else {
+//			Logik.usrMelden(userId, userName);
+//
+//		}
 	}
 
 }
