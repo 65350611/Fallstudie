@@ -4,8 +4,8 @@ public class AdmPojo extends UserPojo {
 
 	private boolean admin;
 
-	public AdmPojo(int userId, String name) {
-		super(userId, name);
+	public AdmPojo(String name) {
+		super(name);
 		this.admin = true;
 
 	}
