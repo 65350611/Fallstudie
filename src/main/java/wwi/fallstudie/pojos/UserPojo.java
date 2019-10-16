@@ -4,7 +4,7 @@ public class UserPojo {
 	private String name;
 	
 
-	public UserPojo(int userId, String name) {
+	public UserPojo(String name) {
 		this.name = name;
 	}
 
