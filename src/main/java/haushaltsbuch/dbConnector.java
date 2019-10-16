@@ -124,24 +124,29 @@ public class dbConnector {
 			return exp;
 		}
 		
-		public nutzer zeigeNutzer()  //diese Methode sollte funktionieren
-		{	nutzer user = new nutzer();
-		
+		public String zeigeNutzer(String name)  //diese Methode sollte funktionieren
+		{
+			String p = null;
+			
 			try
 			{
-				ResultSet rs = stmt.executeQuery("select * from nutzer");
-				rs.next();
-				
-				user.userRole=rs.getInt("Rolle des Nutzers");
-				user.name=rs.getString("Benutzername");
-				user.password=rs.getString("Passwort");
+				ResultSet rs = stmt.executeQuery("select password from nutzer where name="+name);
+				while (rs.next())
+				{
+					String n = rs.getString("Benutzername");
+					p = rs.getString("Passwort");
+					int rid = rs.getInt("Rolle des Benutzers");
+					System.out.println(n+" "+p+" "+rid);
+				}
 							
 			}
 			catch (SQLException e)
 			{
-				System.out.println("Nutzer können nicht angezeigt werden");
+				System.out.println(e);
 			}
-			return user;
+			
+			return p;
+
 		}
 		
 		public kategorien zeigeKategorien()  //diese Methode sollte funktionieren
