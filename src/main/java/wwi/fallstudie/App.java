@@ -1,5 +1,6 @@
 package wwi.fallstudie;
 
+import wwi.fallstudie.gui.admin.AdminOberflaeche;
 import wwi.fallstudie.gui.admin.AdminOberflaechePopUpPasswortUserNeuSetzen;
 import wwi.fallstudie.gui.admin.AdminOberflaechePopUpUserHinzufuegen;
 import wwi.fallstudie.gui.login.Login;
@@ -14,6 +15,7 @@ public class App {
         //new AdminOberflaechePopUpPasswortUserNeuSetzen();
         //new PopUpPasswortAendern();
         //new UserPopUpKategorieHinzufuegen();
-        new UserPopUpAusgabeHinzufuegen();
+        //new UserPopUpAusgabeHinzufuegen();
+        new AdminOberflaeche();
     }
 }
