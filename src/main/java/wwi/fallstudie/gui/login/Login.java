@@ -34,9 +34,10 @@ public class Login extends JFrame {
         einloggen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                System.out.println("Einloggen LoginScreen gedrückt");
                 try {
                     Anmeldung.anmelden(loginPanel.getName(), loginPanel.getPasswort());
-
+                    System.out.println("getName" + loginPanel.getName() + "getPasswort" + loginPanel.getPasswort());
                     if(Logik.istAdmin()){
                         new AdminOberflaeche(); //öffne Admin oberfläche
                     } else {
