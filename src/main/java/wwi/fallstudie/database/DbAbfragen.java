@@ -115,6 +115,7 @@ public class DbAbfragen {
 		{
 			System.out.println("Nutzer konnte nicht hinzugefügt werden");
 		}
+		
 		return ok;
 }
 	
