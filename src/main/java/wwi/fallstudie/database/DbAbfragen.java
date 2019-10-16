@@ -64,9 +64,9 @@ public class DbAbfragen {
 
 	}
 	
-	public static String gibRolle(String name)  //diese Methode sollte funktionieren
+	public static int gibRolle(String name)  //diese Methode sollte funktionieren
 	{
-		String p = null;
+		int p = 0;
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
@@ -77,7 +77,7 @@ public class DbAbfragen {
 						
 			while (rs.next())
 			{
-				p = rs.getString("userRole");
+				p = rs.getInt("userRole");
 
 				System.out.println(p);
 			}
