@@ -9,9 +9,9 @@ public interface Anmeldung {
 			
 			
 			if (DbAbfragen.gibRolle(userName)== 1) { 
-				Logik.admMelden(userId, userName);
+				Logik.admMelden(userName);
 			} else {
-				Logik.usrMelden(userId, userName);
+				Logik.usrMelden(userName);
 			}
 		}
 		
