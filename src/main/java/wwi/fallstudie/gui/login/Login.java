@@ -41,8 +41,10 @@ public class Login extends JFrame {
                    
                     if(Logik.istAdmin()){
                         new AdminOberflaeche(); //öffne Admin oberfläche
+                        dispose();
                     } else {
                         new UserOberflaeche(); //öffne User oberfläche
+                        dispose();
                     }
                 } catch (Exception e){
                     e.printStackTrace();
