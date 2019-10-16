@@ -16,7 +16,7 @@ public class Logik {
 	}
 	
 	public static void nutzerAnlegen(int rolle, String userName, String pwd) {
-		DbAbfragen.
+		DbAbfragen.neuerNutzer(rolle, pwd, userName);
 	}
 	
 	
@@ -28,10 +28,6 @@ public class Logik {
 	public static void usrMelden(String name) {
 		usr = new UserPojo(name);
 		admGemeldet=false;
-	}
-
-	public void userErstellen(int userId, String name, String psw) {
-//		TODO: Rücksprache mit Flo wie ein Nutzer erstellt werden soll.
 	}
 
 	public static boolean istAdmin() {
