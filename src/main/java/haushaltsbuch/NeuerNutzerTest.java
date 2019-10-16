@@ -17,7 +17,7 @@ public class NeuerNutzerTest {
 	public void add(nutzer nutzer) {
 		try {
 			String queryString = "INSERT INTO student(RollNo, Name, Course, Address) VALUES(?,?,?,?)";
-			connection = getConnection();
+			con = NeuerDBTest.baueVerbindungAuf();
 			ptmt = connection.prepareStatement(queryString);
 			ptmt.setInt(1, studentBean.getRollNo());
 			ptmt.setString(2, studentBean.getName());
