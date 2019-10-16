@@ -1,5 +1,5 @@
 package haushaltsbuch;
-//
+
 import java.sql.*;
 
 public class ausgaben {
