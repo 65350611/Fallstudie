@@ -4,10 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class UserPopUpAusgabeHinzufuegen extends JFrame {
-
+public class UserPopUpAusgabeBearbeiten extends JFrame{
     private String momentaneKategorie;
 
+    private JTextField ausgabenID;
     private JComboBox kategorie;
     private JTextField datum;
     private JLabel betragLabel;
@@ -17,12 +17,13 @@ public class UserPopUpAusgabeHinzufuegen extends JFrame {
     private JButton hinzufuegen;
     private JButton abbrechen;
 
-    public UserPopUpAusgabeHinzufuegen(){
+    public UserPopUpAusgabeBearbeiten(){
         super("Ausgabe Hinzufügen");
 
         setLayout(new GridBagLayout()); //set Layout Manager
 
         //initialise attributes
+        ausgabenID = new JTextField("Ausgaben ID");
         kategorie = new JComboBox();
         datum = new JTextField("YYYY.MM.DD");
         betragLabel = new JLabel("Betrag:");
@@ -31,6 +32,17 @@ public class UserPopUpAusgabeHinzufuegen extends JFrame {
         bezeichnung = new JTextField("Titel der Ausgabe");
         hinzufuegen = new JButton("Hinzufügen");
         abbrechen = new JButton("Abbrechen");
+
+        //edit ausgabenID
+        ausgabenID.setForeground(Color.LIGHT_GRAY);
+        ausgabenID.addFocusListener(new FocusAdapter() {
+            public void focusGained(FocusEvent e) {
+                JTextField source = (JTextField)e.getComponent();
+                source.setText("");
+                source.setForeground(Color.BLACK);
+                source.removeFocusListener(this);
+            }
+        });
 
         //edit kategorie
         //TODO methode aufrufen die Kategorien als String[] zurückgibt => kategorie.addItem();
@@ -91,73 +103,82 @@ public class UserPopUpAusgabeHinzufuegen extends JFrame {
         gc.fill = GridBagConstraints.HORIZONTAL;
 
         ////////////////////// reihe 1 ///////////////////////
+
         gc.ipady = 20;
 
-        //kategorie
+        //ausgabenID
         gc.gridx = 0;
         gc.gridy = 0;
         gc.gridwidth = 3;
-        add(kategorie, gc);
+        add(ausgabenID, gc);
 
         ////////////////////// reihe 2 ///////////////////////
+
+        //kategorie
+        gc.gridx = 0;
+        gc.gridy = 1;
+        gc.gridwidth = 3;
+        add(kategorie, gc);
+
+        ////////////////////// reihe 3 ///////////////////////
 
         //datum
         gc.ipady = 20;
         gc.gridx = 0;
-        gc.gridy = 1;
+        gc.gridy = 2;
         gc.gridwidth = 3;
         add(datum, gc);
 
-        ////////////////////// reihe 3 ///////////////////////
+        ////////////////////// reihe 4 ///////////////////////
         gc.ipady = 0;
         gc.gridwidth = 1;
 
         //betragLabel
         gc.gridx = 0;
-        gc.gridy = 2;
+        gc.gridy = 3;
         gc.fill = GridBagConstraints.NONE;
         add(betragLabel, gc);
 
         //betragField
         gc.gridx = 1;
-        gc.gridy = 2;
+        gc.gridy = 3;
         gc.fill = GridBagConstraints.HORIZONTAL;
         add(betragField, gc);
 
         //euroLabel
         gc.gridx = 2;
-        gc.gridy = 2;
+        gc.gridy = 3;
         gc.fill = GridBagConstraints.HORIZONTAL;
         add(euroLabel, gc);
 
-        ////////////////////// reihe 4 ///////////////////////
+        ////////////////////// reihe 5 ///////////////////////
         gc.fill = GridBagConstraints.HORIZONTAL;
 
         //bezeichnung
         gc.ipady = 20;
         gc.gridx = 0;
-        gc.gridy = 3;
+        gc.gridy = 4;
         gc.gridwidth = 3;
         add(bezeichnung, gc);
 
-        ////////////////////// reihe 2 ///////////////////////
+        ////////////////////// reihe 6 ///////////////////////
         gc.ipady = 0;
 
         //hinzufuegen
         gc.gridx = 0;
-        gc.gridy = 4;
+        gc.gridy = 5;
         gc.gridwidth = 2;
         add(hinzufuegen, gc);
 
         //abbrechen
         gc.gridx = 2;
-        gc.gridy = 4;
+        gc.gridy = 5;
         gc.gridwidth = 1;
         add(abbrechen, gc);
 
 
         //set JFrame
-        setSize(320, 400);
+        setSize(320, 420);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }

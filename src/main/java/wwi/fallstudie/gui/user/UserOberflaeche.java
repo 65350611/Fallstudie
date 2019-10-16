@@ -21,7 +21,7 @@ public class UserOberflaeche extends JFrame{
 
         // nutzerListeArray = getAlleNutzer();
 
-        headpanel = new UserKopfLeistenPanel();
+        headpanel = new UserKopfLeistenPanel(this);
         bottomLeiste = new UserOberflaecheBottomLeiste();
 
         nutzerliste = new JList(nutzerListeArray);

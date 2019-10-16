@@ -18,7 +18,7 @@ public class AdminOberflaeche extends JFrame {
 
        // nutzerListeArray = getAlleNutzer();
 
-        headpanel = new KopfLeistenPanel();
+        headpanel = new KopfLeistenPanel(this);
         bottomLeiste = new AdminOberflaecheBottomLeiste();
 
         nutzerliste = new JList(nutzerListeArray);

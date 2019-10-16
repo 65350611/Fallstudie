@@ -7,13 +7,13 @@ import java.awt.*;
 public class KopfLeistenPanel extends JPanel {
 
     private KopfleistenNamenInfoPanel namenInfoPanel;
-    KopfleistenButtonPanel kopfleistenButtonPanel;
+    private KopfleistenButtonPanel kopfleistenButtonPanel;
 
-    public KopfLeistenPanel(){
+    public KopfLeistenPanel(AdminOberflaeche adminOberflaeche){
         setLayout(new BorderLayout());
 
         namenInfoPanel = new KopfleistenNamenInfoPanel();
-        kopfleistenButtonPanel = new KopfleistenButtonPanel();
+        kopfleistenButtonPanel = new KopfleistenButtonPanel(adminOberflaeche);
 
         add(namenInfoPanel, BorderLayout.WEST);
         add(kopfleistenButtonPanel, BorderLayout.EAST);

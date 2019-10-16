@@ -10,11 +10,11 @@ public class UserKopfLeistenPanel extends JPanel {
     private UserKopfleistenNamenInfoPanel namenInfoPanel;
     private UserKopfLeistenButtonPanel kopfleistenButtonPanel;
 
-    public UserKopfLeistenPanel(){
+    public UserKopfLeistenPanel(UserOberflaeche userOberflaeche){
         setLayout(new BorderLayout());
 
         namenInfoPanel = new UserKopfleistenNamenInfoPanel();
-        kopfleistenButtonPanel = new UserKopfLeistenButtonPanel();
+        kopfleistenButtonPanel = new UserKopfLeistenButtonPanel(userOberflaeche);
 
         add(namenInfoPanel, BorderLayout.WEST);
         add(kopfleistenButtonPanel, BorderLayout.EAST);
