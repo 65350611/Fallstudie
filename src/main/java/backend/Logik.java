@@ -20,12 +20,12 @@ public class Logik {
 	}
 	
 	
-	public static void admMelden(int userId, String name) {
-		adm = new AdmPojo(userId, name);
+	public static void admMelden(String name) {
+		adm = new AdmPojo(name);
 	}
-
-	public static void usrMelden(int userId, String name) {
-		usr = new UserPojo(userId, name);
+	
+	public static void usrMelden(String name) {
+		usr = new UserPojo(name);
 	}
 
 	public void userErstellen(int userId, String name, String psw) {
