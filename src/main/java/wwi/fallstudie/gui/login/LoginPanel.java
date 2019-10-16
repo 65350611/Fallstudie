@@ -78,4 +78,13 @@ public class LoginPanel extends JPanel{
         gc.fill = GridBagConstraints.HORIZONTAL;
         add(passwortVergessen, gc);
     }
+
+    public String getNameLabel() {
+        return name.getText();
+    }
+
+    public String getPasswort(){
+        return new String(passwort.getPassword());
+    }
+
 }

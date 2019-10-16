@@ -3,19 +3,18 @@ package wwi.fallstudie.gui.admin;
 import javax.swing.*;
 import java.awt.*;
 
-public class KopfleistenNamenInfoPanel extends JPanel {
+public class AdminOberflaecheBottomLeiste extends JPanel {
 
-    private JLabel adminLabel;
     private JButton passwortAendern;
+    private JButton userNamenAendern;
 
-    public KopfleistenNamenInfoPanel(){
-
+    public AdminOberflaecheBottomLeiste(){
         setLayout(new FlowLayout());
 
-        adminLabel = new JLabel("Admin");
         passwortAendern = new JButton("Passwort ändern");
+        userNamenAendern = new JButton(("Nutzernamen ändern"));
 
-        add(adminLabel);
         add(passwortAendern);
+        add(userNamenAendern);
     }
 }
