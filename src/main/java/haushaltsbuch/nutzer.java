@@ -1,11 +1,13 @@
 package haushaltsbuch;
 
-public class nutzer {
-	public Integer userRole;
-	public String name;
-	public String password;
+import java.io.Serializable;
+
+public class nutzer implements Serializable{
+	int userRole;
+	String name;
+	String password;
     
-    nutzer() {
+    public nutzer() {
     }
     
     nutzer(Integer userRole, String name, String password) {
