@@ -4,14 +4,14 @@ import java.sql.*;
 
 public class DbAbfragen {
 	
-	Connection con = null;
-	static Statement stmt = null;  //sdnw
+	static Connection con;
+	static Statement stmt;
 	
 	public DbAbfragen() {
 		
 	}
 	
-	public void baueVerbindungAuf() {
+	public static void baueVerbindungAuf() {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -36,19 +36,50 @@ public class DbAbfragen {
 		}  //Konstruktor für die Verbindung
 	}
 	
-	public static String zeigeNutzer(String name)  //diese Methode sollte funktionieren
+	public static String gibPasswort(String name)  //diese Methode sollte funktionieren
 	{
 		String p = null;
-		
 		try
 		{
-			ResultSet rs = stmt.executeQuery("select password from nutzer where name="+name);
+			PreparedStatement prepState = con.prepareStatement
+					("select password from nutzer where userName=(?)");
+			prepState.setString(1, name);
+			
+			ResultSet rs = prepState.executeQuery();
+						
 			while (rs.next())
 			{
-				//String n = rs.getString("Benutzername");
-				p = rs.getString("Passwort");
-				//int rid = rs.getInt("Rolle des Benutzers");
-				//System.out.println(n+" "+p+" "+rid);
+				p = rs.getString("password");
+
+				System.out.println(p);
+			}
+						
+		}
+		catch (SQLException e)
+		{
+			System.out.println(e);
+		}
+		
+		return p;
+
+	}
+	
+	public static String gibRolle(String name)  //diese Methode sollte funktionieren
+	{
+		String p = null;
+		try
+		{
+			PreparedStatement prepState = con.prepareStatement
+					("select userRole from nutzer where userName=(?)");
+			prepState.setString(1, name);
+			
+			ResultSet rs = prepState.executeQuery();
+						
+			while (rs.next())
+			{
+				p = rs.getString("userRole");
+
+				System.out.println(p);
 			}
 						
 		}
