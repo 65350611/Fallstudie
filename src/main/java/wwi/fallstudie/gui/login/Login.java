@@ -25,7 +25,7 @@ public class Login extends JFrame {
         setLayout(new BorderLayout()); //set Layout Manager
 
         //initialise variables
-        logoIcon = new ImageIcon("src/images/IMG_1020.JPG"); //TODO logo ändern <<src/images/BoB_Logo128.png
+        logoIcon = new ImageIcon("src/images/IMG_1026.JPG"); //TODO logo ändern <<src/images/BoB_Logo128.png
         logo = new JLabel(logoIcon);
         loginPanel = new LoginPanel();
         einloggen = new JButton("Einloggen");
@@ -57,7 +57,7 @@ public class Login extends JFrame {
 
 
         //set Frame
-        setSize(320, 350);
+        setSize(320, 380);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
