@@ -3,11 +3,10 @@ import java.sql.*;
 
 public class dbConnector {
 	
-		Connection con = null; 		
-		Statement stmt = null;
+		static Connection con = null; 		
+		static Statement stmt = null;
 		
-		public dbConnector()
-		{
+		public static void main(String[] args ) {
 	
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -124,7 +123,6 @@ public class dbConnector {
 			}
 			return exp;
 		}
-
 		
 		public nutzer zeigeNutzer()  //diese Methode sollte funktionieren
 		{	nutzer user = new nutzer();
@@ -198,6 +196,21 @@ public class dbConnector {
 				}
 				return anzahl;
 		}
+		
+		public int loescheAlleAusgabenEinerKategorie(String name, int catID)  //diese Methode sollte funktionieren
+		{	int anzahl=0;
+		
+			try
+			{
+				anzahl = stmt.executeUpdate("delete from ausgaben where name="+name+" and category="+catID);
+												
+			}
+			catch (SQLException e)
+			{
+				System.out.println("Ausgaben können nicht gelöscht werden");
+			}
+			return anzahl;
+	}
 			
 		public int loescheNutzer(int name)  //diese Methode sollte funktionieren
 			{	int anzahl=0;
@@ -251,8 +264,8 @@ public class dbConnector {
 				try
 				{
 					PreparedStatement prepState = con.prepareStatement
-							("insert into ausgaben values (?,?,?,?,?,?)");
-					prepState.setInt(1, newExp.expID);
+							("insert into ausgaben values (null,?,?,?,?,?)");
+					//prepState.setInt(1, newExp.expID);
 					prepState.setString(2, newExp.expLabel);
 					prepState.setString(3, newExp.name);
 					prepState.setInt(4, newExp.category);
@@ -277,7 +290,7 @@ public class dbConnector {
 				try
 				{
 					PreparedStatement prepState = con.prepareStatement
-							("insert into nutzer values (?,?)");
+							("insert into nutzer values (?,?,?)");
 					prepState.setInt(1, newUser.userRole);
 					prepState.setString(2, newUser.name);
 					prepState.setString(3, newUser.password);
@@ -300,8 +313,8 @@ public class dbConnector {
 			try
 			{
 				PreparedStatement prepState = con.prepareStatement
-						("insert into kategorien values (?,?)");
-				prepState.setInt(1, newCat.catID);
+						("insert into kategorien values (null,?)");
+				//prepState.setInt(1, newCat.catID);
 				prepState.setString(2, newCat.catLabel);
 				
 				anzahl = prepState.executeUpdate();
@@ -322,8 +335,8 @@ public class dbConnector {
 				try
 				{
 					PreparedStatement prepState = con.prepareStatement
-							("insert into rollen values (?,?)");
-					prepState.setInt(1, newRole.roleID);
+							("insert into rollen values (null,?)");
+					//prepState.setInt(1, newRole.roleID);
 					prepState.setString(2, newRole.roleLabel);
 					
 					anzahl = prepState.executeUpdate();
@@ -336,6 +349,4 @@ public class dbConnector {
 				}
 				return ok;
 		}
-		
 }
-	
