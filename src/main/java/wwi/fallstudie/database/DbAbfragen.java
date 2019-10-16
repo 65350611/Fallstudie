@@ -5,7 +5,7 @@ import java.sql.*;
 public class DbAbfragen {
 	
 	Connection con = null;
-	Statement stmt = null;  //sdnw
+	static Statement stmt = null;  //sdnw
 	
 	public DbAbfragen() {
 		
@@ -36,7 +36,7 @@ public class DbAbfragen {
 		}  //Konstruktor für die Verbindung
 	}
 	
-	public String zeigeNutzer(String name)  //diese Methode sollte funktionieren
+	public static String zeigeNutzer(String name)  //diese Methode sollte funktionieren
 	{
 		String p = null;
 		
