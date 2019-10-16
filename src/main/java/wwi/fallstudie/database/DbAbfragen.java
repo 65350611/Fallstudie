@@ -5,7 +5,7 @@ import java.sql.*;
 public class DbAbfragen {
 	
 	Connection con = null;
-	Statement stmt = null;  //sdnwvio
+	Statement stmt = null;  //sdnw
 	
 	public DbAbfragen() {
 		
