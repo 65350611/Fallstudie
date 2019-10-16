@@ -64,5 +64,33 @@ public class DbAbfragen {
 
 	}
 	
+	public static String gibRolle(String name)  //diese Methode sollte funktionieren
+	{
+		String p = null;
+		try
+		{
+			PreparedStatement prepState = con.prepareStatement
+					("select userRole from nutzer where userName=(?)");
+			prepState.setString(1, name);
+			
+			ResultSet rs = prepState.executeQuery();
+						
+			while (rs.next())
+			{
+				p = rs.getString("userRole");
+
+				System.out.println(p);
+			}
+						
+		}
+		catch (SQLException e)
+		{
+			System.out.println(e);
+		}
+		
+		return p;
+
+	}
+	
 }
 

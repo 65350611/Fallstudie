@@ -8,8 +8,8 @@ public class testNutzer {
 		
 		DbAbfragen.baueVerbindungAuf();
 		
-		Anmeldung.anmelden("tester", "12345");
-		
+		//Anmeldung.anmelden("tester", "12345");
+		System.out.println(DbAbfragen.gibRolle("tester"));
 	}
 	
 }
