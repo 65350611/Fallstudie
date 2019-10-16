@@ -6,15 +6,15 @@ public interface Anmeldung {
 
 	public static void anmelden(String userName, String pwd) {
 		if ( pwd.contentEquals(DbAbfragen.zeigeNutzer(userName).toString())){
-		System.out.print("passwort stimmt");
-		
+			
+			
+			if (DbAbfragen.gibRolle(userName)== 1) { 
+				Logik.admMelden(userId, userName);
+			} else {
+				Logik.usrMelden(userId, userName);
+			}
 		}
-//		if (admin == 1) { 
-//			Logik.admMelden(userId, userName);
-//		} else {
-//			Logik.usrMelden(userId, userName);
-//
-//		}
+		
 	}
 
 }
