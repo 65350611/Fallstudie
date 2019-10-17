@@ -44,12 +44,13 @@ public class AdminOberflaechePopUpUserHinzufuegen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try{
+                    System.out.println(usernameField.getText());
                     Logik.userErzeugen(usernameField.getText());
                 } catch(Exception e){
                     e.printStackTrace();
                     new MessagePopup();
                 }
-                //dispose(); // popup schließen
+                dispose(); // popup schließen
             }
         });
 

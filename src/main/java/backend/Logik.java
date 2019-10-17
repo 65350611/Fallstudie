@@ -35,6 +35,7 @@ public class Logik {
 	}
 	public static void userErzeugen(String userName) {
 		if (admGemeldet) {
+			System.out.println("admIstGemeldet");
 			DbAbfragen.neuerNutzer(2, "start123", userName);
 		}
 	}
