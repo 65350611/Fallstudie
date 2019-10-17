@@ -1,5 +1,6 @@
 package wwi.fallstudie.gui.popupAllgemein;
 
+import backend.Logik;
 import wwi.fallstudie.gui.plausi.Comparator;
 
 import javax.swing.*;
@@ -76,8 +77,22 @@ public class PopUpPasswortAendern extends JFrame{
             public void actionPerformed(ActionEvent actionEvent) {
                 if(Comparator.compatePasswords(passwordField.getPassword(), wdhPasswordField.getPassword())){
                     //TODO prüfen ob altes passwort korrekt ist
-                    //TODO ändere das Passwort
-                    //dispose(); // popup schließen
+                    String altesPasswort = new String(altesPasswordField.getPassword());
+                    System.out.println("altes passwort: " + altesPasswort);
+                    if(altesPasswort.equals(Logik.returnPwd())) {
+                        //TODO ändere das Passwort
+                        String neuesPasswort = new String(passwordField.getPassword());
+                        System.out.println("neues passwort: " + neuesPasswort);
+                        try {
+                            Logik.pwdAendern(neuesPasswort);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            new MessagePopup();
+                        }
+                    } else {
+                        new MessagePopup("Die eingegebenen Daten sind nicht korrekt. Bitte erneut versuchen!");
+                    }
+                    dispose(); // popup schließen
                 } else {
                     new MessagePopup("Passwörter stimmen nicht überein!");
                 }
