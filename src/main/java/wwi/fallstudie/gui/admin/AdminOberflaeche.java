@@ -35,4 +35,8 @@ public class AdminOberflaeche extends JFrame {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setVisible(true);
     }
+
+    public void updateNutzerListe(){
+        //TODO update das String Array
+    }
 }

@@ -1,5 +1,8 @@
 package wwi.fallstudie.gui.admin;
 
+import backend.Logik;
+import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -40,7 +43,12 @@ public class AdminOberflaechePopUpUserHinzufuegen extends JFrame {
         hinzufuegen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //TODO füge neuen nutzer hinzu
+                try{
+                    Logik.userErzeugen(usernameField.getText());
+                } catch(Exception e){
+                    e.printStackTrace();
+                    new MessagePopup();
+                }
                 //dispose(); // popup schließen
             }
         });
