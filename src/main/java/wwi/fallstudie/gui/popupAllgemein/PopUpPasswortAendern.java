@@ -77,11 +77,11 @@ public class PopUpPasswortAendern extends JFrame{
             public void actionPerformed(ActionEvent actionEvent) {
                 if(Comparator.compatePasswords(passwordField.getPassword(), wdhPasswordField.getPassword())){
                     //TODO prüfen ob altes passwort korrekt ist
-                    String altesPasswort = "" + altesPasswordField.getPassword();
+                    String altesPasswort = new String(altesPasswordField.getPassword());
                     System.out.println("altes passwort: " + altesPasswort);
                     if(altesPasswort.equals(Logik.returnPwd())) {
                         //TODO ändere das Passwort
-                        String neuesPasswort = "" + passwordField.getPassword();
+                        String neuesPasswort = new String(passwordField.getPassword());
                         System.out.println("neues passwort: " + neuesPasswort);
                         try {
                             Logik.pwdAendern(neuesPasswort);
