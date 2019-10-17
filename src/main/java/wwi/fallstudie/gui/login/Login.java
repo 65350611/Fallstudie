@@ -48,7 +48,7 @@ public class Login extends JFrame {
                     }
                 } catch (Exception e){
                     e.printStackTrace();
-                    new MessagePopup("Kein User gefunden");
+                    new MessagePopup("Anmeldung fehlgeschlagen");
                 }
             }
         });
