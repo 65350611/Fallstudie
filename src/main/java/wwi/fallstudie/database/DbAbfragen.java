@@ -181,7 +181,7 @@ public class DbAbfragen {
 			
 			anzahl = prepState.executeUpdate();
 			ok = true;
-			System.out.println("Nutzer gelöscht hinzugefügt");
+			System.out.println("Nutzer gelöscht");
 											
 		}
 		catch (SQLException e)

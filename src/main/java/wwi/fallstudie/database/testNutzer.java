@@ -20,7 +20,7 @@ public class testNutzer {
 		//System.out.println(DbAbfragen.neueAusgabe("testAusgabe15", "tester", 1, 15.15f, sqlDate));
 		//System.out.println(DbAbfragen.zeigeAusgaben("tester"));
 		//System.out.println(DbAbfragen.loescheNutzer("tester4"));
-		System.out.println(DbAbfragen.aenderePasswort("Flo", "floflo"));
+		//System.out.println(DbAbfragen.aenderePasswort("Flo", "floflo"));
 		
 	}
 	
