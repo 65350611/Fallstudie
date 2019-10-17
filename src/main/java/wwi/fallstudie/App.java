@@ -14,8 +14,13 @@ import wwi.fallstudie.gui.user.UserPopUpKategorieHinzufuegen;
 
 public class App {
     public static void main(String[] args){
+<<<<<<< HEAD
     	DbAbfragen.baueVerbindungAuf();
         Login fenster = new Login();
+=======
+    	//DbAbfragen.baueVerbindungAuf();
+        //Login fenster = new Login();
+>>>>>>> branch 'master' of https://github.com/65350611/Fallstudie.git
         //new AdminOberflaechePopUpUserHinzufuegen();
         //new AdminOberflaechePopUpPasswortUserNeuSetzen();
         //new PopUpPasswortAendern();

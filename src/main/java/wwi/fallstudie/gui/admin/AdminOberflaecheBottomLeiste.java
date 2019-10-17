@@ -1,6 +1,6 @@
 package wwi.fallstudie.gui.admin;
 
-import wwi.fallstudie.gui.popupAllgemein.PopUpChangeUsername;
+import wwi.fallstudie.gui.popupAllgemein.PopUpDeleteUser;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +27,7 @@ public class AdminOberflaecheBottomLeiste extends JPanel {
         deleteUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                new PopUpChangeUsername();
+                new PopUpDeleteUser();
             }
         });
 

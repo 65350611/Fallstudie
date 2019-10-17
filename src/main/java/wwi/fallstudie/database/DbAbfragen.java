@@ -216,7 +216,7 @@ public class DbAbfragen {
 		return ok;
 }
 	
-	/*public static ausgaben zeigeAusgaben(String userName)  //diese Methode sollte funktionieren
+	public static ausgaben zeigeAusgaben(String userName)  //diese Methode sollte funktionieren
 	{	ausgaben exp = new ausgaben();
 	
 		try
