@@ -1,6 +1,6 @@
 package wwi.fallstudie.gui.popupAllgemein;
 
-import wwi.fallstudie.gui.plausi.Comparator;
+import backend.Logik;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,21 +9,21 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
-public class PopUpChangeUsername extends JFrame {
+public class PopUpDeleteUser extends JFrame {
 
     private JTextField usernameField;
 
-    private JButton aendern;
+    private JButton delete;
     private JButton abbrechen;
 
-    public PopUpChangeUsername(){
+    public PopUpDeleteUser(){
         super("Passwort neu setzen");
 
         setLayout(new GridBagLayout()); //set Layout Manager
 
         //initialise variables
         usernameField = new JTextField();
-        aendern = new JButton("Ändern");
+        delete = new JButton("Löschen");
         abbrechen = new JButton("Abbrechen");
 
 
@@ -43,10 +43,17 @@ public class PopUpChangeUsername extends JFrame {
 
 
         //set buttons on clicklistener
-        aendern.addActionListener(new ActionListener() {
+        delete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //TODO ändern
+                try{
+                    System.out.println(usernameField.getText());
+                    Logik.deleteUser(usernameField.getText()); //lösche Nutzer
+                    dispose();
+                } catch(Exception e){
+                    e.printStackTrace();
+                    new MessagePopup();
+                }
             }
         });
 
@@ -83,7 +90,7 @@ public class PopUpChangeUsername extends JFrame {
         //hinzufuegen
         gc.gridx = 0;
         gc.gridy = 1;
-        add(aendern, gc);
+        add(delete, gc);
 
         //abbrechen
         gc.gridx = 1;
