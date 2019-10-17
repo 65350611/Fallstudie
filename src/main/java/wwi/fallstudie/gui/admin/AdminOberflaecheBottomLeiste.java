@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 public class AdminOberflaecheBottomLeiste extends JPanel {
 
     private JButton passwortAendern;
-    private JButton userNamenAendern;
+    private JButton deleteUser;
 
     public AdminOberflaecheBottomLeiste(){
         setLayout(new FlowLayout());
@@ -23,8 +23,8 @@ public class AdminOberflaecheBottomLeiste extends JPanel {
             }
         });
 
-        userNamenAendern = new JButton(("Nutzernamen ändern"));
-        userNamenAendern.addActionListener(new ActionListener() {
+        deleteUser = new JButton(("Nutzer löschen"));
+        deleteUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 new PopUpChangeUsername();
@@ -32,6 +32,6 @@ public class AdminOberflaecheBottomLeiste extends JPanel {
         });
 
         add(passwortAendern);
-        add(userNamenAendern);
+        add(deleteUser);
     }
 }
