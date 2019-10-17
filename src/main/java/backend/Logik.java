@@ -33,4 +33,9 @@ public class Logik {
 	public static boolean istAdmin() {
 		return admGemeldet;
 	}
+	public static void userErzeugen(String userName) {
+		if (admGemeldet) {
+			DbAbfragen.neuerNutzer(2, "start123", userName);
+		}
+	}
 }
