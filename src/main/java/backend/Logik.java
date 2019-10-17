@@ -47,7 +47,12 @@ public class Logik {
 	}
 
 	public static void pwdAendern(String pwd) {
-		DbAbfragen.Ae
+		if(admGemeldet) {
+			DbAbfragen.aenderePasswort(adm.getName(), pwd);
+		
+		}else {
+			DbAbfragen.aenderePasswort(usr.getName(), pwd);
+		}
 	}
 	public static void pwdAendern(String userName, String pwd) {
 		
