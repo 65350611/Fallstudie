@@ -8,5 +8,11 @@ public class AusgabenAnzeigenPanel extends JPanel {
     public AusgabenAnzeigenPanel(){
         setLayout(new BorderLayout());
         setBackground(Color.BLACK);
+
+
+    }
+
+    public void update(){
+
     }
 }
