@@ -24,7 +24,7 @@ public class UserPopUpAusgabeHinzufuegen extends JFrame {
 
         //initialise attributes
         kategorie = new JComboBox();
-        datum = new JTextField("YYYY.MM.DD");
+        datum = new JTextField("YYYY-MM-DD");
         betragLabel = new JLabel("Betrag:");
         betragField = new JTextField(10);
         euroLabel = new JLabel("Euro");

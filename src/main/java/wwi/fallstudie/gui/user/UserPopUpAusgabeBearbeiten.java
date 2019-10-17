@@ -25,7 +25,7 @@ public class UserPopUpAusgabeBearbeiten extends JFrame{
         //initialise attributes
         ausgabenID = new JTextField("Ausgaben ID");
         kategorie = new JComboBox();
-        datum = new JTextField("YYYY.MM.DD");
+        datum = new JTextField("YYYY-MM-DD");
         betragLabel = new JLabel("Betrag:");
         betragField = new JTextField(10);
         euroLabel = new JLabel("Euro");
