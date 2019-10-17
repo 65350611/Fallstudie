@@ -111,7 +111,7 @@ public class DbAbfragen {
 			
 			anzahl = prepState.executeUpdate();
 			ok = true;
-			System.out.println("Neuer Nutzer hinzugefügt");
+			System.out.println("Neuer Nutzer hinzugefügt!");
 		}
 		catch (SQLException e)
 		{
