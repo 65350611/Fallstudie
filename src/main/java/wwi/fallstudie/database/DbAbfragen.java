@@ -120,7 +120,7 @@ public class DbAbfragen {
 		return ok;
 }
 	
-	public static boolean neueAusgabe(int expID, String expLabel, String name, int category, float amount, Date date)
+	public static boolean neueAusgabe(String expLabel, String name, int category, float amount, Date date)
 	{	
 		int anzahl = 0;
 		boolean ok = false;
@@ -129,7 +129,7 @@ public class DbAbfragen {
 		{
 			PreparedStatement prepState = con.prepareStatement
 					("insert into ausgaben values (?,?,?,?,?,?)");
-			prepState.setInt(1, expID);
+			prepState.setInt(1, 0);
 			prepState.setString(2, expLabel);
 			prepState.setString(3, name);
 			prepState.setInt(4, category);
