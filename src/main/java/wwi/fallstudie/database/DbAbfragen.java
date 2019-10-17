@@ -120,7 +120,7 @@ public class DbAbfragen {
 		return ok;
 }
 	
-	/*public static boolean neueAusgabe(String expLabel, String name, int category, Float amount, Date date)
+	public static boolean neueAusgabe(int expID, String expLabel, String name, int category, float amount, Date date)
 	{	
 		int anzahl = 0;
 		boolean ok = false;
@@ -128,8 +128,8 @@ public class DbAbfragen {
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
-					("insert into ausgaben values (null,?,?,?,?,?)");
-			//prepState.setInt(1, expID);
+					("insert into ausgaben values (?,?,?,?,?,?)");
+			prepState.setInt(1, expID);
 			prepState.setString(2, expLabel);
 			prepState.setString(3, name);
 			prepState.setInt(4, category);
@@ -146,7 +146,7 @@ public class DbAbfragen {
 		}
 		return ok;
 }
-	
+	/*
 	public boolean neueKategorie(String catLabel)
 	{	int anzahl=0;
 		boolean ok = false;
