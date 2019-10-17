@@ -176,12 +176,12 @@ public class DbAbfragen {
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
-					("delete from nutzer where name=(?)");
+					("delete from nutzer where userName=(?)");
 			prepState.setString(1, name);
 			
 			anzahl = prepState.executeUpdate();
 			ok = true;
-			System.out.println("Nutzer gelöscht hinzugefügt");
+			System.out.println("Nutzer gelöscht");
 											
 		}
 		catch (SQLException e)
@@ -192,6 +192,30 @@ public class DbAbfragen {
 		return ok;
 }
 
+	public static boolean aenderePasswort(String name, String neuesPasswort)  //diese Methode sollte funktionieren
+	{	int anzahl=0;
+		boolean ok = false;
+	
+		try
+		{
+			PreparedStatement prepState = con.prepareStatement
+					("update nutzer set password=(?) where userName=(?)");
+			prepState.setString(1, neuesPasswort);
+			prepState.setString(2, name);
+			
+			anzahl = prepState.executeUpdate();
+			ok = true;
+			System.out.println("Passwort geändert");
+											
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Passwort konnte nicht geändert werden");
+			System.out.println(e);
+		}
+		return ok;
+}
+	
 	/*public static ausgaben zeigeAusgaben(String userName)  //diese Methode sollte funktionieren
 	{	ausgaben exp = new ausgaben();
 	
