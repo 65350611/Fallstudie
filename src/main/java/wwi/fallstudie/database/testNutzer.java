@@ -21,7 +21,7 @@ public class testNutzer {
 		//System.out.println(DbAbfragen.zeigeAusgaben("tester"));
 		//System.out.println(DbAbfragen.loescheNutzer("tester4"));
 		//System.out.println(DbAbfragen.aenderePasswort("Flo", "floflo"));
-		
+		System.out.println(DbAbfragen.neueKategorie("testKat6"));
 	}
 	
 }

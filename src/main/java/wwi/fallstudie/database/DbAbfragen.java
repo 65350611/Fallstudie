@@ -147,7 +147,7 @@ public class DbAbfragen {
 		return ok;
 }
 	
-	public boolean neueKategorie(String catLabel)
+	public static boolean neueKategorie(String catLabel)
 	{	int anzahl=0;
 		boolean ok = false;
 	
