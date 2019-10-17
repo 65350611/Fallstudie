@@ -75,7 +75,7 @@ public class PopUpPasswortAendern extends JFrame{
         hinzufuegen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(Comparator.compatePasswords(passwordField.getPassword(), wdhPasswordField.getPassword())){
+                if(Comparator.compatePasswords(passwordField.getPassword(), wdhPasswordField.getPassword())){ //prüfen ob passwort und wiederholung gleich sind
                     //TODO prüfen ob altes passwort korrekt ist
                     String altesPasswort = new String(altesPasswordField.getPassword());
                     System.out.println("altes passwort: " + altesPasswort);
