@@ -17,7 +17,8 @@ public class testNutzer {
 		//Anmeldung.anmelden("tester3", "666");
 		//System.out.println(DbAbfragen.neuerNutzer(1, "1111", "tester4"));
 		//System.out.println(Logik.istAdmin());
-		System.out.println(DbAbfragen.neueAusgabe("testAusgabe15", "tester", 1, 15.15f, sqlDate));
+		//System.out.println(DbAbfragen.neueAusgabe("testAusgabe15", "tester", 1, 15.15f, sqlDate));
+		System.out.println(DbAbfragen.zeigeAusgaben("tester"));
 		
 	}
 	

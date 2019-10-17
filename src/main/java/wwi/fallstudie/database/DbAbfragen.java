@@ -169,7 +169,23 @@ public class DbAbfragen {
 		return ok;
 }
 	
-	public static ausgaben zeigeAusgaben(String userName)  //diese Methode sollte funktionieren
+/*	public int loescheNutzer(int name)  //diese Methode sollte funktionieren
+	{	int anzahl=0;
+	
+		try
+		{
+			anzahl = stmt.executeUpdate("delete from nutzer where name="+name);
+											
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Nutzer konnte nicht gelöscht werden");
+		}
+		return anzahl;
+}
+
+	
+	/*public static ausgaben zeigeAusgaben(String userName)  //diese Methode sollte funktionieren
 	{	ausgaben exp = new ausgaben();
 	
 		try
@@ -189,7 +205,6 @@ public class DbAbfragen {
 			int category=rs.getInt("category");
 			Float amount=rs.getFloat("amount");
 			Date date=rs.getDate("date");
-			System.out.println(expID + " " + expLabel + " " + name + " " + category + " " + amount + " " + date);
 			
 			}
 						
@@ -199,12 +214,11 @@ public class DbAbfragen {
 			System.out.println("Ausgaben können nicht angezeigt werden");
 			System.out.println(e);
 		}
-		return exp;
+		return exp.toString();
 	}
 	/*
-	public static ausgaben zeigeAusgabenProZeitraum(String userName, Date beginDate, Date endDate)  //diese Methode sollte funktionieren
-	{	ausgaben exp = new ausgaben();
-	
+	public static ausgaben zeigeAusgabenProZeitraum(String userName, String beginDate, String endDate)  //diese Methode sollte funktionieren
+	{		
 		try
 		{
 			ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" and date between "+beginDate+" and "+endDate+" order by date"); //woher kommen beginDate und endDate?
