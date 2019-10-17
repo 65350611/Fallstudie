@@ -9,8 +9,7 @@ public interface Anmeldung {
 		System.out.println(pwd + "   " + DbAbfragen.gibPasswort(userName).toString());
 		
 		if ( pwd.contentEquals(DbAbfragen.gibPasswort(userName).toString())){
-			
-			
+						
 			if (DbAbfragen.gibRolle(userName)== 1) { 
 				Logik.admMelden(userName);
 			} else {
