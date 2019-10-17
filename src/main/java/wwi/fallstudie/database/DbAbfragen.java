@@ -2,6 +2,8 @@ package wwi.fallstudie.database;
 
 import java.sql.*;
 
+import haushaltsbuch.ausgaben;
+import haushaltsbuch.kategorien;
 import haushaltsbuch.nutzer;
 
 public class DbAbfragen {
@@ -117,6 +119,111 @@ public class DbAbfragen {
 		}
 		return ok;
 }
+	
+	/*public static boolean neueAusgabe(String expLabel, String name, int category, Float amount, Date date)
+	{	
+		int anzahl = 0;
+		boolean ok = false;
+	
+		try
+		{
+			PreparedStatement prepState = con.prepareStatement
+					("insert into ausgaben values (null,?,?,?,?,?)");
+			//prepState.setInt(1, expID);
+			prepState.setString(2, expLabel);
+			prepState.setString(3, name);
+			prepState.setInt(4, category);
+			prepState.setFloat(5, amount);
+			prepState.setDate(6, date);
+			
+			anzahl = prepState.executeUpdate();
+			ok = true;
+			System.out.println("Neue Ausgabe hinzugefügt");
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Ausgabe konnte nicht hinzugefügt werden");
+		}
+		return ok;
+}
+	
+	public boolean neueKategorie(String catLabel)
+	{	int anzahl=0;
+		boolean ok = false;
+	
+		try
+		{
+			PreparedStatement prepState = con.prepareStatement
+					("insert into kategorien values (null,?)");
+			//prepState.setInt(1, newCat.catID);
+			prepState.setString(2, catLabel);
+			
+			anzahl = prepState.executeUpdate();
+			ok = true;
+			System.out.println("Neue Kategorie hinzugefügt");
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Kategorie konnte nicht hinzugefügt werden");
+		}
+		return ok;
+}
+	
+	public static ausgaben zeigeAusgaben(String userName)  //diese Methode sollte funktionieren
+	{	ausgaben exp = new ausgaben();
+	
+		try
+		{
+			PreparedStatement prepState = con.prepareStatement
+					("select * from ausgaben where name=(?) order by date");
+			prepState.setString(1, userName);
+			
+			ResultSet rs = prepState.executeQuery();
+
+			while (rs.next())
+			{
+			
+			int expID=rs.getInt("expID");
+			String expLabel=rs.getString("expLabel");
+			String name=rs.getString("name");
+			int category=rs.getInt("category");
+			Float amount=rs.getFloat("amount");
+			Date date=rs.getDate("date");
+			System.out.println(expID + " " + expLabel + " " + name + " " + category + " " + amount + " " + date);
+			
+			}
+						
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Ausgaben können nicht angezeigt werden");
+			System.out.println(e);
+		}
+		return exp;
+	}
+	
+	public static ausgaben zeigeAusgabenProZeitraum(String userName, Date beginDate, Date endDate)  //diese Methode sollte funktionieren
+	{	ausgaben exp = new ausgaben();
+	
+		try
+		{
+			ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" and date between "+beginDate+" and "+endDate+" order by date"); //woher kommen beginDate und endDate?
+			rs.next();
+			
+			exp.expID=rs.getInt("Ausgaben ID");
+			exp.expLabel=rs.getString("Bezeichnung");
+			exp.name=rs.getString("Nutzer");
+			exp.category=rs.getInt("Kategorie");
+			exp.amount=rs.getFloat("Betrag");
+			exp.date=rs.getDate("Datum");
+						
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Ausgaben können nicht angezeigt werden");
+		}
+		return exp;
+	}*/
 	
 }
 
