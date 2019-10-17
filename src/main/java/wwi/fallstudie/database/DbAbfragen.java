@@ -146,7 +146,7 @@ public class DbAbfragen {
 		}
 		return ok;
 }
-	/*
+	
 	public boolean neueKategorie(String catLabel)
 	{	int anzahl=0;
 		boolean ok = false;
@@ -154,8 +154,8 @@ public class DbAbfragen {
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
-					("insert into kategorien values (null,?)");
-			//prepState.setInt(1, newCat.catID);
+					("insert into kategorien values (?,?)");
+			prepState.setInt(1, 0);
 			prepState.setString(2, catLabel);
 			
 			anzahl = prepState.executeUpdate();
@@ -201,7 +201,7 @@ public class DbAbfragen {
 		}
 		return exp;
 	}
-	
+	/*
 	public static ausgaben zeigeAusgabenProZeitraum(String userName, Date beginDate, Date endDate)  //diese Methode sollte funktionieren
 	{	ausgaben exp = new ausgaben();
 	
