@@ -169,23 +169,30 @@ public class DbAbfragen {
 		return ok;
 }
 	
-/*	public int loescheNutzer(int name)  //diese Methode sollte funktionieren
+	public static boolean loescheNutzer(String name)  //diese Methode sollte funktionieren
 	{	int anzahl=0;
+		boolean ok = false;
 	
 		try
 		{
-			anzahl = stmt.executeUpdate("delete from nutzer where name="+name);
+			PreparedStatement prepState = con.prepareStatement
+					("delete from nutzer where name=(?)");
+			prepState.setString(1, name);
+			
+			anzahl = prepState.executeUpdate();
+			ok = true;
+			System.out.println("Nutzer gelöscht hinzugefügt");
 											
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Nutzer konnte nicht gelöscht werden");
+			System.out.println(e);
 		}
-		return anzahl;
+		return ok;
 }
 
-	
-	/*public static ausgaben zeigeAusgaben(String userName)  //diese Methode sollte funktionieren
+	public static ausgaben zeigeAusgaben(String userName)  //diese Methode sollte funktionieren
 	{	ausgaben exp = new ausgaben();
 	
 		try
