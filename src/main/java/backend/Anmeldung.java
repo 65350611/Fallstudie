@@ -4,7 +4,7 @@ import wwi.fallstudie.database.DbAbfragen;
 
 public interface Anmeldung {
 
-	public static void anmelden(String userName, String pwd) {
+	public static void anmelden(String userName, String pwd) throws Exception {
 		
 		System.out.println(pwd + "   " + DbAbfragen.gibPasswort(userName).toString());
 		
@@ -16,7 +16,11 @@ public interface Anmeldung {
 			} else {
 				Logik.usrMelden(userName);
 			}
+		}else
+		{
+			throw new Exception();
 		}
+		
 		
 	}
 
