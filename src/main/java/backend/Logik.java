@@ -11,31 +11,38 @@ public class Logik {
 	private static AdmPojo adm;
 	private static boolean admGemeldet;
 	static final dbConnector con = new dbConnector();
+
 	private Logik() {
 
 	}
-	
+
 	public static void nutzerAnlegen(int rolle, String userName, String pwd) {
 		DbAbfragen.neuerNutzer(rolle, pwd, userName);
 	}
-	
-	
+
 	public static void admMelden(String name) {
 		adm = new AdmPojo(name);
-		admGemeldet=true;
+		admGemeldet = true;
 	}
-	
+
 	public static void usrMelden(String name) {
 		usr = new UserPojo(name);
-		admGemeldet=false;
+		admGemeldet = false;
 	}
 
 	public static boolean istAdmin() {
 		return admGemeldet;
 	}
+
 	public static void userErzeugen(String userName) {
 		if (admGemeldet) {
 			DbAbfragen.neuerNutzer(2, "start123", userName);
+		}
+	}
+
+	public static void deleteUser(String userName) {
+		if (admGemeldet) {
+			DbAbfragen.loescheNutzer(userName);
 		}
 	}
 }
