@@ -14,7 +14,7 @@ public class UserPopUpKategorieLoeschen extends JFrame {
     private JButton loeschen;
     private JButton abbrechen;
 
-    public UserPopUpKategorieLoeschen(){
+    public UserPopUpKategorieLoeschen(KategorienAnzeigenPanel kategorienAnzeigenPanel){
         super("Kategorie löschen");
 
         setLayout(new GridBagLayout()); //set Layout Manager
@@ -44,6 +44,7 @@ public class UserPopUpKategorieLoeschen extends JFrame {
 
                 try{
                     //TODO lösche alte kategorie
+                    kategorienAnzeigenPanel.update();
                 } catch (Exception e){
                     new MessagePopup("Fehler beim Löschen. Bitte erneut versuchen");
                 }

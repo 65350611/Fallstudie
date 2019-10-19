@@ -1,5 +1,7 @@
 package wwi.fallstudie.gui.user;
 
+import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -17,7 +19,7 @@ public class UserPopUpAusgabeHinzufuegen extends JFrame {
     private JButton hinzufuegen;
     private JButton abbrechen;
 
-    public UserPopUpAusgabeHinzufuegen(){
+    public UserPopUpAusgabeHinzufuegen(AusgabenAnzeigenPanel ausgabenAnzeigenPanel){
         super("Ausgabe hinzufügen");
 
         setLayout(new GridBagLayout()); //set Layout Manager
@@ -69,8 +71,14 @@ public class UserPopUpAusgabeHinzufuegen extends JFrame {
         hinzufuegen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //TODO füge neuen nutzer hinzu
-                //dispose(); // popup schließen
+                try {
+                    //TODO füge neuen nutzer hinzu
+                    ausgabenAnzeigenPanel.update();
+                } catch (Exception e){
+                    e.printStackTrace();
+                    new MessagePopup();
+                }
+                dispose(); // popup schließen
             }
         });
 

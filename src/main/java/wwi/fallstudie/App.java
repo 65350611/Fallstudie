@@ -25,7 +25,7 @@ public class App {
         //new PopUpPasswortAendern();
         //new UserPopUpKategorieHinzufuegen();
         //new UserPopUpAusgabeHinzufuegen();
-        //new AdminOberflaeche();
+        new AdminOberflaeche();
         new UserOberflaeche();
     }
 }

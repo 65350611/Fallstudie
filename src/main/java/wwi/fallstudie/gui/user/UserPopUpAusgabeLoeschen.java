@@ -1,5 +1,7 @@
 package wwi.fallstudie.gui.user;
 
+import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,7 +14,7 @@ public class UserPopUpAusgabeLoeschen extends JFrame {
     private JButton loeschen;
     private JButton abbrechen;
 
-    public UserPopUpAusgabeLoeschen(){
+    public UserPopUpAusgabeLoeschen(AusgabenAnzeigenPanel ausgabenAnzeigenPanel){
         super("Ausgabe löschen");
 
         setLayout(new GridBagLayout()); //set Layout Manager
@@ -40,7 +42,14 @@ public class UserPopUpAusgabeLoeschen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //TODO füge neuen nutzer hinzu
-                //dispose(); // popup schließen
+                ausgabenAnzeigenPanel.update();
+                try{
+
+                } catch (Exception e){
+                    e.printStackTrace();
+                    new MessagePopup();
+                }
+                dispose(); // popup schließen
             }
         });
 

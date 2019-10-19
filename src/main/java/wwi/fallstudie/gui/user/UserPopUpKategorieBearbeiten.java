@@ -15,7 +15,7 @@ public class UserPopUpKategorieBearbeiten extends JFrame{
     private JButton aendern;
     private JButton abbrechen;
 
-    public UserPopUpKategorieBearbeiten(){
+    public UserPopUpKategorieBearbeiten(KategorienAnzeigenPanel kategorienAnzeigenPanel){
         super("Kategorie bearbeiten");
 
         setLayout(new GridBagLayout()); //set Layout Manager
@@ -58,6 +58,7 @@ public class UserPopUpKategorieBearbeiten extends JFrame{
 
                 try{
                     //TODO lösche alte kategorie
+                    kategorienAnzeigenPanel.update();
                 } catch (Exception e){
                     new MessagePopup("Fehler beim Ändern. Bitte erneut versuchen");
                 }

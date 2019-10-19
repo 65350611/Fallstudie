@@ -1,6 +1,7 @@
-package wwi.fallstudie.gui.popupAllgemein;
+package wwi.fallstudie.gui.admin;
 
 import backend.Logik;
+import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,7 @@ public class PopUpDeleteUser extends JFrame {
     private JButton abbrechen;
 
     public PopUpDeleteUser(){
-        super("Passwort neu setzen");
+        super("Nutzer löschen");
 
         setLayout(new GridBagLayout()); //set Layout Manager
 

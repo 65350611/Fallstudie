@@ -19,7 +19,7 @@ public class UserKopfLeistenButtonPanel extends JPanel {
         ausgabeHinzufuegen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                new UserPopUpAusgabeHinzufuegen();
+                new UserPopUpAusgabeHinzufuegen(userOberflaeche.getAusgabenAnzeigenPanel());
             }
         });
 

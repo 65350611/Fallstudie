@@ -30,9 +30,11 @@ public class InsightsPanel extends JPanel {
     }
 
     public void update(){
-        System.out.println("entered update insights panel");
-
         //setKategorisierteAusgabenArray(TODO Logik.getAusgabenArray());
+
+        //TODO remove
+        String[] test = {"Sonstiges: 0€", "Wohnen: 1019€", "Essen: 100€", "updated"};
+        setKategorisierteAusgabenArray(test);
 
         addKategorisierteausgabenausArray2ListModel(); // listmodel mit neuem Array befüllen
     }

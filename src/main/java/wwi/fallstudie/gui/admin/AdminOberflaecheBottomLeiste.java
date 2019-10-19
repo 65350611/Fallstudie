@@ -1,7 +1,5 @@
 package wwi.fallstudie.gui.admin;
 
-import wwi.fallstudie.gui.popupAllgemein.PopUpDeleteUser;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
