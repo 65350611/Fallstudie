@@ -15,8 +15,8 @@ import wwi.fallstudie.gui.user.UserPopUpKategorieHinzufuegen;
 public class App {
     public static void main(String[] args){
 
-    	DbAbfragen.baueVerbindungAuf();
-        Login fenster = new Login();
+    	//DbAbfragen.baueVerbindungAuf();
+        //Login fenster = new Login();
 
     	//DbAbfragen.baueVerbindungAuf();
         //Login fenster = new Login();
@@ -26,6 +26,6 @@ public class App {
         //new UserPopUpKategorieHinzufuegen();
         //new UserPopUpAusgabeHinzufuegen();
         //new AdminOberflaeche();
-        //new UserOberflaeche();
+        new UserOberflaeche();
     }
 }

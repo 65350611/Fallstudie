@@ -33,22 +33,27 @@ public class UserOberflaeche extends JFrame{
         headpanel = new UserKopfLeistenPanel(this);
         bottomLeiste = new UserOberflaecheBottomLeiste(anzeigePanel, ausgabenAnzeigenPanel, kategorienAnzeigenPanel, insightsPanel);
 
-        /*
-        private String[] nutzerListeArray = {"asdf", "a", "asdf", "jafdjdfjj", "sadfjfadsjlafds", "asdf", "alal"};
-        private JList nutzerliste;
-        nutzerliste = new JList(nutzerListeArray);
-        nutzerliste.setVisibleRowCount(5);
-        nutzerliste.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        add(new JScrollPane(nutzerliste), BorderLayout.CENTER);
-         */
+
 
         add(headpanel, BorderLayout.NORTH);
         add(anzeigePanel, BorderLayout.CENTER);
         add(bottomLeiste, BorderLayout.SOUTH);
 
         //set JFrame
-        setSize(800, 450);
+        setSize(1150, 450);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setVisible(true);
+    }
+
+    public AusgabenAnzeigenPanel getAusgabenAnzeigenPanel() {
+        return ausgabenAnzeigenPanel;
+    }
+
+    public KategorienAnzeigenPanel getKategorienAnzeigenPanel() {
+        return kategorienAnzeigenPanel;
+    }
+
+    public InsightsPanel getInsightsPanel() {
+        return insightsPanel;
     }
 }

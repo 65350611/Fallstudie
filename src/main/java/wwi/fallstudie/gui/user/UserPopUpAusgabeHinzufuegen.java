@@ -18,7 +18,7 @@ public class UserPopUpAusgabeHinzufuegen extends JFrame {
     private JButton abbrechen;
 
     public UserPopUpAusgabeHinzufuegen(){
-        super("Ausgabe Hinzufügen");
+        super("Ausgabe hinzufügen");
 
         setLayout(new GridBagLayout()); //set Layout Manager
 

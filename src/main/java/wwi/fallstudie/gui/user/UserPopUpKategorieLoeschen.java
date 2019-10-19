@@ -1,5 +1,7 @@
 package wwi.fallstudie.gui.user;
 
+import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,19 +9,19 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
-public class UserPopUpKategorieHinzufuegen extends JFrame{
+public class UserPopUpKategorieLoeschen extends JFrame {
     private JTextField kategorie;
-    private JButton hinzufuegen;
+    private JButton loeschen;
     private JButton abbrechen;
 
-    public UserPopUpKategorieHinzufuegen(UserOberflaeche userOberflaeche){
-        super("Kategorie hinzufügen");
+    public UserPopUpKategorieLoeschen(){
+        super("Kategorie löschen");
 
         setLayout(new GridBagLayout()); //set Layout Manager
 
         //initialise variables
         kategorie = new JTextField();
-        hinzufuegen = new JButton("Hinzufügen");
+        loeschen = new JButton("Löschen");
         abbrechen = new JButton("Abbrechen");
 
 
@@ -36,13 +38,16 @@ public class UserPopUpKategorieHinzufuegen extends JFrame{
         });
 
         //set buttons on clicklistener
-        hinzufuegen.addActionListener(new ActionListener() {
+        loeschen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //TODO füge neue Kategorie hinzu
 
-                userOberflaeche.getKategorienAnzeigenPanel().update();
-                dispose();
+                try{
+                    //TODO lösche alte kategorie
+                } catch (Exception e){
+                    new MessagePopup("Fehler beim Löschen. Bitte erneut versuchen");
+                }
+                dispose(); // popup schließen
             }
         });
 
@@ -79,7 +84,7 @@ public class UserPopUpKategorieHinzufuegen extends JFrame{
         //hinzufuegen
         gc.gridx = 0;
         gc.gridy = 1;
-        add(hinzufuegen, gc);
+        add(loeschen, gc);
 
         //abbrechen
         gc.gridx = 1;

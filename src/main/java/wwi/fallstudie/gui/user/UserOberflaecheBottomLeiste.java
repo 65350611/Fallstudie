@@ -7,8 +7,11 @@ import java.awt.event.ActionListener;
 
 public class UserOberflaecheBottomLeiste extends JPanel {
 
-    private JButton passwortAendern;
+    private JButton ausgabeBearbeiten;
     private JButton ausgabeLoeschen;
+
+    private JButton kategorieBearbeiten;
+    private JButton kategorieLoeschen;
 
     private JButton ausgabenAnzeigen;
     private JButton kategorienAnzeigen;
@@ -17,8 +20,8 @@ public class UserOberflaecheBottomLeiste extends JPanel {
     public UserOberflaecheBottomLeiste(JLayeredPane anzeigePanel, AusgabenAnzeigenPanel ausgabenAnzeigenPanel, KategorienAnzeigenPanel kategorienAnzeigenPanel, InsightsPanel insightsPanel){
         setLayout(new FlowLayout());
 
-        passwortAendern = new JButton("Ausgabe bearbeiten");
-        passwortAendern.addActionListener(new ActionListener() {
+        ausgabeBearbeiten = new JButton("Ausgabe bearbeiten");
+        ausgabeBearbeiten.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 new UserPopUpAusgabeBearbeiten();
@@ -33,7 +36,25 @@ public class UserOberflaecheBottomLeiste extends JPanel {
             }
         });
 
+        kategorieBearbeiten = new JButton("Kategorie bearbeiten");
+        kategorieBearbeiten.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new UserPopUpKategorieBearbeiten();
+            }
+        });
+
+        kategorieLoeschen = new JButton("Kategorie löschen");
+        kategorieLoeschen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new UserPopUpKategorieLoeschen();
+            }
+        });
+
         ausgabenAnzeigen = new JButton("Ausgaben anzeigen");
+        ausgabenAnzeigen.setForeground(Color.BLUE);
+        ausgabenAnzeigen.setOpaque(true);
         ausgabenAnzeigen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -46,6 +67,8 @@ public class UserOberflaecheBottomLeiste extends JPanel {
         });
 
         kategorienAnzeigen = new JButton("Kategorien anzeigen");
+        kategorienAnzeigen.setForeground(Color.BLUE);
+        kategorienAnzeigen.setOpaque(true);
         kategorienAnzeigen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -58,6 +81,8 @@ public class UserOberflaecheBottomLeiste extends JPanel {
         });
 
         insights = new JButton("Insights");
+        insights.setForeground(Color.BLUE);
+        insights.setOpaque(true);
         insights.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -70,8 +95,11 @@ public class UserOberflaecheBottomLeiste extends JPanel {
             }
         });
 
-        add(passwortAendern);
+        add(ausgabeBearbeiten);
         add(ausgabeLoeschen);
+
+        add(kategorieBearbeiten);
+        add(kategorieLoeschen);
 
         add(ausgabenAnzeigen);
         add(kategorienAnzeigen);

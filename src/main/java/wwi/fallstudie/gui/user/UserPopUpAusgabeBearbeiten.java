@@ -18,7 +18,7 @@ public class UserPopUpAusgabeBearbeiten extends JFrame{
     private JButton abbrechen;
 
     public UserPopUpAusgabeBearbeiten(){
-        super("Ausgabe Hinzufügen");
+        super("Ausgabe bearbeiten");
 
         setLayout(new GridBagLayout()); //set Layout Manager
 

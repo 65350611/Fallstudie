@@ -28,7 +28,7 @@ public class UserKopfLeistenButtonPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 //TODO neue Kategorie hinzufügen
-                new UserPopUpKategorieHinzufuegen();
+                new UserPopUpKategorieHinzufuegen(userOberflaeche);
             }
         });
 

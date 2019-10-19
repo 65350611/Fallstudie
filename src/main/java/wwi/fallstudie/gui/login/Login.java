@@ -36,7 +36,7 @@ public class Login extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 System.out.println("Einloggen LoginScreen gedrückt");
                 try {
-                    System.out.println("getName" + loginPanel.getNameLabel() + "getPasswort" + loginPanel.getPasswort());
+                    System.out.println("getName: " + loginPanel.getNameLabel() + " getPasswort: " + loginPanel.getPasswort());
                     Anmeldung.anmelden(loginPanel.getNameLabel(), loginPanel.getPasswort());
                    
                     if(Logik.istAdmin()){
