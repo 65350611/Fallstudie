@@ -16,7 +16,7 @@ public class App {
     public static void main(String[] args){
 
     	//DbAbfragen.baueVerbindungAuf();
-        //Login fenster = new Login();
+        Login fenster = new Login();
 
     	//DbAbfragen.baueVerbindungAuf();
         //Login fenster = new Login();

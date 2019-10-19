@@ -10,7 +10,7 @@ public class AdminOberflaecheBottomLeiste extends JPanel {
     private JButton passwortAendern;
     private JButton deleteUser;
 
-    public AdminOberflaecheBottomLeiste(){
+    public AdminOberflaecheBottomLeiste(AdminOberflaeche adminOberflaeche){
         setLayout(new FlowLayout());
 
         passwortAendern = new JButton("Passwort von Nutzer ändern");
@@ -25,7 +25,7 @@ public class AdminOberflaecheBottomLeiste extends JPanel {
         deleteUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                new PopUpDeleteUser();
+                new PopUpDeleteUser(adminOberflaeche);
             }
         });
 

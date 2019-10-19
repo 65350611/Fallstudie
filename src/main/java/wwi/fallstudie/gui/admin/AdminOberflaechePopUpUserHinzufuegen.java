@@ -2,6 +2,7 @@ package wwi.fallstudie.gui.admin;
 
 import backend.Logik;
 import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
+import wwi.fallstudie.gui.utilities.Window;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +17,7 @@ public class AdminOberflaechePopUpUserHinzufuegen extends JFrame {
     private JButton hinzufuegen;
     private JButton abbrechen;
 
-    public AdminOberflaechePopUpUserHinzufuegen(){
+    public AdminOberflaechePopUpUserHinzufuegen(AdminOberflaeche adminOberflaeche){
         super("Nutzer hinzufügen");
 
         setLayout(new GridBagLayout()); //set Layout Manager
@@ -46,6 +47,7 @@ public class AdminOberflaechePopUpUserHinzufuegen extends JFrame {
                 try{
                     System.out.println(usernameField.getText());
                     Logik.userErzeugen(usernameField.getText());
+                    adminOberflaeche.update();
                 } catch(Exception e){
                     e.printStackTrace();
                     new MessagePopup();
@@ -96,6 +98,7 @@ public class AdminOberflaechePopUpUserHinzufuegen extends JFrame {
 
         //set JFrame data
         setSize(320, 100);
+        Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }

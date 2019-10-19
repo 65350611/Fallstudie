@@ -1,4 +1,4 @@
-package wwi.fallstudie.gui.plausi;
+package wwi.fallstudie.gui.utilities;
 
 import java.util.Arrays;
 

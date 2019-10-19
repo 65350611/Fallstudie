@@ -1,6 +1,7 @@
 package wwi.fallstudie.gui.user;
 
 import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
+import wwi.fallstudie.gui.utilities.Window;
 
 import javax.swing.*;
 import java.awt.*;
@@ -187,6 +188,7 @@ public class UserPopUpAusgabeBearbeiten extends JFrame{
 
         //set JFrame
         setSize(320, 420);
+        Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }

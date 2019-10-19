@@ -1,7 +1,8 @@
 package wwi.fallstudie.gui.popupAllgemein;
 
 import backend.Logik;
-import wwi.fallstudie.gui.plausi.Comparator;
+import wwi.fallstudie.gui.utilities.Comparator;
+import wwi.fallstudie.gui.utilities.Window;
 
 import javax.swing.*;
 import java.awt.*;
@@ -161,6 +162,7 @@ public class PopUpPasswortAendern extends JFrame{
 
         //set JFrame
         setSize(320, 200);
+        Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }

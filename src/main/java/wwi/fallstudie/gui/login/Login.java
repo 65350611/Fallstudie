@@ -6,6 +6,7 @@ import wwi.fallstudie.gui.admin.AdminOberflaeche;
 import wwi.fallstudie.gui.login.LoginPanel;
 import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
 import wwi.fallstudie.gui.user.UserOberflaeche;
+import wwi.fallstudie.gui.utilities.Window;
 
 import javax.swing.*;
 import java.awt.*;
@@ -60,6 +61,7 @@ public class Login extends JFrame {
 
         //set Frame
         setSize(320, 380);
+        Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }

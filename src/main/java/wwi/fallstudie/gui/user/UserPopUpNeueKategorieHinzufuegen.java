@@ -1,5 +1,7 @@
 package wwi.fallstudie.gui.user;
 
+import wwi.fallstudie.gui.utilities.Window;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -91,6 +93,7 @@ public class UserPopUpNeueKategorieHinzufuegen extends JFrame{
 
         //set JFrame
         setSize(320, 130);
+        Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }

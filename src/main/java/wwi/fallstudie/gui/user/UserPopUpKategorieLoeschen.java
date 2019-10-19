@@ -1,6 +1,7 @@
 package wwi.fallstudie.gui.user;
 
 import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
+import wwi.fallstudie.gui.utilities.Window;
 
 import javax.swing.*;
 import java.awt.*;
@@ -94,6 +95,7 @@ public class UserPopUpKategorieLoeschen extends JFrame {
 
         //set JFrame data
         setSize(320, 100);
+        Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }

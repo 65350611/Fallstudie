@@ -1,7 +1,8 @@
 package wwi.fallstudie.gui.admin;
 
 import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
-import wwi.fallstudie.gui.plausi.Comparator;
+import wwi.fallstudie.gui.utilities.Comparator;
+import wwi.fallstudie.gui.utilities.Window;
 
 import javax.swing.*;
 import java.awt.*;
@@ -78,6 +79,7 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 if(Comparator.compatePasswords(passwordField.getPassword(), wdhPasswordField.getPassword())){
                     //TODO ändere das Passwort
+                    dispose();
                 } else {
                     new MessagePopup("Passwörter stimmen nicht überein!");
                 }
@@ -146,6 +148,7 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
 
         //set JFrame
         setSize(320, 200);
+        Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }

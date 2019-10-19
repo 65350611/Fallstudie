@@ -2,6 +2,7 @@ package wwi.fallstudie.gui.admin;
 
 import backend.Logik;
 import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
+import wwi.fallstudie.gui.utilities.Window;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,7 @@ public class PopUpDeleteUser extends JFrame {
     private JButton delete;
     private JButton abbrechen;
 
-    public PopUpDeleteUser(){
+    public PopUpDeleteUser(AdminOberflaeche adminOberflaeche){
         super("Nutzer löschen");
 
         setLayout(new GridBagLayout()); //set Layout Manager
@@ -50,6 +51,7 @@ public class PopUpDeleteUser extends JFrame {
                 try{
                     System.out.println(usernameField.getText());
                     Logik.deleteUser(usernameField.getText()); //lösche Nutzer
+                    adminOberflaeche.update();
                     dispose();
                 } catch(Exception e){
                     e.printStackTrace();
@@ -101,6 +103,7 @@ public class PopUpDeleteUser extends JFrame {
 
         //set JFrame
         setSize(320, 130);
+        Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }

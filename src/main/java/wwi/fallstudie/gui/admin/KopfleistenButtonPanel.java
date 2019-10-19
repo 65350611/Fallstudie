@@ -19,7 +19,7 @@ public class KopfleistenButtonPanel extends JPanel {
         hinzufuegen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                new AdminOberflaechePopUpUserHinzufuegen();
+                new AdminOberflaechePopUpUserHinzufuegen(adminOberflaeche);
             }
         });
 

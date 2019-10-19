@@ -3,6 +3,7 @@ package wwi.fallstudie.gui.user;
 import wwi.fallstudie.gui.admin.AdminOberflaecheBottomLeiste;
 import wwi.fallstudie.gui.admin.AdminOberflaechePopUpUserHinzufuegen;
 import wwi.fallstudie.gui.admin.KopfLeistenPanel;
+import wwi.fallstudie.gui.utilities.Window;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,6 +42,7 @@ public class UserOberflaeche extends JFrame{
 
         //set JFrame
         setSize(1150, 450);
+        Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setVisible(true);
     }
