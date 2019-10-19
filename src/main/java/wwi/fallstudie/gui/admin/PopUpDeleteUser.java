@@ -102,7 +102,7 @@ public class PopUpDeleteUser extends JFrame {
 
 
         //set JFrame
-        setSize(320, 130);
+        setSize(320, 100);
         Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
