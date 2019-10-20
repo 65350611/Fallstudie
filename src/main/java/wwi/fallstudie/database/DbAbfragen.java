@@ -36,14 +36,14 @@ public class DbAbfragen {
 		}  //Konstruktor für die Verbindung
 	}
 	
-	public static String gibPasswort(String name)  
+	public static String gibPasswort(String userName)  
 	{
 		String p = null;
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
 					("select password from nutzer where userName=(?)");
-			prepState.setString(1, name);
+			prepState.setString(1, userName);
 			
 			ResultSet rs = prepState.executeQuery();
 						
@@ -64,14 +64,14 @@ public class DbAbfragen {
 
 	}
 	
-	public static int gibRolle(String name)  
+	public static int gibRolle(String userName)  
 	{
 		int p = 0;
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
 					("select userRole from nutzer where userName=(?)");
-			prepState.setString(1, name);
+			prepState.setString(1, userName);
 			
 			ResultSet rs = prepState.executeQuery();
 						
@@ -213,7 +213,7 @@ public class DbAbfragen {
 		return rs;
 		   }
 	
-	public static boolean neuerNutzer(int userRole, String password, String name)
+	public static boolean neuerNutzer(int userRole, String password, String userName)
 	{	
 		boolean ok = false;
 	
@@ -223,7 +223,7 @@ public class DbAbfragen {
 					("insert into nutzer values (?,?,?)");
 			prepState.setInt(1, userRole);
 			prepState.setString(2, password);
-			prepState.setString(3, name);
+			prepState.setString(3, userName);
 			
 			prepState.executeUpdate();
 			ok = true;
@@ -236,7 +236,7 @@ public class DbAbfragen {
 		return ok;
 }
 	
-	public static boolean neueAusgabe(String expLabel, String name, int category, float amount, Date date)
+	public static boolean neueAusgabe(String expLabel, String userName, int category, float amount, Date date)
 	{	
 		boolean ok = false;
 	
@@ -246,7 +246,7 @@ public class DbAbfragen {
 					("insert into ausgaben values (?,?,?,?,?,?)");
 			prepState.setInt(1, 0);
 			prepState.setString(2, expLabel);
-			prepState.setString(3, name);
+			prepState.setString(3, userName);
 			prepState.setInt(4, category);
 			prepState.setFloat(5, amount);
 			prepState.setDate(6, date);
@@ -284,7 +284,7 @@ public class DbAbfragen {
 		return ok;
 }
 	
-	public static boolean loescheNutzer(String name)  
+	public static boolean loescheNutzer(String userName)  
 	{
 		boolean ok = false;
 	
@@ -292,7 +292,7 @@ public class DbAbfragen {
 		{
 			PreparedStatement prepState = con.prepareStatement
 					("delete from nutzer where userName=(?)");
-			prepState.setString(1, name);
+			prepState.setString(1, userName);
 			
 			prepState.executeUpdate();
 			ok = true;
@@ -307,7 +307,7 @@ public class DbAbfragen {
 		return ok;
 }
 	
-	public static boolean loescheAusgabe(String name, int expID)  
+	public static boolean loescheAusgabe(String userName, int expID)  
 	{	
 		boolean ok = false;
 	
@@ -315,7 +315,7 @@ public class DbAbfragen {
 		{
 			PreparedStatement prepState = con.prepareStatement
 					("delete from ausgaben where name=(?) and expID=(?)");
-			prepState.setString(1, name);
+			prepState.setString(1, userName);
 			prepState.setInt(2, expID);
 			
 			prepState.executeUpdate();
@@ -331,7 +331,7 @@ public class DbAbfragen {
 		return ok;
 }
 	
-	public static boolean loescheKategorie(String name, int catID)  
+	public static boolean loescheKategorie(String userName, int catID)  
 	{	
 		boolean ok = false;
 	
@@ -339,7 +339,7 @@ public class DbAbfragen {
 		{
 			PreparedStatement prepState = con.prepareStatement
 					("delete from ausgaben where name=(?) and category=(?)");
-			prepState.setString(1, name);
+			prepState.setString(1, userName);
 			prepState.setInt(2, catID);
 			
 			prepState.executeUpdate();
@@ -355,7 +355,7 @@ public class DbAbfragen {
 		return ok;
 }
 
-	public static boolean aenderePasswort(String name, String neuesPasswort)  
+	public static boolean aenderePasswort(String userName, String neuesPasswort)  
 	{	
 		boolean ok = false;
 	
@@ -364,7 +364,7 @@ public class DbAbfragen {
 			PreparedStatement prepState = con.prepareStatement
 					("update nutzer set password=(?) where userName=(?)");
 			prepState.setString(1, neuesPasswort);
-			prepState.setString(2, name);
+			prepState.setString(2, userName);
 			
 			prepState.executeUpdate();
 			ok = true;
@@ -379,7 +379,7 @@ public class DbAbfragen {
 		return ok;
 }
 	
-	public static boolean aendereAusgabe(String expLabel, int catID, float amount, Date date, String name, int expID)  
+	public static boolean aendereAusgabe(String expLabel, int catID, float amount, Date date, String userName, int expID)  
 	{	
 		boolean ok = false;
 	
@@ -391,7 +391,7 @@ public class DbAbfragen {
 			prepState.setInt(2, catID);
 			prepState.setFloat(3, amount);
 			prepState.setDate(4, date);
-			prepState.setString(5, name);
+			prepState.setString(5, userName);
 			prepState.setInt(6, expID);
 			
 			prepState.executeUpdate();

@@ -27,7 +27,7 @@ public class testNutzer {
 		//System.out.println(DbAbfragen.loescheAusgabe("tester", 17));
 		//System.out.println(DbAbfragen.loescheKategorie("Flo", 3));
 		//System.out.println(DbAbfragen.aendereAusgabe("testAusgabe12b", 2, 121212f, sqlDate, "tester", 12));
-		System.out.println(DbAbfragen.aendereKategorieDerAusgabenAufStandard("Flo", 3));
+		//System.out.println(DbAbfragen.aendereKategorieDerAusgabenAufStandard("Flo", 3));
 		//System.out.println(DbAbfragen.neueKategorie("Wait"));
 	}
 	
