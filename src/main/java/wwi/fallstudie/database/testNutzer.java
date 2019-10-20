@@ -18,11 +18,17 @@ public class testNutzer {
 		//Anmeldung.anmelden("tester3", "666");
 		//System.out.println(DbAbfragen.neuerNutzer(1, "1111", "tester4"));
 		//System.out.println(Logik.istAdmin());
-		System.out.println(DbAbfragen.neueAusgabe("testAusgabe17", "tester", 1, 17f, sqlDate));
-		//System.out.println(DbAbfragen.loescheNutzer("tester4"));
+		//System.out.println(DbAbfragen.neueAusgabe("testAusgabe17", "tester", 1, 17f, sqlDate));
+		System.out.println(DbAbfragen.loescheNutzer("tester3"));
 		//System.out.println(DbAbfragen.aenderePasswort("Flo", "floflo"));
 		//System.out.println(DbAbfragen.neueKategorie("testKat6"));
 		//System.out.println(DbAbfragen.gibAusgabenFuerZeitraum("tester", "2019-09-01", "2019-09-30"));
+		//System.out.println(DbAbfragen.gibAusgabenFuerKategorie("Flo", 3));
+		//System.out.println(DbAbfragen.loescheAusgabe("tester", 17));
+		//System.out.println(DbAbfragen.loescheKategorie("Flo", 3));
+		//System.out.println(DbAbfragen.aendereAusgabe("testAusgabe12b", 2, 121212f, sqlDate, "tester", 12));
+		//System.out.println(DbAbfragen.aendereKategorie("whatttt", 2));
+		//System.out.println(DbAbfragen.neueKategorie("Wait"));
 	}
 	
 }

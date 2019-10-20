@@ -9,21 +9,7 @@ public class NeuerTest {
 		
 		NeuerDBTest.baueVerbindungAuf();
 
-		/*
-		public nutzer getName() {
-		    try {
-		        Statement stmt = connection.createStatement();
-		        ResultSet rs = stmt.executeQuery("SELECT * FROM nutzer WHERE name=" + name);
-		        if(rs.next())
-		        {
-		            return extractUserFromResultSet(rs);
-		        }
-		    } catch (SQLException ex) {
-		        ex.printStackTrace();
-		    }
-		    return null;
-		}
-		 */
+		System.out.println(NeuerDBTest.aendereKategorieDerAusgaben("Kram", "Flo", 9));
 	}
 	
 }

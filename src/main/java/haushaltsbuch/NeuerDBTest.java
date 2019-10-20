@@ -35,86 +35,64 @@ public class NeuerDBTest {
 			System.out.println("Statement NICHT erzeugt");
 		}  //Konstruktor für die Verbindung
 	}
-	
-	public static String gibPasswort(String name)  //diese Methode sollte funktionieren
-	{
-		String p = null;
-		try
-		{
-			PreparedStatement prepState = con.prepareStatement
-					("select password from nutzer where userName=(?)");
-			prepState.setString(1, name);
-			
-			ResultSet rs = prepState.executeQuery();
-						
-			while (rs.next())
-			{
-				p = rs.getString("password");
 
-				System.out.println(p);
-			}
-						
-		}
-		catch (SQLException e)
-		{
-			System.out.println(e);
-		}
+	public static boolean aendereKategorieDerAusgaben(String catLabelNew, String userName, int catIDOld) {	
 		
-		return p;
-
-	}
-	
-	public static int gibRolle(String name)  //diese Methode sollte funktionieren
-	{
-		int p = 0;
-		try
-		{
-			PreparedStatement prepState = con.prepareStatement
-					("select userRole from nutzer where userName=(?)");
-			prepState.setString(1, name);
-			
-			ResultSet rs = prepState.executeQuery();
-						
-			while (rs.next())
-			{
-				p = rs.getInt("userRole");
-
-				System.out.println(p);
-			}
-						
-		}
-		catch (SQLException e)
-		{
-			System.out.println(e);
-		}
-		
-		return p;
-
-	}
-	
-	public static boolean neuerNutzer(int userRole, String password, String name)
-	{	
-		int anzahl = 0;
+		int anzahl=0;
 		boolean ok = false;
-	
+		int p = 0;
+		ResultSet rs = null;
+		int catIDNew = -1;
+		
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
-					("insert into nutzer values (?,?,?)");
-			prepState.setInt(1, userRole);
-			prepState.setString(2, password);
-			prepState.setString(3, name);
+					("insert into kategorien values (?,?)");
+			prepState.setInt(1, 0);
+			prepState.setString(2, catLabelNew);
+			
+			anzahl = prepState.executeUpdate();
+			
+			System.out.println("Neue Kategorie hinzugefügt");
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Kategorie konnte nicht hinzugefügt werden");
+		}
+		
+		try
+		{
+	    rs = stmt.executeQuery("select LAST_INSERT_ID()");
+
+	    if (rs.next()) {
+	    	catIDNew = rs.getInt(1);
+	    }
+	    System.out.println("ID der neuen Kategorie: " + catIDNew);
+		}
+		catch (SQLException e)
+		{
+			System.out.println("ID der Kategorie konnte nicht ermittelt werden");
+		}
+		
+		try
+		{
+			PreparedStatement prepState = con.prepareStatement
+					("update ausgaben set category=(?) where name=(?) and category=(?)");
+			prepState.setInt(1, catIDNew);
+			prepState.setString(2, userName);
+			prepState.setInt(3, catIDOld);
 			
 			anzahl = prepState.executeUpdate();
 			ok = true;
-			System.out.println("Neuer Nutzer hinzugefügt");
+			System.out.println("Kategorie geändert");
+											
 		}
 		catch (SQLException e)
 		{
-			System.out.println("Nutzer konnte nicht hinzugefügt werden");
+			System.out.println("Kategorie konnte nicht geändert werden");
+			System.out.println(e);
 		}
 		return ok;
-}
 	
 }
-
+}
