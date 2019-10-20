@@ -1,10 +1,10 @@
 package wwi.fallstudie.database;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-import haushaltsbuch.ausgaben;
-import haushaltsbuch.kategorien;
-import haushaltsbuch.nutzer;
+import haushaltsbuch.*;
 
 public class DbAbfragen {
 	
@@ -216,59 +216,67 @@ public class DbAbfragen {
 		return ok;
 }
 	
-	/*public static ausgaben zeigeAusgaben(String userName)  //diese Methode sollte funktionieren
-	{	ausgaben exp = new ausgaben();
-	
-		try
-		{
+	public static ResultSet gibAusgaben(String userName)//diese Methode sollte funktionieren
+	{	
+		ResultSet rs = null;
+		try {
+			
 			PreparedStatement prepState = con.prepareStatement
 					("select * from ausgaben where name=(?) order by date");
 			prepState.setString(1, userName);
 			
-			ResultSet rs = prepState.executeQuery();
-
-			while (rs.next())
-			{
+			rs = prepState.executeQuery();
+			ResultSetMetaData rsmd = rs.getMetaData();
+	
+		   int columnsNumber = rsmd.getColumnCount();
+		   while (rs.next()) {
+		       for (int i = 1; i <= columnsNumber; i++) {
+		           if (i > 1) System.out.print(",  ");
+		           String columnValue = rs.getString(i);
+		           System.out.print(columnValue);
+		       }
+		      System.out.println("");
+		   }
+		}
+		       catch (SQLException e)
+				{
+					System.out.println("Ausgabe konnte nicht ausgegeben werden");
+					System.out.println(e);
+				}
+		return rs;
+		   }
+		
+	public static ResultSet gibAusgabenFuerZeitraum(String userName, String beginDate, String endDate)//diese Methode sollte funktionieren
+	{	
+		ResultSet rs = null;
+		try {
 			
-			int expID=rs.getInt("expID");
-			String expLabel=rs.getString("expLabel");
-			String name=rs.getString("name");
-			int category=rs.getInt("category");
-			Float amount=rs.getFloat("amount");
-			Date date=rs.getDate("date");
+			PreparedStatement prepState = con.prepareStatement
+					("select * from ausgaben where name=(?) and date between (?) and (?) order by date");
+			prepState.setString(1, userName);
+			prepState.setString(2, beginDate);
+			prepState.setString(3, endDate);
 			
-			}
-						
+			rs = prepState.executeQuery();
+			ResultSetMetaData rsmd = rs.getMetaData();
+	
+		   int columnsNumber = rsmd.getColumnCount();
+		   while (rs.next()) {
+		       for (int i = 1; i <= columnsNumber; i++) {
+		           if (i > 1) System.out.print(",  ");
+		           String columnValue = rs.getString(i);
+		           System.out.print(columnValue);
+		       }
+		      System.out.println("");
+		   }
 		}
-		catch (SQLException e)
-		{
-			System.out.println("Ausgaben können nicht angezeigt werden");
-			System.out.println(e);
-		}
-		return exp.toString();
-	}
-	/*
-	public static ausgaben zeigeAusgabenProZeitraum(String userName, String beginDate, String endDate)  //diese Methode sollte funktionieren
-	{		
-		try
-		{
-			ResultSet rs = stmt.executeQuery("select * from ausgaben where name="+userName+" and date between "+beginDate+" and "+endDate+" order by date"); //woher kommen beginDate und endDate?
-			rs.next();
-			
-			exp.expID=rs.getInt("Ausgaben ID");
-			exp.expLabel=rs.getString("Bezeichnung");
-			exp.name=rs.getString("Nutzer");
-			exp.category=rs.getInt("Kategorie");
-			exp.amount=rs.getFloat("Betrag");
-			exp.date=rs.getDate("Datum");
-						
-		}
-		catch (SQLException e)
-		{
-			System.out.println("Ausgaben können nicht angezeigt werden");
-		}
-		return exp;
-	}*/
+		       catch (SQLException e)
+				{
+					System.out.println("Ausgabe konnte nicht ausgegeben werden");
+					System.out.println(e);
+				}
+		return rs;
+		   }
 	
 }
 

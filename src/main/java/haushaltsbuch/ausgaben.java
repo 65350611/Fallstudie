@@ -10,10 +10,10 @@ public class ausgaben {
     public float amount;
     public Date date;
     
-    public ausgaben() {
+   public ausgaben() {
     }
     
-    ausgaben(String expLabel, String name, int category, float amount, Date date) {
+    public ausgaben(String expLabel, String name, int category, float amount, Date date) {
         this.expLabel = expLabel;
         this.name = name;
         this.category = category;
@@ -21,7 +21,7 @@ public class ausgaben {
         this.date = date;
     }
     
-    ausgaben(int expID, String expLabel, String name, int category, float amount, Date date) {
+   public ausgaben(int expID, String expLabel, String name, int category, float amount, Date date) {
         this.expID = expID;
     	this.expLabel = expLabel;
         this.name = name;
@@ -76,6 +76,6 @@ public class ausgaben {
     
     public void setDatet(Date date) {
         this.date = date;
-    }
+    }	
     
 }
