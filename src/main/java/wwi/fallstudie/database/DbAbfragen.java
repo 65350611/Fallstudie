@@ -465,5 +465,31 @@ public class DbAbfragen {
 	
 		}
 	
+	public static boolean aendereKategorieDerAusgabenAufStandard(String userName, int catIDOld) 
+	{
+		boolean ok = false;
+		
+		try
+		{
+			PreparedStatement prepState = con.prepareStatement
+					("update ausgaben set category=(?) where name=(?) and category=(?)");
+			prepState.setInt(1, 1);
+			prepState.setString(2, userName);
+			prepState.setInt(3, catIDOld);
+			
+			prepState.executeUpdate();
+			ok = true;
+			System.out.println("Kategorie auf 'Standard' geändert");
+											
+		}
+		catch (SQLException e)
+		{
+			System.out.println("Kategorie konnte nicht geändert werden");
+			System.out.println(e);
+		}
+		return ok;
+	
+		}
+	
 }
 
