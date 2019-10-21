@@ -12,7 +12,8 @@ public class DbAbfragen {
 		
 	}
 	
-	public static void baueVerbindungAuf() {
+	public static void baueVerbindungAuf() 
+	{
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -39,7 +40,7 @@ public class DbAbfragen {
 	
 	public static String gibPasswort(String userName)  
 	{
-		String p = null;
+		String pw = null;
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
@@ -50,9 +51,9 @@ public class DbAbfragen {
 						
 			while (rs.next())
 			{
-				p = rs.getString("password");
+				pw = rs.getString("password");
 
-				System.out.println(p);
+				System.out.println(pw);
 			}
 						
 		}
@@ -61,14 +62,14 @@ public class DbAbfragen {
 			System.out.println(e);
 		}
 		
-		return p;
+		return pw;
 
 	}
 	
 	public static int gibRolle(String userName)  
 
 	{
-		int p = 0;
+		int rn = 0;
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
@@ -79,9 +80,9 @@ public class DbAbfragen {
 						
 			while (rs.next())
 			{
-				p = rs.getInt("userRole");
+				rn = rs.getInt("userRole");
 
-				System.out.println(p);
+				System.out.println(rn);
 			}
 						
 		}
@@ -90,13 +91,13 @@ public class DbAbfragen {
 			System.out.println(e);
 		}
 		
-		return p;
+		return rn;
 
 	}
 	
 	public static String gibKategorienamen(int catID)  
 	{
-		String p = null;
+		String kn = null;
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
@@ -107,7 +108,7 @@ public class DbAbfragen {
 						
 			while (rs.next())
 			{
-				p = rs.getString("catLabel");
+				kn = rs.getString("catLabel");
 			}
 						
 		}
@@ -116,7 +117,7 @@ public class DbAbfragen {
 			System.out.println(e);
 		}
 		
-		return p;
+		return kn;
 
 	}
 	
