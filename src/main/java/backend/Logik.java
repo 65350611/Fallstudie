@@ -66,4 +66,14 @@ public class Logik {
 		}
 		
 	}
+
+	public static void usrAenderePwd(String pwd) {
+		DbAbfragen.aenderePasswort(usr.getName(), pwd);
+		
+	}
+
+	public static String[] getAusgabenArray() {
+		
+		return null;
+	}
 }

@@ -1,15 +1,22 @@
 package wwi.fallstudie.gui.admin;
 
-import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
-import wwi.fallstudie.gui.utilities.Comparator;
-import wwi.fallstudie.gui.utilities.Window;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+import backend.Logik;
+import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
+import wwi.fallstudie.gui.utilities.Comparator;
+import wwi.fallstudie.gui.utilities.Window;
 
 public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
     private JTextField usernameField;
@@ -78,7 +85,8 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if(Comparator.compatePasswords(passwordField.getPassword(), wdhPasswordField.getPassword())){
-                    //TODO ändere das Passwort
+                    //TODO pruefen
+                	Logik.usrAenderePwd(passwordField.getPassword().toString());
                     dispose();
                 } else {
                     new MessagePopup("Passwörter stimmen nicht überein!");
