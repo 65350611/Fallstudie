@@ -1,7 +1,14 @@
 package wwi.fallstudie.gui.user;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
+
+import backend.Logik;
 
 public class AusgabenAnzeigenPanel extends JPanel {
 
@@ -26,7 +33,7 @@ public class AusgabenAnzeigenPanel extends JPanel {
 
     public void update(){
         //setAusgabenArray(TODO Logik.getAusgabenArray()); //setze Array
-
+    	String[] ausgaben = Logik.getAusgabenArray();
         //TODO test -> remove
         String[] test = {"Ausgaben ID: 1; Kategorie: Wohnen; Titel: Miete; Betrag: 1000,00€; Datum: 2019-10-01", "Ausgaben ID: 2; Kategorie: Wohnen; Titel: GEZ; Betrag: 19,00€; Datum: 2019-10-01", "updated"};
         setAusgabenArray(test);
