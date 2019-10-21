@@ -30,7 +30,7 @@ public class testNutzer {
 		//System.out.println(DbAbfragen.aendereKategorieDerAusgabenAufStandard("Flo", 3));
 		//System.out.println(DbAbfragen.neueKategorie("Wait"));
 		//System.out.println(DbAbfragen.gibKategorienDesUsers("tester"));
-		System.out.println(DbAbfragen.gibAusgaben("Flo"));
+		//System.out.println(DbAbfragen.gibAusgaben("Flo"));
 	}
 	
 }
