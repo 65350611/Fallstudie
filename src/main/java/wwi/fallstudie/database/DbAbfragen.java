@@ -8,32 +8,43 @@ public class DbAbfragen {
 	static Connection con;
 	static Statement stmt;
 	
-	public DbAbfragen() {
+	public DbAbfragen()
+	{
 		
 	}
 	
 	public static void baueVerbindungAuf() 
 	{
-		
-		try {
+		try 
+		{
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Treiber gefunden");
 		}
-		catch (ClassNotFoundException e) {
+		
+		catch (ClassNotFoundException e) 
+		{
 			System.out.println("Treiber NICHT gefunden");			
 		}
-		try {
+		
+		try 
+		{
 			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/haushaltsbuch","root","");
 			System.out.println("Verbindung aufgebaut");
 		}
-		catch (SQLException e) {
+		
+		catch (SQLException e) 
+		{
 			System.out.println("Verbindung NICHT augebaut");
 		}
-		try {
+		
+		try 
+		{
 			stmt=con.createStatement();
 			System.out.println("Statement erzeugt");
 		}
-		catch (SQLException e) {
+		
+		catch (SQLException e) 
+		{
 			System.out.println("Statement NICHT erzeugt");
 		}  //Konstruktor für die Verbindung
 	}
@@ -41,6 +52,7 @@ public class DbAbfragen {
 	public static String gibPasswort(String userName)  
 	{
 		String pw = null;
+		
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
@@ -52,24 +64,23 @@ public class DbAbfragen {
 			while (rs.next())
 			{
 				pw = rs.getString("password");
-
-				System.out.println(pw);
-			}
-						
+			}			
 		}
+		
 		catch (SQLException e)
 		{
+			System.out.println("Rasswort konnte nicht ausgegeben werden");
 			System.out.println(e);
 		}
 		
 		return pw;
-
+		
 	}
 	
 	public static int gibRolle(String userName)  
-
 	{
 		int rn = 0;
+		
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
@@ -81,23 +92,21 @@ public class DbAbfragen {
 			while (rs.next())
 			{
 				rn = rs.getInt("userRole");
-
-				System.out.println(rn);
-			}
-						
-		}
-		catch (SQLException e)
-		{
-			System.out.println(e);
+			}			
 		}
 		
+		catch (SQLException e)
+		{
+			System.out.println("Rolle konnte nicht ausgegeben werden");
+			System.out.println(e);
+		}
 		return rn;
-
 	}
 	
 	public static String gibKategorienamen(int catID)  
 	{
 		String kn = null;
+		
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
@@ -109,16 +118,17 @@ public class DbAbfragen {
 			while (rs.next())
 			{
 				kn = rs.getString("catLabel");
-			}
-						
+			}			
 		}
+		
 		catch (SQLException e)
 		{
+			System.out.println("Kategorien konnten nicht ausgegeben werden");
 			System.out.println(e);
 		}
 		
 		return kn;
-
+		
 	}
 	
 	public static ArrayList<String> gibKategorienDesUsers(String userName)  
@@ -128,6 +138,7 @@ public class DbAbfragen {
 		String kategorien = null;
 		ArrayList<String> katListe = new ArrayList<String>(100);
 		int columnValue;
+		
 		try 
 		{
 			PreparedStatement prepState = con.prepareStatement
@@ -138,6 +149,7 @@ public class DbAbfragen {
 			ResultSetMetaData rsmd = rs.getMetaData();
 
 			int columnsNumber = rsmd.getColumnCount();
+			
 			while (rs.next()) {
 				for (int i = 1; i <= columnsNumber; i++) {
 					if (i > 1) System.out.print(",  ");
@@ -157,18 +169,23 @@ public class DbAbfragen {
 				}
 			}
 		}
+		
 		catch (SQLException e)
 		{
-			System.out.println(e);	
+			System.out.println("Kategorien konnten nicht ausgegeben werden");
+			System.out.println(e);
 		}
+		
 		return katListe;
+		
 	}
 	
 	public static ResultSet gibAusgaben(String userName)
 	{	
 		ResultSet rs = null;
-		try {
-			
+		
+		try 
+		{
 			PreparedStatement prepState = con.prepareStatement
 					("select * from ausgaben where name=(?) order by date");
 			prepState.setString(1, userName);
@@ -183,22 +200,27 @@ public class DbAbfragen {
 		           String columnValue = rs.getString(i);
 		           System.out.print(columnValue);
 		       }
+		       
 		       System.out.println("");
 		   }
 		}
-		       catch (SQLException e)
-				{
-					System.out.println("Ausgabe konnte nicht ausgegeben werden");
-					System.out.println(e);
-				}
+		
+		catch (SQLException e)
+		{
+			System.out.println("Ausgabe konnte nicht ausgegeben werden");
+			System.out.println(e);
+		}
+		
 		return rs;
-		   }
+		
+	}
 		
 	public static ResultSet gibAusgabenFuerZeitraum(String userName, String beginDate, String endDate)
 	{	
 		ResultSet rs = null;
-		try {
-			
+		
+		try 
+		{
 			PreparedStatement prepState = con.prepareStatement
 					("select * from ausgaben where name=(?) and date between (?) and (?) order by date");
 			prepState.setString(1, userName);
@@ -211,26 +233,31 @@ public class DbAbfragen {
 		   int columnsNumber = rsmd.getColumnCount();
 		   while (rs.next()) {
 		       for (int i = 1; i <= columnsNumber; i++) {
-		           if (i > 1) System.out.print(",  ");
+		           if (i > 1) System.out.print(" ");
 		           String columnValue = rs.getString(i);
 		           System.out.print(columnValue);
 		       }
+		       
 		      System.out.println("");
 		   }
 		}
-		       catch (SQLException e)
-				{
-					System.out.println("Ausgabe konnte nicht ausgegeben werden");
-					System.out.println(e);
-				}
+		       
+		catch (SQLException e)
+		{
+			System.out.println("Ausgabe konnte nicht ausgegeben werden");
+			System.out.println(e);
+		}
+		
 		return rs;
-		   }
+		
+	}
 	
 	public static ResultSet gibAusgabenFuerKategorie(String userName, int catID)
 	{	
 		ResultSet rs = null;
-		try {
-			
+		
+		try 
+		{
 			PreparedStatement prepState = con.prepareStatement
 					("select * from ausgaben where name=(?) and category=(?) order by date");
 			prepState.setString(1, userName);
@@ -242,25 +269,29 @@ public class DbAbfragen {
 		   int columnsNumber = rsmd.getColumnCount();
 		   while (rs.next()) {
 		       for (int i = 1; i <= columnsNumber; i++) {
-		           if (i > 1) System.out.print(",  ");
+		           if (i > 1) System.out.print(" ");
 		           String columnValue = rs.getString(i);
 		          System.out.print(columnValue);
 		       }
-		      System.out.println("");
+		       
+		       System.out.println("");
 		   }
 		}
-		       catch (SQLException e)
-				{
-					System.out.println("Ausgabe konnte nicht ausgegeben werden");
-					System.out.println(e);
-				}
+		
+		catch (SQLException e)
+		{
+			System.out.println("Ausgabe konnte nicht ausgegeben werden");
+			System.out.println(e);
+		}
+		
 		return rs;
-		   }
+		
+	}
 	
 	public static boolean neuerNutzer(int userRole, String password, String userName)
 	{	
 		boolean ok = false;
-	
+		
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
@@ -273,17 +304,20 @@ public class DbAbfragen {
 			ok = true;
 			System.out.println("Neuer Nutzer hinzugefügt!");
 		}
+		
 		catch (SQLException e)
 		{
 			System.out.println("Nutzer konnte nicht hinzugefügt werden");
 		}
+		
 		return ok;
-}
+
+	}
 	
 	public static boolean neueAusgabe(String expLabel, String userName, int category, float amount, Date date)
 	{	
 		boolean ok = false;
-	
+		
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
@@ -299,17 +333,20 @@ public class DbAbfragen {
 			ok = true;
 			System.out.println("Neue Ausgabe hinzugefügt");
 		}
+		
 		catch (SQLException e)
 		{
 			System.out.println("Ausgabe konnte nicht hinzugefügt werden");
 		}
+		
 		return ok;
-}
+		
+	}
 	
 	public static boolean neueKategorie(String catLabel)
 	{	
 		boolean ok = false;
-	
+
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
@@ -321,12 +358,15 @@ public class DbAbfragen {
 			ok = true;
 			System.out.println("Neue Kategorie hinzugefügt");
 		}
+		
 		catch (SQLException e)
 		{
 			System.out.println("Kategorie konnte nicht hinzugefügt werden");
 		}
+		
 		return ok;
-}
+		
+	}
 	
 	public static boolean loescheNutzer(String userName)  
 	{
@@ -343,13 +383,15 @@ public class DbAbfragen {
 			System.out.println("Nutzer gelöscht");
 											
 		}
+		
 		catch (SQLException e)
 		{
 			System.out.println("Nutzer konnte nicht gelöscht werden");
 			System.out.println(e);
 		}
+		
 		return ok;
-}
+	}
 	
 	public static boolean loescheAusgabe(String userName, int expID)  
 	{	
@@ -367,13 +409,15 @@ public class DbAbfragen {
 			System.out.println("Ausgabe gelöscht");
 											
 		}
+		
 		catch (SQLException e)
 		{
 			System.out.println("Ausgabe konnte nicht gelöscht werden");
 			System.out.println(e);
 		}
+		
 		return ok;
-}
+	}
 	
 	public static boolean loescheKategorie(String userName, int catID)  
 	{	
@@ -391,13 +435,16 @@ public class DbAbfragen {
 			System.out.println("Kategorie gelöscht");
 											
 		}
+		
 		catch (SQLException e)
 		{
 			System.out.println("Kategorie konnte nicht gelöscht werden");
 			System.out.println(e);
 		}
+		
 		return ok;
-}
+	
+	}
 
 	public static boolean aenderePasswort(String userName, String newPassword)  
 	{	
@@ -415,13 +462,15 @@ public class DbAbfragen {
 			System.out.println("Passwort geändert");
 											
 		}
+		
 		catch (SQLException e)
 		{
 			System.out.println("Passwort konnte nicht geändert werden");
 			System.out.println(e);
 		}
+		
 		return ok;
-}
+	}
 	
 	public static boolean aendereAusgabe(String expLabel, int catID, float amount, Date date, String userName, int expID)  
 	{	
@@ -443,13 +492,16 @@ public class DbAbfragen {
 			System.out.println("Ausgabe geändert");
 											
 		}
+		
 		catch (SQLException e)
 		{
 			System.out.println("Ausgabe konnte nicht geändert werden");
 			System.out.println(e);
 		}
+		
 		return ok;
-}
+		
+	}
 	
 	public static boolean aendereKategorieDerAusgaben(String catLabelNew, String userName, int catIDOld) 
 	{
@@ -465,9 +517,9 @@ public class DbAbfragen {
 			prepState.setString(2, catLabelNew);
 			
 			prepState.executeUpdate();
-			
 			System.out.println("Neue Kategorie hinzugefügt");
 		}
+		
 		catch (SQLException e)
 		{
 			System.out.println("Kategorie konnte nicht hinzugefügt werden");
@@ -475,13 +527,15 @@ public class DbAbfragen {
 		
 		try
 		{
-	    rs = stmt.executeQuery("select LAST_INSERT_ID()");
+			rs = stmt.executeQuery("select LAST_INSERT_ID()");
 
-	    if (rs.next()) {
-	    	catIDNew = rs.getInt(1);
-	    }
-	    System.out.println("ID der neuen Kategorie: " + catIDNew);
+			if (rs.next()) {
+				catIDNew = rs.getInt(1);
+				System.out.println("ID der neuen Kategorie: " + catIDNew);
+	    	}
+	    
 		}
+		
 		catch (SQLException e)
 		{
 			System.out.println("ID der Kategorie konnte nicht ermittelt werden");
@@ -497,19 +551,20 @@ public class DbAbfragen {
 			
 			prepState.executeUpdate();
 			ok = true;
-			System.out.println("Kategorie geändert");
-											
+			System.out.println("Kategorie geändert");								
 		}
+		
 		catch (SQLException e)
 		{
 			System.out.println("Kategorie konnte nicht geändert werden");
 			System.out.println(e);
 		}
+		
 		return ok;
 	
-		}
+	}
 	
-	public static boolean aendereKategorieDerAusgabenAufStandard(String userName, int catIDOld) 
+	public static boolean aendereKategorieDerAusgabenAufSonstige(String userName, int catIDOld) 
 	{
 		boolean ok = false;
 		
@@ -523,17 +578,18 @@ public class DbAbfragen {
 			
 			prepState.executeUpdate();
 			ok = true;
-			System.out.println("Kategorie auf 'Standard' geändert");
-											
+			System.out.println("Kategorie auf 'Sonstige' geändert");									
 		}
+		
 		catch (SQLException e)
 		{
 			System.out.println("Kategorie konnte nicht geändert werden");
 			System.out.println(e);
 		}
+		
 		return ok;
-	
-		}
+		
+	}
 	
 }
 
