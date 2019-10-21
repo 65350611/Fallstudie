@@ -13,7 +13,7 @@ public class DbAbfragen {
 		
 	}
 	
-	public static void baueVerbindungAuf() 
+	public static void baueVerbindungAuf()
 	{
 		try 
 		{
@@ -49,7 +49,7 @@ public class DbAbfragen {
 		}  //Konstruktor für die Verbindung
 	}
 	
-	public static String gibPasswort(String userName)  
+	public static String gibPasswort(String userName)
 	{
 		String pw = null;
 		
@@ -77,7 +77,7 @@ public class DbAbfragen {
 		
 	}
 	
-	public static int gibRolle(String userName)  
+	public static int gibRolle(String userName)
 	{
 		int rn = 0;
 		
@@ -103,7 +103,7 @@ public class DbAbfragen {
 		return rn;
 	}
 	
-	public static String gibKategorienamen(int catID)  
+	public static String gibKategorienamen(int catID)
 	{
 		String kn = null;
 		
@@ -131,7 +131,7 @@ public class DbAbfragen {
 		
 	}
 	
-	public static ArrayList<String> gibKategorienDesUsers(String userName)  
+	public static ArrayList<String> gibKategorienDesUsers(String userName)
 	{	
 		ResultSet rs;
 		ResultSet rs2;
@@ -368,7 +368,7 @@ public class DbAbfragen {
 		
 	}
 	
-	public static boolean loescheNutzer(String userName)  
+	public static boolean loescheNutzer(String userName)
 	{
 		boolean ok = false;
 	
@@ -393,7 +393,7 @@ public class DbAbfragen {
 		return ok;
 	}
 	
-	public static boolean loescheAusgabe(String userName, int expID)  
+	public static boolean loescheAusgabe(String userName, int expID)
 	{	
 		boolean ok = false;
 	
@@ -419,7 +419,7 @@ public class DbAbfragen {
 		return ok;
 	}
 	
-	public static boolean loescheKategorie(String userName, int catID)  
+	public static boolean loescheKategorie(String userName, int catID)
 	{	
 		boolean ok = false;
 	
@@ -446,7 +446,7 @@ public class DbAbfragen {
 	
 	}
 
-	public static boolean aenderePasswort(String userName, String newPassword)  
+	public static boolean aenderePasswort(String userName, String newPassword)
 	{	
 		boolean ok = false;
 	
@@ -472,7 +472,7 @@ public class DbAbfragen {
 		return ok;
 	}
 	
-	public static boolean aendereAusgabe(String expLabel, int catID, float amount, Date date, String userName, int expID)  
+	public static boolean aendereAusgabe(String expLabel, int catID, float amount, Date date, String userName, int expID)
 	{	
 		boolean ok = false;
 	
@@ -503,7 +503,7 @@ public class DbAbfragen {
 		
 	}
 	
-	public static boolean aendereKategorieDerAusgaben(String catLabelNew, String userName, int catIDOld) 
+	public static boolean aendereKategorieDerAusgaben(String catLabelNew, String userName, int catIDOld)
 	{
 		boolean ok = false;
 		ResultSet rs = null;
@@ -564,7 +564,7 @@ public class DbAbfragen {
 	
 	}
 	
-	public static boolean aendereKategorieDerAusgabenAufSonstige(String userName, int catIDOld) 
+	public static boolean aendereKategorieDerAusgabenAufSonstige(String userName, int catIDOld)
 	{
 		boolean ok = false;
 		
