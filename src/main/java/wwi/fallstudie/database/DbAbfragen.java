@@ -1,6 +1,7 @@
 package wwi.fallstudie.database;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DbAbfragen {
 	
@@ -65,6 +66,7 @@ public class DbAbfragen {
 	}
 	
 	public static int gibRolle(String userName)  
+
 	{
 		int p = 0;
 		try
@@ -92,9 +94,9 @@ public class DbAbfragen {
 
 	}
 	
-	public static int gibKategorie(int catID)  
+	public static String gibKategorienamen(int catID)  
 	{
-		int p = 0;
+		String p = null;
 		try
 		{
 			PreparedStatement prepState = con.prepareStatement
@@ -105,9 +107,7 @@ public class DbAbfragen {
 						
 			while (rs.next())
 			{
-				p = rs.getInt("category");
-
-				System.out.println(p);
+				p = rs.getString("catLabel");
 			}
 						
 		}
@@ -118,6 +118,49 @@ public class DbAbfragen {
 		
 		return p;
 
+	}
+	
+	public static ArrayList<String> gibKategorienDesUsers(String userName)  
+	{	
+		ResultSet rs;
+		ResultSet rs2;
+		String kategorien = null;
+		ArrayList<String> katListe = new ArrayList<String>(100);
+		int columnValue;
+		try 
+		{
+			PreparedStatement prepState = con.prepareStatement
+					("select distinct category from ausgaben where name=(?)");
+			prepState.setString(1, userName);
+		
+			rs = prepState.executeQuery();
+			ResultSetMetaData rsmd = rs.getMetaData();
+
+			int columnsNumber = rsmd.getColumnCount();
+			while (rs.next()) {
+				for (int i = 1; i <= columnsNumber; i++) {
+					if (i > 1) System.out.print(",  ");
+					columnValue = rs.getInt(i);
+					System.out.println(columnValue);
+					
+					PreparedStatement prepState2 = con.prepareStatement
+							("select catLabel from kategorien where catID=(?)");
+					prepState2.setInt(1, columnValue);
+					rs2 = prepState2.executeQuery();
+								
+					while (rs2.next())
+					{
+						kategorien = rs2.getString("catLabel");
+						katListe.add(kategorien);
+					}
+				}
+			}
+		}
+		catch (SQLException e)
+		{
+			System.out.println(e);	
+		}
+		return katListe;
 	}
 	
 	public static ResultSet gibAusgaben(String userName)
@@ -139,7 +182,7 @@ public class DbAbfragen {
 		           String columnValue = rs.getString(i);
 		           System.out.print(columnValue);
 		       }
-		      System.out.println("");
+		       System.out.println("");
 		   }
 		}
 		       catch (SQLException e)
@@ -355,7 +398,7 @@ public class DbAbfragen {
 		return ok;
 }
 
-	public static boolean aenderePasswort(String userName, String neuesPasswort)  
+	public static boolean aenderePasswort(String userName, String newPassword)  
 	{	
 		boolean ok = false;
 	
@@ -363,7 +406,7 @@ public class DbAbfragen {
 		{
 			PreparedStatement prepState = con.prepareStatement
 					("update nutzer set password=(?) where userName=(?)");
-			prepState.setString(1, neuesPasswort);
+			prepState.setString(1, newPassword);
 			prepState.setString(2, userName);
 			
 			prepState.executeUpdate();
