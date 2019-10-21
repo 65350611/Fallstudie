@@ -419,6 +419,49 @@ public class DbAbfragen {
 		return ok;
 	}
 	
+	public static boolean loescheAusgabenUndNutzer(String userName)
+	{
+		boolean ok = false;
+		
+		try
+		{
+			PreparedStatement prepState = con.prepareStatement
+					("delete from ausgaben where name=(?)");
+			prepState.setString(1, userName);
+			
+			prepState.executeUpdate();
+			ok = true;
+			System.out.println("Ausgabe gelöscht");
+											
+		}
+		
+		catch (SQLException e)
+		{
+			System.out.println("Ausgabe konnte nicht gelöscht werden");
+			System.out.println(e);
+		}
+	
+		try
+		{
+			PreparedStatement prepState = con.prepareStatement
+					("delete from nutzer where userName=(?)");
+			prepState.setString(1, userName);
+			
+			prepState.executeUpdate();
+			ok = true;
+			System.out.println("Nutzer gelöscht");
+											
+		}
+		
+		catch (SQLException e)
+		{
+			System.out.println("Nutzer konnte nicht gelöscht werden");
+			System.out.println(e);
+		}
+		
+		return ok;
+	}
+	
 	public static boolean loescheKategorie(String userName, int catID)
 	{	
 		boolean ok = false;

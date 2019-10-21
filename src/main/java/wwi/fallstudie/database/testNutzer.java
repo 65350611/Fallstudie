@@ -33,6 +33,7 @@ public class testNutzer {
 		//System.out.println(DbAbfragen.gibAusgaben("Flo"));
 		//System.out.println(DbAbfragen.gibAusgabenFuerKategorie("tester", 2));
 		//System.out.println(DbAbfragen.gibRolle("Flo"));
+		//System.out.println(DbAbfragen.loescheAusgabenUndNutzer("123"));
 	}
 	
 }
