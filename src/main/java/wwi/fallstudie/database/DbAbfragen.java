@@ -120,7 +120,7 @@ public class DbAbfragen {
 
 	}
 	
-	public static ArrayList<String> gibKategorienDesUsers(String userName)  
+	public static ArrayList<String> gibKategorienDesUser(String userName)  
 	{	
 		ResultSet rs;
 		ResultSet rs2;
