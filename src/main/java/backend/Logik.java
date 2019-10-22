@@ -2,8 +2,6 @@ package backend;
 
 import java.util.ArrayList;
 
-import javax.print.DocFlavor.STRING;
-
 import backend_exceptions.AdmKannSichNichtSelberLoeschenException;
 import backend_exceptions.FalscheAdmPwdAendernMethodeException;
 import backend_exceptions.UserHatNochAusgabenException;
@@ -109,6 +107,7 @@ public class Logik {
 		DbAbfragen.aenderePasswort(usr.getName(), pwd);
 
 	}
+
 	public static String[] getAlleNutzer() {
 		if (admGemeldet) {
 			ArrayList<String> usrList = DbAbfragen.gibNutzer();
@@ -120,5 +119,28 @@ public class Logik {
 		}
 		return null;
 
+	}
+
+	public static void kategorieAnlegen(String kateg) {
+		if (!admGemeldet) {
+			
+		}
+	}
+	public static void kategorieAendern(String katAlt, String katNeu) {
+		
+	}
+	public static void kategorieLoeschen(String kateg) {
+		
+	}
+	public static String[] getAlleKategorien() {
+		String[] arr = new String[];
+		
+		return null;
+	}
+	public static boolean pruefeDatum(String date) {
+		if (date.length() == 10) {
+			return true;
+		}
+		return false;
 	}
 }
