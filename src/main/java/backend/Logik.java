@@ -1,7 +1,8 @@
 package backend;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+
+import javax.print.DocFlavor.STRING;
 
 import backend_exceptions.AdmKannSichNichtSelberLoeschenException;
 import backend_exceptions.FalscheAdmPwdAendernMethodeException;
@@ -108,7 +109,6 @@ public class Logik {
 		DbAbfragen.aenderePasswort(usr.getName(), pwd);
 
 	}
-
 	public static String[] getAlleNutzer() {
 		if (admGemeldet) {
 			ArrayList<String> usrList = DbAbfragen.gibNutzer();
