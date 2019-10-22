@@ -23,7 +23,8 @@ public class DbAbfragen {
 		
 		catch (ClassNotFoundException e) 
 		{
-			System.out.println("Treiber NICHT gefunden");			
+			System.out.println("Treiber NICHT gefunden");
+			e.printStackTrace();
 		}
 		
 		try 
@@ -35,6 +36,7 @@ public class DbAbfragen {
 		catch (SQLException e) 
 		{
 			System.out.println("Verbindung NICHT augebaut");
+			e.printStackTrace();
 		}
 		
 		try 
@@ -46,6 +48,7 @@ public class DbAbfragen {
 		catch (SQLException e) 
 		{
 			System.out.println("Statement NICHT erzeugt");
+			e.printStackTrace();
 		}  
 	}
 	
@@ -70,7 +73,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Passwort konnte nicht ausgegeben werden");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		return pw;
@@ -98,7 +101,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Rolle konnte nicht ausgegeben werden");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		return rollNo;
 	}
@@ -124,7 +127,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Kategorien konnten nicht ausgegeben werden");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		return kn;
@@ -173,7 +176,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Kategorien konnten nicht ausgegeben werden");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		return catList;
@@ -208,7 +211,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Ausgabe konnte nicht ausgegeben werden");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		return rs;
@@ -245,7 +248,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Ausgabe konnte nicht ausgegeben werden");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		return rs;
@@ -281,7 +284,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Ausgabe konnte nicht ausgegeben werden");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		return rs;
@@ -308,6 +311,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Nutzer konnte nicht hinzugefügt werden");
+			e.printStackTrace();
 		}
 		
 		return ok;
@@ -337,6 +341,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Ausgabe konnte nicht hinzugefügt werden");
+			e.printStackTrace();
 		}
 		
 		return ok;
@@ -362,6 +367,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Kategorie konnte nicht hinzugefügt werden");
+			e.printStackTrace();
 		}
 		
 		return ok;
@@ -387,7 +393,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Nutzer konnte nicht gelöscht werden");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		return ok;
@@ -413,7 +419,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Ausgabe konnte nicht gelöscht werden");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		return ok;
@@ -438,7 +444,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Ausgabe konnte nicht gelöscht werden");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	
 		try
@@ -456,7 +462,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Nutzer konnte nicht gelöscht werden");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		return ok;
@@ -482,7 +488,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Kategorie konnte nicht gelöscht werden");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		return ok;
@@ -509,7 +515,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Passwort konnte nicht geändert werden");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		return ok;
@@ -539,7 +545,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Ausgabe konnte nicht geändert werden");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		return ok;
@@ -566,6 +572,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Kategorie konnte nicht hinzugefügt werden");
+			e.printStackTrace();
 		}
 		
 		try
@@ -582,6 +589,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("ID der Kategorie konnte nicht ermittelt werden");
+			e.printStackTrace();
 		}
 		
 		try
@@ -600,7 +608,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Kategorie konnte nicht geändert werden");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		return ok;
@@ -627,7 +635,7 @@ public class DbAbfragen {
 		catch (SQLException e)
 		{
 			System.out.println("Kategorie konnte nicht geändert werden");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		return ok;

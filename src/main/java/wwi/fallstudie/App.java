@@ -19,15 +19,15 @@ public class App {
     	//DbAbfragen.baueVerbindungAuf();
         //Login fenster = new Login();
 
-    	//DbAbfragen.baueVerbindungAuf();
-        //Login fenster = new Login();
+    	DbAbfragen.baueVerbindungAuf();
+        Login fenster = new Login();
         //new AdminOberflaechePopUpUserHinzufuegen();
         //new AdminOberflaechePopUpPasswortUserNeuSetzen();
         //new PopUpPasswortAendern();
         //new UserPopUpKategorieHinzufuegen();
         //new UserPopUpAusgabeHinzufuegen();
-        AdminOberflaeche ao = new AdminOberflaeche();
+        //AdminOberflaeche ao = new AdminOberflaeche();
         //new UserOberflaeche();
-        new NutzerWirklichLoeschenDialog(ao, "Heinrich Heine");
+        //new NutzerWirklichLoeschenDialog(ao, "Heinrich Heine");
     }
 }

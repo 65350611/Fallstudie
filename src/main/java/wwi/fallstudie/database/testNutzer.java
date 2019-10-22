@@ -18,7 +18,7 @@ public class testNutzer {
 		//Anmeldung.anmelden("tester3", "666");
 		//System.out.println(DbAbfragen.neuerNutzer(1, "1111", "tester4"));
 		//System.out.println(Logik.istAdmin());
-		//System.out.println(DbAbfragen.neueAusgabe("testAusgabe17", "tester", 1, 17f, sqlDate));
+		//System.out.println(DbAbfragen.neueAusgabe("testAusgabe17", "Jonny", 1, 17f, sqlDate));
 		//System.out.println(DbAbfragen.loescheNutzer("tester3"));
 		//System.out.println(DbAbfragen.aenderePasswort("Flo", "floflo"));
 		//System.out.println(DbAbfragen.neueKategorie("testKat6"));
@@ -26,7 +26,7 @@ public class testNutzer {
 		//System.out.println(DbAbfragen.gibAusgabenFuerKategorie("Flo", 3));
 		//System.out.println(DbAbfragen.loescheAusgabe("tester", 17));
 		//System.out.println(DbAbfragen.loescheKategorie("Flo", 3));
-		//System.out.println(DbAbfragen.aendereAusgabe("testAusgabe12b", 2, 121212f, sqlDate, "tester", 12));
+		//System.out.println(DbAbfragen.aendereAusgabe("testAusgabeXXX", 2, 121212f, sqlDate, "Jonny", 12));
 		//System.out.println(DbAbfragen.aendereKategorieDerAusgabenAufStandard("Flo", 3));
 		//System.out.println(DbAbfragen.neueKategorie("Wait"));
 		//System.out.println(DbAbfragen.gibKategorienDesUsers("tester"));
@@ -34,7 +34,7 @@ public class testNutzer {
 		//System.out.println(DbAbfragen.gibAusgabenFuerKategorie("tester", 2));
 		//System.out.println(DbAbfragen.gibRolle("Flo"));
 		//System.out.println(DbAbfragen.loescheAusgabenUndNutzer("123"));
-		System.out.println(DbAbfragen.gibPasswort("Nico"));
+		//System.out.println(DbAbfragen.gibPasswort("Nico"));
 	}
 	
 }
