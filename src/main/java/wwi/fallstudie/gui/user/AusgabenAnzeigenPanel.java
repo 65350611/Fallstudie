@@ -32,8 +32,8 @@ public class AusgabenAnzeigenPanel extends JPanel {
     }
 
     public void update(){
-        //setAusgabenArray(TODO Logik.getAusgabenArray()); //setze Array
-    	String[] ausgaben = Logik.getAusgabenArray();
+        //setAusgabenArray(TODO Logik.getAusgabenArray());
+        // setze Array String[] ausgaben = Logik.getAusgabenArray();
         //TODO test -> remove
         String[] test = {"Ausgaben ID: 1; Kategorie: Wohnen; Titel: Miete; Betrag: 1000,00€; Datum: 2019-10-01", "Ausgaben ID: 2; Kategorie: Wohnen; Titel: GEZ; Betrag: 19,00€; Datum: 2019-10-01", "updated"};
         setAusgabenArray(test);
