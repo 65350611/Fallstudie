@@ -210,6 +210,9 @@ public class Logik {
 			return null;
 	}
 	public static void ausgabeAnlegen(String kateg, String date, String betrag, String titel) {
-		DbAbfragen.gibIDderKategorie(kateg);
+		int x = DbAbfragen.gibIDderKategorie(kateg, usr.getName());
+		if (x!=0) {
+			DbAbfragen.neueAusgabe(titel, usr.getName(), x, betrag, date);
+		}
 	}
 }
