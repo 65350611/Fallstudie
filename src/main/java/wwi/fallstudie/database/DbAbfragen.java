@@ -137,15 +137,16 @@ public class DbAbfragen {
 		return rollNo;
 	}
 	
-	public static int gibIDderKategorie(String catLabel)
+	public static int gibIDderKategorie(String catLabel, String userName)
 	{
 		int catID = 0;
 		
 		try
 		{
 			PreparedStatement prepState = conn.prepareStatement
-					("select catID from kategorien where catLabel=(?)");
+					("select catID from kategorien where catLabel=(?) and name=(?)");
 			prepState.setString(1, catLabel);
+			prepState.setString(2, userName);
 			
 			ResultSet rs = prepState.executeQuery();
 						
@@ -160,6 +161,13 @@ public class DbAbfragen {
 			System.out.println("ID der Kategorie konnte nicht ausgegeben werden");
 			e.printStackTrace();
 		}
+		
+		if (catID > 0) {
+			status = 1;
+		} else {
+			status = 0;
+		}
+		
 		return catID;
 	}
 	
@@ -172,7 +180,7 @@ public class DbAbfragen {
 		try
 		{
 			PreparedStatement prepState = conn.prepareStatement
-					(" select catLabel from kategorien where catID in (select distinct category from ausgaben where name=(?));");
+					("select catLabel from kategorien where catID in (select distinct category from ausgaben where name=(?));");
 			prepState.setString(1, userName);
 			
 			rs = prepState.executeQuery();
@@ -182,7 +190,7 @@ public class DbAbfragen {
 			
 			while (rs.next()) {
 				for (int i = 1; i <= columnsNumber; i++) {
-					if (i > 1) System.out.print(",  ");
+					if (i > 1);
 					columnValue = rs.getString("catLabel");
 					catList.add(columnValue);		
 				}
