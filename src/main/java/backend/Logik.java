@@ -1,6 +1,6 @@
 package backend;
 
-import haushaltsbuch.ausgaben;
+import backend_exceptions.UserHatNochAusgabenException;
 import haushaltsbuch.dbConnector;
 import wwi.fallstudie.database.DbAbfragen;
 import wwi.fallstudie.pojos.AdmPojo;
@@ -40,10 +40,13 @@ public class Logik {
 		}
 	}
 
-	public static void deleteUser(String userName) {
+	public static void deleteUser(String userName) throws UserHatNochAusgabenException {
 		if (admGemeldet) {
-			DbAbfragen.loescheNutzer(userName);
+			if(!DbAbfragen.loescheNutzer(userName)) {
+				throw new UserHatNochAusgabenException();
+			};
 		}
+		
 	}
 
 	public static void pwdAendern(String pwd) {
