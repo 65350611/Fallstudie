@@ -4,12 +4,20 @@ import backend.Logik;
 import wwi.fallstudie.gui.utilities.Comparator;
 import wwi.fallstudie.gui.utilities.Window;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 public class PopUpPasswortAendern extends JFrame{
     private JPasswordField altesPasswordField;
@@ -80,18 +88,36 @@ public class PopUpPasswortAendern extends JFrame{
                     //prüfen ob altes passwort korrekt ist
                     String altesPasswort = new String(altesPasswordField.getPassword());
                     System.out.println("altes passwort: " + altesPasswort);
-                    if(altesPasswort.equals(Logik.returnPwd())) {
-                        //ändere das Passwort
-                        String neuesPasswort = new String(passwordField.getPassword());
-                        System.out.println("neues passwort: " + neuesPasswort);
-                        try {
-                            Logik.pwdAendern(neuesPasswort);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            new MessagePopup();
+                    try {
+                        if(altesPasswort.equals(Logik.returnPwd())) {
+                            //ändere das Passwort
+                            String neuesPasswort = new String(passwordField.getPassword());
+                            System.out.println("neues passwort: " + neuesPasswort);
+                            try {
+                                Logik.pwdAendern(neuesPasswort);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                new MessagePopup();
+                            }
+                        } else {
+                            new MessagePopup("Die eingegebenen Daten sind nicht korrekt. Bitte erneut versuchen!");
                         }
-                    } else {
-                        new MessagePopup("Die eingegebenen Daten sind nicht korrekt. Bitte erneut versuchen!");
+                    } catch (InvalidKeyException e) {
+                        d
+                    } catch (NoSuchAlgorithmException e) {
+                        e.printStackTrace();
+                    } catch (InvalidKeySpecException e) {
+                        e.printStackTrace();
+                    } catch (NoSuchPaddingException e) {
+                        e.printStackTrace();
+                    } catch (InvalidAlgorithmParameterException e) {
+                        e.printStackTrace();
+                    } catch (IllegalBlockSizeException e) {
+                        e.printStackTrace();
+                    } catch (BadPaddingException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                     dispose(); // popup schließen
                 } else {
