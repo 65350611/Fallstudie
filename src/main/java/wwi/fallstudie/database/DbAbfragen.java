@@ -495,9 +495,9 @@ public class DbAbfragen {
 	
 	}
 
-	public static boolean aenderePasswort(String userName, String newPassword)
+	public static int aenderePasswort(String userName, String newPassword)
 	{	
-		boolean ok = false;
+		int anzahl = 0;
 	
 		try
 		{
@@ -506,9 +506,10 @@ public class DbAbfragen {
 			prepState.setString(1, newPassword);
 			prepState.setString(2, userName);
 			
-			prepState.executeUpdate();
-			ok = true;
+			anzahl = prepState.executeUpdate();
+			
 			System.out.println("Passwort geändert");
+			System.out.println(anzahl);
 											
 		}
 		
@@ -518,7 +519,7 @@ public class DbAbfragen {
 			e.printStackTrace();
 		}
 		
-		return ok;
+		return anzahl;
 	}
 	
 	public static boolean aendereAusgabe(String expLabel, int catID, float amount, Date date, String userName, int expID)

@@ -20,7 +20,7 @@ public class testNutzer {
 		//System.out.println(Logik.istAdmin());
 		//System.out.println(DbAbfragen.neueAusgabe("testAusgabe17", "Jonny", 1, 17f, sqlDate));
 		//System.out.println(DbAbfragen.loescheNutzer("tester3"));
-		//System.out.println(DbAbfragen.aenderePasswort("Flo", "floflo"));
+		//System.out.println(DbAbfragen.aenderePasswort("Nico", "floflo"));
 		//System.out.println(DbAbfragen.neueKategorie("testKat6"));
 		//System.out.println(DbAbfragen.gibAusgabenFuerZeitraum("tester", "2010-09-01", "2019-09-30"));
 		//System.out.println(DbAbfragen.gibAusgabenFuerKategorie("Flo", 3));

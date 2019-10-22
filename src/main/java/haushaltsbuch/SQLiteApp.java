@@ -10,6 +10,7 @@ public class SQLiteApp {
 			
 			try {
 				rs = test.displayUsers();
+				
 				while (rs.next()) {
 					System.out.println(rs.getString("fname") + " " + rs.getString("lname"));
 				}
@@ -17,14 +18,7 @@ public class SQLiteApp {
 			catch (SQLException | ClassNotFoundException e) {
 				e.printStackTrace();
 			}
-			try {
-				
-				test.addUser("Paul", "Gaul");
-				
-			}
-			catch (SQLException | ClassNotFoundException e) {
-				e.printStackTrace();
-			}
+
 	}
 
 }
