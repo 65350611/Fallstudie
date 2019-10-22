@@ -147,16 +147,18 @@ public class Logik {
 			return null;
 	}
 
-	public static boolean pruefeDatum(String date){
-		return (date.length() == 10 && date.charAt(4)== '-' && date.charAt(7)== '-');
+	public static boolean pruefeDatum(String date) {
+		return (date.length() == 10 && date.charAt(4) == '-' && date.charAt(7) == '-');
 	}
-	public static String[] getInsights(String startDat, String endDat){
+
+	public static String[] getInsights(String startDat, String endDat) {
 		if (!admGemeldet) {
-			ArrayList<String> insightListKategorien = DbAbfragen.gibKategorienamenFuerZeitraum(usr.getName(), startDat, endDat);
-			ArrayList<String> insightListAusgaben = DbAbfragen.gibAusgabenFuerZeitraum(usr.getName(), startDat, startDat);
+			ArrayList<String> insightListKategorien = DbAbfragen.gibKategorienamenFuerZeitraum(usr.getName(), startDat,
+					endDat);
+			ArrayList<String> insightListAusgaben = DbAbfragen.gibAusgabenFuerZeitraum(usr.getName(), startDat, endDat);
 			String[] arr = new String[insightListKategorien.size()];
 			for (int i = 0; i < insightListKategorien.size(); i++) {
-				arr[i] = insightListKategorien.get(i) + ": " + insightListAusgaben.get(i);
+				arr[i] = insightListKategorien.get(i) + ": " + insightListAusgaben.get(i) + "€";
 			}
 			return arr;
 		}
