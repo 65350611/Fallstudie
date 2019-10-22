@@ -1,6 +1,9 @@
 package backend;
 
+import backend_exceptions.AdmKannSichNichtSelberLoeschenException;
+import backend_exceptions.FalscheAdmPwdAendernMethodeException;
 import backend_exceptions.UserHatNochAusgabenException;
+import backend_exceptions.UsrNichtGefundenException;
 import haushaltsbuch.dbConnector;
 import wwi.fallstudie.database.DbAbfragen;
 import wwi.fallstudie.pojos.AdmPojo;
@@ -49,14 +52,12 @@ public class Logik {
 
 	}
 
-	public static void deleteUserMitAusgaben(String userName) {
-		System.out.println(
-				"Logik 1 hier sind wir" + "adm name= " + adm.getName().toString() + "usr name= " + userName.toString());
+	public static void deleteUserMitAusgaben(String userName) throws AdmKannSichNichtSelberLoeschenException {
 		if (admGemeldet) {
-			System.out.println("Logik 2 hier sind wir" + " " + admGemeldet);
 			if ((!adm.getName().contentEquals(userName.toString()))) {
-				System.out.println("Logik 3 hier sind wir " + adm.getName().contentEquals(userName.toString()));
 				DbAbfragen.loescheAusgabenUndNutzer(userName);
+			} else {
+				throw new AdmKannSichNichtSelberLoeschenException();
 			}
 		}
 	}
@@ -71,9 +72,15 @@ public class Logik {
 	}
 
 	// PWD ändern als Admin
-	public static void pwdAendern(String userName, String pwd) {
+	public static void pwdAendern(String userName, String pwd)
+			throws FalscheAdmPwdAendernMethodeException, UsrNichtGefundenException {
 		if (admGemeldet && !adm.getName().contentEquals(userName)) {
-			DbAbfragen.aenderePasswort(userName, pwd);
+
+			if (DbAbfragen.aenderePasswort(userName, pwd) == 0) {
+				throw new UsrNichtGefundenException();
+			}
+		} else {
+			throw new FalscheAdmPwdAendernMethodeException();
 		}
 	}
 
