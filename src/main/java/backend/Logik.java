@@ -156,7 +156,7 @@ public class Logik {
 			ArrayList<String> insightListKategorien = DbAbfragen.gibKategorienamenFuerZeitraum(usr.getName(), startDat,
 					endDat);
 			ArrayList<String> insightListAusgaben = DbAbfragen.gibAusgabenFuerZeitraum(usr.getName(), startDat,
-					startDat);
+					endDat);
 			String[] arr = new String[insightListKategorien.size()];
 			System.out.println("arraylaenge: " + arr.length + "listkatlaenge: " + insightListKategorien.size()
 					+ "listausgabenlaenge :" + insightListAusgaben.size());
