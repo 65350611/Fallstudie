@@ -308,7 +308,7 @@ public class DbAbfragen {
 		try 
 		{
 			PreparedStatement prepState = conn.prepareStatement
-					("select * from ausgaben where name=(?) order by date");
+					("select t1.expID, t1.expLabel, t1.name, t2.catLabel as categoryName, t1.amount, t1.date from ausgaben t1 left join kategorien t2 on t1.category = t2.catID having name=(?) order by date;");
 			prepState.setString(1, userName);
 			
 			rs = prepState.executeQuery();

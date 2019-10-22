@@ -22,7 +22,7 @@ public class testNutzer {
 		//System.out.println(DbAbfragen.loescheNutzer("tester3"));
 		//System.out.println(DbAbfragen.aenderePasswort("Nico", "floflo"));
 		//System.out.println(DbAbfragen.neueKategorie("testKat6"));
-		System.out.println(DbAbfragen.gibAusgabenFuerZeitraum("Jonny", "2015-10-12", "2015-10-13"));
+		//System.out.println(DbAbfragen.gibAusgabenFuerZeitraum("Jonny", "2015-10-12", "2015-10-13"));
 		//System.out.println(DbAbfragen.gibAusgabenFuerKategorie("Jonny", 3));
 		//System.out.println(DbAbfragen.loescheAusgabe("tester", 17));
 		//System.out.println(DbAbfragen.loescheKategorie("Flo", 3));
@@ -30,7 +30,7 @@ public class testNutzer {
 		//System.out.println(DbAbfragen.aendereKategorieDerAusgabenAufStandard("Flo", 3));
 		//System.out.println(DbAbfragen.neueKategorie("Wait"));
 		//System.out.println(DbAbfragen.gibKategorienDesUsers("tester"));
-		//System.out.println(DbAbfragen.gibAusgaben("Jonny"));
+		System.out.println(DbAbfragen.gibAusgaben("Jonny"));
 		//System.out.println(DbAbfragen.gibAusgabenFuerKategorie("tester", 2));
 		//System.out.println(DbAbfragen.gibRolle("Flo"));
 		//System.out.println(DbAbfragen.loescheAusgabenUndNutzer("123"));
