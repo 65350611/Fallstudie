@@ -20,7 +20,7 @@ public class App {
         //Login fenster = new Login();
 
     	DbAbfragen.baueVerbindungAuf();
-        Login fenster = new Login();
+        new Login();
         //new AdminOberflaechePopUpUserHinzufuegen();
         //new AdminOberflaechePopUpPasswortUserNeuSetzen();
         //new PopUpPasswortAendern();
