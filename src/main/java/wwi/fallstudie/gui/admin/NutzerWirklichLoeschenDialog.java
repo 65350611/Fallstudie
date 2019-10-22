@@ -1,5 +1,6 @@
 package wwi.fallstudie.gui.admin;
 
+import backend.Logik;
 import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
 import wwi.fallstudie.gui.utilities.Window;
 
@@ -19,22 +20,22 @@ public class NutzerWirklichLoeschenDialog extends JFrame {
     public NutzerWirklichLoeschenDialog(AdminOberflaeche adminOberflaeche, String userName){
         super("Nutzer löschen");
 
-        setLayout(new GridBagLayout()); //set Layout Manager
+        setLayout(new GridBagLayout()); //setze Layout Manager
 
-        //initialise variables
+        //initialisiere variablen
         message = new JLabel("Dem Nutzer sind noch Ausgaben zugeordnet. Soll "+ userName + " wirklich gelöscht werden?");
         delete = new JButton("Löschen");
         abbrechen = new JButton("Abbrechen");
 
 
-        //set buttons on clicklistener
+        //setze buttons on clicklistener
         delete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try{
-                    //lösche Nutzer
-                    adminOberflaeche.update();
-                    dispose();
+                    Logik.deleteUserMitAusgaben(userName);
+                    adminOberflaeche.update(); //update die Adminoberfläche
+                    dispose(); //fenster schließen
                 } catch(Exception e){
                     e.printStackTrace();
                     new MessagePopup();
@@ -50,7 +51,7 @@ public class NutzerWirklichLoeschenDialog extends JFrame {
         });
 
          /*
-        setting variables to Layout
+        setze variablen in Layout
          */
         GridBagConstraints gc = new GridBagConstraints();
 
@@ -83,7 +84,7 @@ public class NutzerWirklichLoeschenDialog extends JFrame {
         add(abbrechen, gc);
 
 
-        //set JFrame
+        //setze JFrame
         setSize(600, 100);
         Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
