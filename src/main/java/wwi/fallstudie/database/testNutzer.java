@@ -34,6 +34,7 @@ public class testNutzer {
 		//System.out.println(DbAbfragen.gibAusgabenFuerKategorie("tester", 2));
 		//System.out.println(DbAbfragen.gibRolle("Flo"));
 		//System.out.println(DbAbfragen.loescheAusgabenUndNutzer("123"));
+		System.out.println(DbAbfragen.gibPasswort("Nico"));
 	}
 	
 }
