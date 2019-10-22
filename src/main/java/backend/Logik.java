@@ -189,7 +189,7 @@ public class Logik {
 			String[] ausgabenArray = new String[(ausgabenListe.size()/7)];
 			int x =0;
 			int y =0;
-			for (int i = 0; i < ausgabenListe.size(); i++) {
+			for (int i = 0; i < ausgabenArray.length; i++) {
 				x = y;
 				for (y=0; y <ausgabenListe.size(); y++) {
 				if (y != x+2) {
