@@ -1,11 +1,13 @@
 package wwi.fallstudie.gui.user;
 
+import backend.Logik;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class KategorienAnzeigenPanel extends JPanel {
 
-    private String[] kategorienArray = {"Sonstiges", "Wohnen"};
+    private String[] kategorienArray;
 
     private DefaultListModel listModel;
     private JList kategorienListe;
@@ -13,7 +15,7 @@ public class KategorienAnzeigenPanel extends JPanel {
     public KategorienAnzeigenPanel(){
         setLayout(new BorderLayout());
 
-        //setAusgabenArray(TODO Logik.getAusgabenArray());
+        setKategorienArray(Logik.getAlleKategorien());
 
         listModel = new DefaultListModel();
         addKategorienAusArray2ListModel();
@@ -24,12 +26,7 @@ public class KategorienAnzeigenPanel extends JPanel {
     }
 
     public void update(){
-        //setkategorienArray(TODO Logik.getAusgabenArray());
-
-        //TODO test -> remove
-        String[] test = {"Sonstiges", "Wohnen", "updated"};
-        setKategorienArray(test);
-
+        setKategorienArray(Logik.getAlleKategorien());
         addKategorienAusArray2ListModel();
     }
 
