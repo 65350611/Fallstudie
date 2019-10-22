@@ -190,7 +190,7 @@ public class Logik {
 			for (int i = 0; i < ausgabenArray.length; i++) {
 				ausgabenArray[i] = " ";
 			}
-			ausgabenArray[0] = "ID Bez  Usr   IDKat    BezKat    Betrag     Datum";
+			ausgabenArray[0] = "   ID  Bez      Usr     IDKat    BezKat    Betrag     Datum";
 			int x = 0;
 			int y = 0;
 			int h;
