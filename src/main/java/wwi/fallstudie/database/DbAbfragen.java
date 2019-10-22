@@ -137,22 +137,30 @@ public class DbAbfragen {
 		return rollNo;
 	}
 	
-	public static String gibKategorienamen(int catID)
+	public static ArrayList<String> gibKategorienamen(String userName)
 	{
-		String kn = null;
+		ResultSet rs;
+		String columnValue;
+		ArrayList<String> catList = new ArrayList<String>();
 		
 		try
 		{
 			PreparedStatement prepState = conn.prepareStatement
-					("select catLabel from kategorien where catID=(?)");
-			prepState.setInt(1, catID);
+					(" select catLabel from kategorien where catID in (select distinct category from ausgaben where name=(?));");
+			prepState.setString(1, userName);
 			
-			ResultSet rs = prepState.executeQuery();
-						
-			while (rs.next())
-			{
-				kn = rs.getString("catLabel");
-			}			
+			rs = prepState.executeQuery();
+			ResultSetMetaData rsmd = rs.getMetaData();
+
+			int columnsNumber = rsmd.getColumnCount();
+			
+			while (rs.next()) {
+				for (int i = 1; i <= columnsNumber; i++) {
+					if (i > 1) System.out.print(",  ");
+					columnValue = rs.getString("catLabel");
+					catList.add(columnValue);		
+				}
+			}
 		}
 		
 		catch (SQLException e)
@@ -161,11 +169,11 @@ public class DbAbfragen {
 			e.printStackTrace();
 		}
 		
-		return kn;
+		return catList;
 		
 	}
 	
-	public static ArrayList<String> gibKategorienDesNutzers(String userName)
+	/*public static ArrayList<String> gibKategorienDesNutzers(String userName)
 	{	
 		ResultSet rs;
 		ResultSet rs2;
@@ -213,7 +221,7 @@ public class DbAbfragen {
 		return catList;
 		
 	}
-	
+	*/
 	public static ArrayList<String> gibAusgaben(String userName)
 	{	
 		String columnValue;
