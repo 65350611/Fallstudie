@@ -162,7 +162,7 @@ public class DbAbfragen {
 			e.printStackTrace();
 		}
 		
-		if (catID > 0) {
+		if (catID == 0) {
 			status = 1;
 		} else {
 			status = 0;
@@ -509,10 +509,12 @@ public class DbAbfragen {
 
 	}
 	
-	public static boolean neueAusgabe(String expLabel, String userName, int category, String amount, String date)
+	public static boolean neueAusgabe(String expLabel, String userName, int category, float amount, String stringDate)
 	{	
 		boolean ok = false;
-		
+		String strDate = stringDate;
+		Date date = Date.valueOf(strDate);
+				
 		try
 		{
 			PreparedStatement prepState = conn.prepareStatement
@@ -521,8 +523,8 @@ public class DbAbfragen {
 			prepState.setString(2, expLabel);
 			prepState.setString(3, userName);
 			prepState.setInt(4, category);
-			prepState.setString(5, amount);
-			prepState.setString(6, date);
+			prepState.setFloat(5, amount);
+			prepState.setDate(6, date);
 			
 			prepState.executeUpdate();
 			ok = true;
