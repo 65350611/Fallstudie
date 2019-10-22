@@ -155,13 +155,10 @@ public class Logik {
 		if (!admGemeldet) {
 			ArrayList<String> insightListKategorien = DbAbfragen.gibKategorienamenFuerZeitraum(usr.getName(), startDat,
 					endDat);
-			ArrayList<String> insightListAusgaben = DbAbfragen.gibAusgabenFuerZeitraum(usr.getName(), startDat,
-					endDat);
+			ArrayList<String> insightListAusgaben = DbAbfragen.gibAusgabenFuerZeitraum(usr.getName(), startDat, endDat);
 			String[] arr = new String[insightListKategorien.size()];
-			System.out.println("arraylaenge: " + arr.length + "listkatlaenge: " + insightListKategorien.size()
-					+ "listausgabenlaenge :" + insightListAusgaben.size());
 			for (int i = 0; i < insightListKategorien.size(); i++) {
-				arr[i] = insightListKategorien.get(i) + ": " + insightListAusgaben.get(i);
+				arr[i] = insightListKategorien.get(i) + ": " + insightListAusgaben.get(i) + "€";
 			}
 			return arr;
 		}
