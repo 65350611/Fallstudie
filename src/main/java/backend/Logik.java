@@ -72,7 +72,9 @@ public class Logik {
 
 	// PWD ändern als Admin
 	public static void pwdAendern(String userName, String pwd) {
-
+		if (admGemeldet && !adm.getName().contentEquals(userName)) {
+			DbAbfragen.aenderePasswort(userName, pwd);
+		}
 	}
 
 	public static String returnPwd() {
