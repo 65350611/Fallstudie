@@ -137,19 +137,17 @@ public class Logik {
 
 	public static String[] getAlleKategorien() {
 		if (!admGemeldet) {
-			ArrayList<String> usrList = DbAbfragen.gibKategorienamen(usr.getName().toString());
+			ArrayList<String> usrList = DbAbfragen.gibKategorienamen(usr.getName());
 			String[] arr = new String[usrList.size()];
 			for (int i = 0; i < usrList.size(); i++) {
 				arr[i] = usrList.get(i);
 			}
 			return arr;
-		}else return null;
+		} else
+			return null;
 	}
 
-	public static boolean pruefeDatum(String date) {
-		if (date.length() == 10) {
-			return true;
-		}
-		return false;
+	public static boolean pruefeDatum(String date){
+		return (date.length() == 10 && date.charAt(4)== '-' && date.charAt(7)== '-');
 	}
 }
