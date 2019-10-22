@@ -137,10 +137,10 @@ public class Logik {
 
 	public static String[] getAlleKategorien() {
 		if (!admGemeldet) {
-			ArrayList<String> usrList = DbAbfragen.gibKategorienamen(usr.getName());
-			String[] arr = new String[usrList.size()];
-			for (int i = 0; i < usrList.size(); i++) {
-				arr[i] = usrList.get(i);
+			ArrayList<String> kategList = DbAbfragen.gibKategorienamen(usr.getName());
+			String[] arr = new String[kategList.size()];
+			for (int i = 0; i < kategList.size(); i++) {
+				arr[i] = kategList.get(i);
 			}
 			return arr;
 		} else
@@ -149,5 +149,17 @@ public class Logik {
 
 	public static boolean pruefeDatum(String date){
 		return (date.length() == 10 && date.charAt(4)== '-' && date.charAt(7)== '-');
+	}
+	public static String[] getInsights(String startDat, String endDat){
+		if (!admGemeldet) {
+			ArrayList<String> insightListKategorien = DbAbfragen.gibKategorienamenFuerZeitraum(usr.getName(), startDat, endDat);
+			ArrayList<String> insightListAusgaben = DbAbfragen.gibAusgabenFuerZeitraum(usr.getName(), startDat, startDat);
+			String[] arr = new String[insightListKategorien.size()];
+			for (int i = 0; i < insightListKategorien.size(); i++) {
+				arr[i] = insightListKategorien.get(i) + ": " + insightListAusgaben.get(i);
+			}
+			return arr;
+		}
+		return null;
 	}
 }
