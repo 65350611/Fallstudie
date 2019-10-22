@@ -52,6 +52,37 @@ public class DbAbfragen {
 		}  
 	}
 	
+	public static ArrayList<String> gibNutzer()
+	{	
+		ResultSet rs = null;
+		String user = null;
+		ArrayList<String> userList = new ArrayList<String>();
+		
+		try 
+		{
+			PreparedStatement prepState = conn.prepareStatement
+					("select userName from nutzer");
+		
+			rs = prepState.executeQuery();
+			
+			while (rs.next())
+			{
+			user = rs.getString("userName");
+			userList.add(user);
+			}
+			
+		}
+		
+		catch (SQLException e)
+		{
+			System.out.println("Nutzer konnten nicht ausgegeben werden");
+			e.printStackTrace();
+		}
+		
+		return userList;
+		
+	}
+	
 	public static String gibPasswort(String userName)
 	{
 		String pw = null;
@@ -134,7 +165,7 @@ public class DbAbfragen {
 		
 	}
 	
-	public static ArrayList<String> gibKategorienDesUsers(String userName)
+	public static ArrayList<String> gibKategorienDesNutzers(String userName)
 	{	
 		ResultSet rs;
 		ResultSet rs2;
