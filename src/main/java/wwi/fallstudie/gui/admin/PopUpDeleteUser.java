@@ -1,7 +1,9 @@
 package wwi.fallstudie.gui.admin;
 
 import backend.Logik;
+import backend_exceptions.AdmKannSichNichtSelberLoeschenException;
 import backend_exceptions.UserHatNochAusgabenException;
+import backend_exceptions.UsrNichtGefundenException;
 import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
 import wwi.fallstudie.gui.utilities.Window;
 
@@ -59,9 +61,12 @@ public class PopUpDeleteUser extends JFrame {
                     String userName = usernameField.getText();
                     new NutzerWirklichLoeschenDialog(adminOberflaeche, userName);
                     dispose();
-                } catch(Exception e){
+                } catch(AdmKannSichNichtSelberLoeschenException e){
                     e.printStackTrace();
-                    new MessagePopup();
+                    new MessagePopup("Der Admin darf sich nicht selber löschen!");
+                } catch(UsrNichtGefundenException e){
+                    e.printStackTrace();
+                    new MessagePopup("Nutzer konnte nicht gefunden werden!");
                 }
             }
         });

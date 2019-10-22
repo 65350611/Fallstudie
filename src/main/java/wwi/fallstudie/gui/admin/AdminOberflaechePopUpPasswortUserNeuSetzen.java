@@ -14,6 +14,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import backend.Logik;
+import backend_exceptions.FalscheAdmPwdAendernMethodeException;
+import backend_exceptions.UserHatNochAusgabenException;
+import backend_exceptions.UsrNichtGefundenException;
 import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
 import wwi.fallstudie.gui.utilities.Comparator;
 import wwi.fallstudie.gui.utilities.Window;
@@ -85,10 +88,18 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if(Comparator.compatePasswords(passwordField.getPassword(), wdhPasswordField.getPassword())){
-                    System.out.println("gui -> User: " + usernameField.getText() + " Neues Pwd: " + new String(passwordField.getPassword()));
-                	Logik.pwdAendern(usernameField.getText(), new String(passwordField.getPassword()));
-                    System.out.println("gui -> pwd geändert");
-                    dispose();
+                    try {
+                        System.out.println("gui -> User: " + usernameField.getText() + " Neues Pwd: " + new String(passwordField.getPassword()));
+                        Logik.pwdAendern(usernameField.getText(), new String(passwordField.getPassword()));
+                        System.out.println("gui -> pwd geändert");
+                        dispose();
+                    } catch (FalscheAdmPwdAendernMethodeException e){
+                        e.printStackTrace();
+                        new MessagePopup("Als Admin bitte das eigene Passwort über \"Passwort ändern\" bearbeiten!");
+                    } catch (UsrNichtGefundenException e){
+                        e.printStackTrace();
+                        new MessagePopup("Der Nutzer konnte nicht gefunden werden!");
+                    }
                 } else {
                     new MessagePopup("Passwörter stimmen nicht überein!");
                 }
