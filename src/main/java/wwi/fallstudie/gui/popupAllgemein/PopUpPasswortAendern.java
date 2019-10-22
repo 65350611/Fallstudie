@@ -88,7 +88,6 @@ public class PopUpPasswortAendern extends JFrame{
                     //prüfen ob altes passwort korrekt ist
                     String altesPasswort = new String(altesPasswordField.getPassword());
                     System.out.println("altes passwort: " + altesPasswort);
-                    try {
                         if(altesPasswort.equals(Logik.returnPwd())) {
                             //ändere das Passwort
                             String neuesPasswort = new String(passwordField.getPassword());
@@ -102,23 +101,7 @@ public class PopUpPasswortAendern extends JFrame{
                         } else {
                             new MessagePopup("Die eingegebenen Daten sind nicht korrekt. Bitte erneut versuchen!");
                         }
-                    } catch (InvalidKeyException e) {
-                        d
-                    } catch (NoSuchAlgorithmException e) {
-                        e.printStackTrace();
-                    } catch (InvalidKeySpecException e) {
-                        e.printStackTrace();
-                    } catch (NoSuchPaddingException e) {
-                        e.printStackTrace();
-                    } catch (InvalidAlgorithmParameterException e) {
-                        e.printStackTrace();
-                    } catch (IllegalBlockSizeException e) {
-                        e.printStackTrace();
-                    } catch (BadPaddingException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+
                     dispose(); // popup schließen
                 } else {
                     new MessagePopup("Passwörter stimmen nicht überein!");
