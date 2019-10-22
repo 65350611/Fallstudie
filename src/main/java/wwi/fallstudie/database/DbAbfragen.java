@@ -374,18 +374,23 @@ public class DbAbfragen {
 		
 	}
 	
-	public static boolean loescheNutzer(String userName)
+	public static int loescheNutzer(String userName)
 	{
-		boolean ok = false;
-	
+		int status = 0;
+		int anzahl = 0;
 		try
 		{
 			PreparedStatement prepState = conn.prepareStatement
 					("delete from nutzer where userName=(?)");
 			prepState.setString(1, userName);
 			
-			prepState.executeUpdate();
-			ok = true;
+			anzahl = prepState.executeUpdate();
+				if (anzahl > 0) {
+					status = 1;
+				} else {
+					status = 0;
+				}
+			
 			System.out.println("Nutzer gelöscht");
 											
 		}
@@ -394,9 +399,10 @@ public class DbAbfragen {
 		{
 			System.out.println("Nutzer konnte nicht gelöscht werden");
 			e.printStackTrace();
+			status = -1;
 		}
 		
-		return ok;
+		return status;
 	}
 	
 	public static boolean loescheAusgabe(String userName, int expID)
