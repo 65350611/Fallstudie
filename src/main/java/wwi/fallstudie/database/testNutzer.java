@@ -30,11 +30,11 @@ public class testNutzer {
 		//System.out.println(DbAbfragen.aendereKategorieDerAusgabenAufStandard("Flo", 3));
 		//System.out.println(DbAbfragen.neueKategorie("Wait"));
 		//System.out.println(DbAbfragen.gibKategorienDesUsers("tester"));
-		System.out.println(DbAbfragen.gibAusgaben("Jonny"));
+		//System.out.println(DbAbfragen.gibAusgaben("Jonny"));
 		//System.out.println(DbAbfragen.gibAusgabenFuerKategorie("tester", 2));
 		//System.out.println(DbAbfragen.gibRolle("Flo"));
 		//System.out.println(DbAbfragen.loescheAusgabenUndNutzer("123"));
-		//System.out.println(DbAbfragen.gibPasswort("Nico"));
+		System.out.println(DbAbfragen.gibIDderKategorie("Sonstige"));
 		//System.out.println(DbAbfragen.gibNutzer());
 		//System.out.println(DbAbfragen.gibKategorienamen("Jonny"));
 	}

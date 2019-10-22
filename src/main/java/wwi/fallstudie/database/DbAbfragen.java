@@ -137,6 +137,32 @@ public class DbAbfragen {
 		return rollNo;
 	}
 	
+	public static int gibIDderKategorie(String catLabel)
+	{
+		int catID = 0;
+		
+		try
+		{
+			PreparedStatement prepState = conn.prepareStatement
+					("select catID from kategorien where catLabel=(?)");
+			prepState.setString(1, catLabel);
+			
+			ResultSet rs = prepState.executeQuery();
+						
+			while (rs.next())
+			{
+				catID = rs.getInt("catID");
+			}			
+		}
+		
+		catch (SQLException e)
+		{
+			System.out.println("ID der Kategorie konnte nicht ausgegeben werden");
+			e.printStackTrace();
+		}
+		return catID;
+	}
+	
 	public static ArrayList<String> gibKategorienamen(String userName)
 	{
 		ResultSet rs;
@@ -308,7 +334,7 @@ public class DbAbfragen {
 		try 
 		{
 			PreparedStatement prepState = conn.prepareStatement
-					("select t1.expID, t1.expLabel, t1.name, t2.catLabel as categoryName, t1.amount, t1.date from ausgaben t1 left join kategorien t2 on t1.category = t2.catID having name=(?) order by date;");
+					("select t1.expID, t1.expLabel, t1.name, t1.category, t2.catLabel as categoryName, t1.amount, t1.date from ausgaben t1 left join kategorien t2 on t1.category = t2.catID having name=(?) order by date;");
 			prepState.setString(1, userName);
 			
 			rs = prepState.executeQuery();
