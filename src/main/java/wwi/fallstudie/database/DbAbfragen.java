@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class DbAbfragen {
 	
-	static Connection con;
+	static Connection conn;
 	static Statement stmt;
 	
 	public DbAbfragen()
@@ -13,7 +13,7 @@ public class DbAbfragen {
 		
 	}
 	
-	public static void baueVerbindungAuf()
+	public static void baueVerbindungAuf()	
 	{
 		try 
 		{
@@ -28,7 +28,7 @@ public class DbAbfragen {
 		
 		try 
 		{
-			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/haushaltsbuch","root","");
+			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/haushaltsbuch","root","");
 			System.out.println("Verbindung aufgebaut");
 		}
 		
@@ -39,14 +39,14 @@ public class DbAbfragen {
 		
 		try 
 		{
-			stmt=con.createStatement();
+			stmt=conn.createStatement();
 			System.out.println("Statement erzeugt");
 		}
 		
 		catch (SQLException e) 
 		{
 			System.out.println("Statement NICHT erzeugt");
-		}  //Konstruktor für die Verbindung
+		}  
 	}
 	
 	public static String gibPasswort(String userName)
@@ -55,7 +55,7 @@ public class DbAbfragen {
 		
 		try
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("select password from nutzer where userName=(?)");
 			prepState.setString(1, userName);
 			
@@ -64,12 +64,12 @@ public class DbAbfragen {
 			while (rs.next())
 			{
 				pw = rs.getString("password");
-			}			
+			}		
 		}
 		
 		catch (SQLException e)
 		{
-			System.out.println("Rasswort konnte nicht ausgegeben werden");
+			System.out.println("Passwort konnte nicht ausgegeben werden");
 			System.out.println(e);
 		}
 		
@@ -79,11 +79,11 @@ public class DbAbfragen {
 	
 	public static int gibRolle(String userName)
 	{
-		int rn = 0;
+		int rollNo = 0;
 		
 		try
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("select userRole from nutzer where userName=(?)");
 			prepState.setString(1, userName);
 			
@@ -91,7 +91,7 @@ public class DbAbfragen {
 						
 			while (rs.next())
 			{
-				rn = rs.getInt("userRole");
+				rollNo = rs.getInt("userRole");
 			}			
 		}
 		
@@ -100,7 +100,7 @@ public class DbAbfragen {
 			System.out.println("Rolle konnte nicht ausgegeben werden");
 			System.out.println(e);
 		}
-		return rn;
+		return rollNo;
 	}
 	
 	public static String gibKategorienamen(int catID)
@@ -109,7 +109,7 @@ public class DbAbfragen {
 		
 		try
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("select catLabel from kategorien where catID=(?)");
 			prepState.setInt(1, catID);
 			
@@ -135,13 +135,13 @@ public class DbAbfragen {
 	{	
 		ResultSet rs;
 		ResultSet rs2;
-		String kategorien = null;
-		ArrayList<String> katListe = new ArrayList<String>(100);
+		String category = null;
+		ArrayList<String> catList = new ArrayList<String>(100);
 		int columnValue;
 		
 		try 
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("select distinct category from ausgaben where name=(?)");
 			prepState.setString(1, userName);
 		
@@ -156,15 +156,15 @@ public class DbAbfragen {
 					columnValue = rs.getInt(i);
 					System.out.println(columnValue);
 					
-					PreparedStatement prepState2 = con.prepareStatement
+					PreparedStatement prepState2 = conn.prepareStatement
 							("select catLabel from kategorien where catID=(?)");
 					prepState2.setInt(1, columnValue);
 					rs2 = prepState2.executeQuery();
 								
 					while (rs2.next())
 					{
-						kategorien = rs2.getString("catLabel");
-						katListe.add(kategorien);
+						category = rs2.getString("catLabel");
+						catList.add(category);
 					}
 				}
 			}
@@ -176,7 +176,7 @@ public class DbAbfragen {
 			System.out.println(e);
 		}
 		
-		return katListe;
+		return catList;
 		
 	}
 	
@@ -186,7 +186,7 @@ public class DbAbfragen {
 		
 		try 
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("select * from ausgaben where name=(?) order by date");
 			prepState.setString(1, userName);
 			
@@ -221,7 +221,7 @@ public class DbAbfragen {
 		
 		try 
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("select * from ausgaben where name=(?) and date between (?) and (?) order by date");
 			prepState.setString(1, userName);
 			prepState.setString(2, beginDate);
@@ -258,7 +258,7 @@ public class DbAbfragen {
 		
 		try 
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("select * from ausgaben where name=(?) and category=(?) order by date");
 			prepState.setString(1, userName);
 			prepState.setInt(2, catID);
@@ -294,7 +294,7 @@ public class DbAbfragen {
 		
 		try
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("insert into nutzer values (?,?,?)");
 			prepState.setInt(1, userRole);
 			prepState.setString(2, password);
@@ -320,7 +320,7 @@ public class DbAbfragen {
 		
 		try
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("insert into ausgaben values (?,?,?,?,?,?)");
 			prepState.setInt(1, 0);
 			prepState.setString(2, expLabel);
@@ -349,7 +349,7 @@ public class DbAbfragen {
 
 		try
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("insert into kategorien values (?,?)");
 			prepState.setInt(1, 0);
 			prepState.setString(2, catLabel);
@@ -374,7 +374,7 @@ public class DbAbfragen {
 	
 		try
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("delete from nutzer where userName=(?)");
 			prepState.setString(1, userName);
 			
@@ -399,7 +399,7 @@ public class DbAbfragen {
 	
 		try
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("delete from ausgaben where name=(?) and expID=(?)");
 			prepState.setString(1, userName);
 			prepState.setInt(2, expID);
@@ -425,7 +425,7 @@ public class DbAbfragen {
 		
 		try
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("delete from ausgaben where name=(?)");
 			prepState.setString(1, userName);
 			
@@ -443,7 +443,7 @@ public class DbAbfragen {
 	
 		try
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("delete from nutzer where userName=(?)");
 			prepState.setString(1, userName);
 			
@@ -468,7 +468,7 @@ public class DbAbfragen {
 	
 		try
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("delete from ausgaben where name=(?) and category=(?)");
 			prepState.setString(1, userName);
 			prepState.setInt(2, catID);
@@ -495,7 +495,7 @@ public class DbAbfragen {
 	
 		try
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("update nutzer set password=(?) where userName=(?)");
 			prepState.setString(1, newPassword);
 			prepState.setString(2, userName);
@@ -521,7 +521,7 @@ public class DbAbfragen {
 	
 		try
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("update ausgaben set expLabel=(?), category=(?), amount=(?), date=(?) where name=(?) and expID=(?)");
 			prepState.setString(1, expLabel);
 			prepState.setInt(2, catID);
@@ -554,7 +554,7 @@ public class DbAbfragen {
 		
 		try
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("insert into kategorien values (?,?)");
 			prepState.setInt(1, 0);
 			prepState.setString(2, catLabelNew);
@@ -586,7 +586,7 @@ public class DbAbfragen {
 		
 		try
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("update ausgaben set category=(?) where name=(?) and category=(?)");
 			prepState.setInt(1, catIDNew);
 			prepState.setString(2, userName);
@@ -613,7 +613,7 @@ public class DbAbfragen {
 		
 		try
 		{
-			PreparedStatement prepState = con.prepareStatement
+			PreparedStatement prepState = conn.prepareStatement
 					("update ausgaben set category=(?) where name=(?) and category=(?)");
 			prepState.setInt(1, 1);
 			prepState.setString(2, userName);
