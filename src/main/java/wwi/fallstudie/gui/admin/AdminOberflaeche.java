@@ -1,5 +1,6 @@
 package wwi.fallstudie.gui.admin;
 
+import backend.Logik;
 import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
 import wwi.fallstudie.gui.utilities.Window;
 
@@ -14,7 +15,7 @@ public class AdminOberflaeche extends JFrame {
     private JList nutzerliste;
     private DefaultListModel listModel;
 
-    private String[] nutzerArray = {"Nutzer 1", "Nutzer 2", "Nutzer 3", "Nutzer 4", "Nutzer 5", "Nutzer 6"};
+    private String[] nutzerArray;
 
     public AdminOberflaeche(){
         super("Admin Oberfläche");
@@ -22,7 +23,7 @@ public class AdminOberflaeche extends JFrame {
         setLayout(new BorderLayout());
 
         try {
-            //TODO -> nutzerArray = getAlleNutzer();
+            nutzerArray = Logik.getAlleNutzer(); //bekommt alle Nutzer als Array
         } catch (Exception e){
             e.printStackTrace();
             new MessagePopup();
@@ -41,7 +42,7 @@ public class AdminOberflaeche extends JFrame {
        add(new JScrollPane(nutzerliste), BorderLayout.CENTER);
        add(bottomLeiste, BorderLayout.SOUTH);
 
-        //set JFrame
+        //setze JFrame
         setSize(500, 450);
         Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -49,11 +50,7 @@ public class AdminOberflaeche extends JFrame {
     }
 
     public void update(){
-        // TODO setNutzerArray(Logik.getAlleNutzer());
-        //TODO remove
-        String[] test = {"Nutzer 1", "Nutzer 2", "Nutzer 3", "Nutzer 4", "Nutzer 5", "Nutzer 6", "updated"};
-        setNutzerArray(test);
-
+        setNutzerArray(Logik.getAlleNutzer());
         addNutzerArray2ListModel();
     }
 
