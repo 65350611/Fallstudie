@@ -123,20 +123,29 @@ public class Logik {
 
 	public static void kategorieAnlegen(String kateg) {
 		if (!admGemeldet) {
-			
+
 		}
 	}
+
 	public static void kategorieAendern(String katAlt, String katNeu) {
-		
+
 	}
+
 	public static void kategorieLoeschen(String kateg) {
-		
+
 	}
+
 	public static String[] getAlleKategorien() {
-		String[] arr = new String[];
-		
-		return null;
+		if (!admGemeldet) {
+			ArrayList<String> usrList = DbAbfragen.gibKategorienamen(usr.getName().toString());
+			String[] arr = new String[usrList.size()];
+			for (int i = 0; i < usrList.size(); i++) {
+				arr[i] = usrList.get(i);
+			}
+			return arr;
+		}else return null;
 	}
+
 	public static boolean pruefeDatum(String date) {
 		if (date.length() == 10) {
 			return true;
