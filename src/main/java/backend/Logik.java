@@ -123,7 +123,7 @@ public class Logik {
 
 	public static void kategorieAnlegen(String kateg) {
 		if (!admGemeldet) {
-
+			
 		}
 	}
 
