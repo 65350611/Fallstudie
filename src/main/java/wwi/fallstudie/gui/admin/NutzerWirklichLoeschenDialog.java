@@ -33,7 +33,9 @@ public class NutzerWirklichLoeschenDialog extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try{
+                    System.out.println("gui -> username: " + userName);
                     Logik.deleteUserMitAusgaben(userName);
+                    System.out.println("gui -> löschen mit ausgaben ausgeführt");
                     adminOberflaeche.update(); //update die Adminoberfläche
                     dispose(); //fenster schließen
                 } catch(Exception e){
