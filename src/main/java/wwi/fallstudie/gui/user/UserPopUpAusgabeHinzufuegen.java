@@ -1,5 +1,6 @@
 package wwi.fallstudie.gui.user;
 
+import backend.Logik;
 import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
 import wwi.fallstudie.gui.utilities.Window;
 
@@ -8,8 +9,6 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class UserPopUpAusgabeHinzufuegen extends JFrame {
-
-    private String momentaneKategorie;
 
     private JTextField kategorie;
     private JTextField datum;
@@ -73,7 +72,12 @@ public class UserPopUpAusgabeHinzufuegen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
-                    //TODO füge neuen nutzer hinzu
+                    //füge neue Ausgabe hinzu
+                    if(Logik.pruefeDatum(datum.getText())) {
+                        Logik.ausgabeAnlegen(kategorie.getText(), datum.getText(), betragField.getText(), betragField.getText());
+                    } else {
+                        new MessagePopup("Daten müssen im Format \"YYYY-MM-DD\" eingegeben werden!");
+                    }
                     ausgabenAnzeigenPanel.update();
                 } catch (Exception e){
                     e.printStackTrace();
@@ -170,13 +174,5 @@ public class UserPopUpAusgabeHinzufuegen extends JFrame {
         Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
-    }
-
-    public String getMomentaneKategorie() {
-        return momentaneKategorie;
-    }
-
-    public void setMomentaneKategorie(String momentaneKategorie) {
-        this.momentaneKategorie = momentaneKategorie;
     }
 }
