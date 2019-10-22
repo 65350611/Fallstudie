@@ -212,7 +212,7 @@ public class Logik {
 	public static void ausgabeAnlegen(String kateg, String date, String betrag, String titel) {
 		int x = DbAbfragen.gibIDderKategorie(kateg, usr.getName());
 		if (x!=0) {
-			DbAbfragen.neueAusgabe(titel, usr.getName(), x, betrag, date);
+			DbAbfragen.neueAusgabe(titel, usr.getName(), x, Float.parseFloat(betrag), date);
 		}
 	}
 }
