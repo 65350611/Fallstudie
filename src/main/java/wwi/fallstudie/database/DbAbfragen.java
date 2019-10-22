@@ -144,11 +144,11 @@ public class DbAbfragen {
 		try
 		{
 			PreparedStatement prepState = conn.prepareStatement
-					("select catID from kategorien where catLabel=(?) and name=(?)");
+					("select category in ausgaben where name=(?)");
 			prepState.setString(1, catLabel);
-			prepState.setString(2, userName);
 			
 			ResultSet rs = prepState.executeQuery();
+			
 						
 			while (rs.next())
 			{
@@ -162,10 +162,11 @@ public class DbAbfragen {
 			e.printStackTrace();
 		}
 		
-		if (catID == 0) {
-			status = 1;
+		if (catID != 0) {
+			return catID;
 		} else {
-			status = 0;
+			int newCatID = neueKategorie(catLabel);
+			catID = newCatID;	
 		}
 		
 		return catID;
@@ -541,9 +542,10 @@ public class DbAbfragen {
 		
 	}
 	
-	public static boolean neueKategorie(String catLabel)
+	public static int neueKategorie(String catLabel)
 	{	
-		boolean ok = false;
+		int catID = 0;
+		ResultSet rs;
 
 		try
 		{
@@ -553,8 +555,12 @@ public class DbAbfragen {
 			prepState.setString(2, catLabel);
 			
 			prepState.executeUpdate();
-			ok = true;
+			rs = stmt.executeQuery("select LAST_INSERT_ID()");
+			
+			while (rs.next()) {
+			catID = rs.getInt(1);
 			System.out.println("Neue Kategorie hinzugefügt");
+			}
 		}
 		
 		catch (SQLException e)
@@ -563,7 +569,7 @@ public class DbAbfragen {
 			e.printStackTrace();
 		}
 		
-		return ok;
+		return catID;
 		
 	}
 	
