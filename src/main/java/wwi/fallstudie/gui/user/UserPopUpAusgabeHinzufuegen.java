@@ -79,6 +79,7 @@ public class UserPopUpAusgabeHinzufuegen extends JFrame {
                         new MessagePopup("Daten müssen im Format \"YYYY-MM-DD\" eingegeben werden!");
                     }
                     ausgabenAnzeigenPanel.update();
+                    dispose(); //popup schließen
                 } catch (Exception e){
                     e.printStackTrace();
                     new MessagePopup();

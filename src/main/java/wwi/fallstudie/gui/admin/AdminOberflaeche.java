@@ -37,7 +37,7 @@ public class AdminOberflaeche extends JFrame {
         nutzerliste = new JList(listModel);
         nutzerliste.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-
+        //variablen zu contentpane ninzufügen
        add(headpanel, BorderLayout.NORTH);
        add(new JScrollPane(nutzerliste), BorderLayout.CENTER);
        add(bottomLeiste, BorderLayout.SOUTH);
@@ -49,6 +49,7 @@ public class AdminOberflaeche extends JFrame {
         setVisible(true);
     }
 
+    // aktualisiert die Anzeige der Nutzer
     public void update(){
         setNutzerArray(Logik.getAlleNutzer());
         addNutzerArray2ListModel();

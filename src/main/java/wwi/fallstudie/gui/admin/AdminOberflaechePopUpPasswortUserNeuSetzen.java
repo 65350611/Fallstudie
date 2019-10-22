@@ -7,7 +7,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPasswordField;
@@ -92,13 +100,29 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
                         System.out.println("gui -> User: " + usernameField.getText() + " Neues Pwd: " + new String(passwordField.getPassword()));
                         Logik.pwdAendern(usernameField.getText(), new String(passwordField.getPassword()));
                         System.out.println("gui -> pwd geändert");
-                        dispose();
+                        dispose(); //fenster schließen
                     } catch (FalscheAdmPwdAendernMethodeException e){
                         e.printStackTrace();
                         new MessagePopup("Als Admin bitte das eigene Passwort über \"Passwort ändern\" bearbeiten!");
                     } catch (UsrNichtGefundenException e){
                         e.printStackTrace();
                         new MessagePopup("Der Nutzer konnte nicht gefunden werden!");
+                    } catch (InvalidKeySpecException e) {
+                        e.printStackTrace();
+                    } catch (NoSuchAlgorithmException e) {
+                        e.printStackTrace();
+                    } catch (BadPaddingException e) {
+                        e.printStackTrace();
+                    } catch (InvalidKeyException e) {
+                        e.printStackTrace();
+                    } catch (InvalidAlgorithmParameterException e) {
+                        e.printStackTrace();
+                    } catch (NoSuchPaddingException e) {
+                        e.printStackTrace();
+                    } catch (IllegalBlockSizeException e) {
+                        e.printStackTrace();
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
                     }
                 } else {
                     new MessagePopup("Passwörter stimmen nicht überein!");
@@ -110,7 +134,7 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
         abbrechen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                dispose();
+                dispose();//fenster schließen
             }
         });
 
@@ -166,7 +190,7 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
         add(abbrechen, gc);
 
 
-        //set JFrame
+        //setze JFrame
         setSize(320, 200);
         Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
