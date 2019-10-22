@@ -53,7 +53,7 @@ public class Logik {
 		System.out.println("Logik 1 hier sind wir" + "adm name= " + adm.getName().toString() + "usr name= " + userName.toString());
 		if (admGemeldet) {
 			System.out.println("Logik 2 hier sind wir" + " " + admGemeldet);
-			if ((adm.getName().contentEquals(userName.toString()))) {
+			if ((!adm.getName().contentEquals(userName.toString()))) {
 				System.out.println("Logik 3 hier sind wir " + adm.getName().contentEquals(userName.toString()));
 				DbAbfragen.loescheAusgabenUndNutzer(userName);
 			}
