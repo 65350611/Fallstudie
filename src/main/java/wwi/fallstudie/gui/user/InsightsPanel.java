@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class InsightsPanel extends JPanel {
 
-    private String[] insightsArray;
+    private String[] insightsArray = {};
 
     private InsightsHeadPanel headPanel;
 
@@ -20,7 +20,7 @@ public class InsightsPanel extends JPanel {
 
         headPanel = new InsightsHeadPanel(this);
 
-        insightsArray = null;
+        //insightsArray = null;
 
         listModel = new DefaultListModel(); // erstelle list model
         addKategorisierteausgabenausArray2ListModel(); // füge daten aus dem Array ins ListModel ein
