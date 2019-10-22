@@ -82,7 +82,9 @@ public class Logik {
 		}
 	}
 
-	public static void pwdAendern(String pwd) throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
+	public static void pwdAendern(String pwd) throws InvalidKeyException, NoSuchAlgorithmException,
+			InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException,
+			UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
 		if (admGemeldet) {
 			DbAbfragen.aenderePasswort(adm.getName(), CryptoUtil.encrypt(pwd));
 
@@ -92,8 +94,10 @@ public class Logik {
 	}
 
 	// PWD ändern als Admin
-	public static void pwdAendern(String userName, String pwd)
-			throws FalscheAdmPwdAendernMethodeException, UsrNichtGefundenException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
+	public static void pwdAendern(String userName, String pwd) throws FalscheAdmPwdAendernMethodeException,
+			UsrNichtGefundenException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException,
+			NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException,
+			IllegalBlockSizeException, BadPaddingException {
 		if (admGemeldet && !adm.getName().contentEquals(userName)) {
 
 			if (DbAbfragen.aenderePasswort(userName, CryptoUtil.encrypt(pwd)) == 0) {
@@ -104,7 +108,9 @@ public class Logik {
 		}
 	}
 
-	public static String returnPwd() throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, IOException {
+	public static String returnPwd() throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException,
+			NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException,
+			IllegalBlockSizeException, BadPaddingException, IOException {
 		if (admGemeldet) {
 //			return CryptoUtil.decrypt(DbAbfragen.gibPasswort(adm.getName()));
 			return DbAbfragen.gibPasswort(adm.getName());
@@ -135,7 +141,7 @@ public class Logik {
 
 	public static void kategorieAnlegen(String kateg) {
 		if (!admGemeldet) {
-			
+
 		}
 	}
 
@@ -176,12 +182,16 @@ public class Logik {
 		}
 		return null;
 	}
-	public static String [] getAlleAusgaben() {
+
+	public static String[] getAlleAusgaben() {
 		if (!admGemeldet) {
 			ArrayList<String> ausgabenListe = DbAbfragen.gibAusgaben(usr.getName());
 			String[] ausgabenArray = new String[ausgabenListe.size()];
 			for (int i = 0; i < ausgabenListe.size(); i++) {
-				ausgabenArray[i] = ausgabenListe.get(i);
+				for (int y=0; y <=7; y++) {
+				if (y != 3) {
+					ausgabenArray[i] = ausgabenArray[i] + " " + ausgabenListe.get(y);
+				}}
 			}
 			return ausgabenArray;
 		} else
