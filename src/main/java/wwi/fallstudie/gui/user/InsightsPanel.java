@@ -34,8 +34,11 @@ public class InsightsPanel extends JPanel {
 
     public void update(){
         try {
+            System.out.println("gui -> startdatum: " + headPanel.getStartDate().getText());
+            System.out.println("gui -> startdatum: " + headPanel.getEndDate().getText());
             setInsightsArray(Logik.getInsights(headPanel.getStartDate().getText(), headPanel.getEndDate().getText()));
         } catch (Exception e){
+            e.printStackTrace();
             new MessagePopup("Insights konnten nicht geladen werden");
         }
 
