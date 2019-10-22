@@ -1,5 +1,8 @@
 package backend;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import backend_exceptions.AdmKannSichNichtSelberLoeschenException;
 import backend_exceptions.FalscheAdmPwdAendernMethodeException;
 import backend_exceptions.UserHatNochAusgabenException;
@@ -106,8 +109,16 @@ public class Logik {
 
 	}
 
-	public static String[] getAusgabenArray() {
-
+	public static String[] getAlleNutzer() {
+		if (admGemeldet) {
+			ArrayList<String> usrList = DbAbfragen.gibNutzer();
+			String[] arr = new String[usrList.size()];
+			for (int i = 0; i < usrList.size(); i++) {
+				arr[i] = usrList.get(i);
+			}
+			return arr;
+		}
 		return null;
+
 	}
 }
