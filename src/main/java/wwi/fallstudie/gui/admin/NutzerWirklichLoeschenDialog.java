@@ -1,7 +1,5 @@
 package wwi.fallstudie.gui.admin;
 
-import backend.Logik;
-import backend_exceptions.UserHatNochAusgabenException;
 import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
 import wwi.fallstudie.gui.utilities.Window;
 
@@ -12,37 +10,21 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
-public class PopUpDeleteUser extends JFrame {
-
-    private JTextField usernameField;
+public class NutzerWirklichLoeschenDialog extends JFrame {
+    private JLabel message;
 
     private JButton delete;
     private JButton abbrechen;
 
-    public PopUpDeleteUser(AdminOberflaeche adminOberflaeche){
+    public NutzerWirklichLoeschenDialog(AdminOberflaeche adminOberflaeche, String userName){
         super("Nutzer löschen");
 
         setLayout(new GridBagLayout()); //set Layout Manager
 
         //initialise variables
-        usernameField = new JTextField();
+        message = new JLabel("Dem Nutzer sind noch Ausgaben zugeordnet. Soll "+ userName + " wirklich gelöscht werden?");
         delete = new JButton("Löschen");
         abbrechen = new JButton("Abbrechen");
-
-
-        //edit usernameField
-        usernameField.setForeground(Color.LIGHT_GRAY);
-        usernameField.setText("Nutzername");
-        usernameField.addFocusListener(new FocusAdapter() {
-            public void focusGained(FocusEvent e) {
-                JTextField source = (JTextField)e.getComponent();
-                source.setText("");
-                source.setForeground(Color.BLACK);
-                source.removeFocusListener(this);
-            }
-        });
-
-
 
 
         //set buttons on clicklistener
@@ -50,14 +32,8 @@ public class PopUpDeleteUser extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try{
-                    System.out.println(usernameField.getText());
-                    Logik.deleteUser(usernameField.getText()); //lösche Nutzer
+                    //lösche Nutzer
                     adminOberflaeche.update();
-                    dispose();
-                } catch(UserHatNochAusgabenException e){
-                    e.printStackTrace();
-                    String userName = usernameField.getText();
-                    new NutzerWirklichLoeschenDialog(adminOberflaeche, userName);
                     dispose();
                 } catch(Exception e){
                     e.printStackTrace();
@@ -89,7 +65,7 @@ public class PopUpDeleteUser extends JFrame {
         gc.gridx = 0;
         gc.gridy = 0;
         gc.gridwidth = 2;
-        add(usernameField, gc);
+        add(message, gc);
 
         ////////////////////// reihe 2 ///////////////////////
 
@@ -108,10 +84,9 @@ public class PopUpDeleteUser extends JFrame {
 
 
         //set JFrame
-        setSize(320, 100);
+        setSize(600, 100);
         Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }
-
 }
