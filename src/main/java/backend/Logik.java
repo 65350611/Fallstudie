@@ -43,11 +43,19 @@ public class Logik {
 		}
 	}
 
-	public static void deleteUser(String userName) throws UserHatNochAusgabenException {
-		if (admGemeldet) {
-			if (!DbAbfragen.loescheNutzer(userName)) {
+	public static void deleteUser(String userName)
+			throws UserHatNochAusgabenException, AdmKannSichNichtSelberLoeschenException, UsrNichtGefundenException {
+		if (admGemeldet && !adm.getName().contentEquals(userName.toString())) {
+			switch (DbAbfragen.loescheNutzer(userName)) {
+			case -1:
 				throw new UserHatNochAusgabenException();
+			case 0:
+				throw new UsrNichtGefundenException();
+			case 1:
+				break;
 			}
+		} else {
+			throw new AdmKannSichNichtSelberLoeschenException();
 		}
 
 	}
