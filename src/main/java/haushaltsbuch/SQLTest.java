@@ -34,17 +34,19 @@ public class SQLTest {
 				Statement stmt2 = conn.createStatement();
 				stmt2.execute("CREATE TABLE user (id integer, fname varchar(30), lname varchar(30), primary key(id));");
 				
+				PreparedStatement prepState2 = conn.prepareStatement("INSERT INTO user values (?,?,?);");
+				prepState2.setInt(1, 0);
+				prepState2.setString(2, "Hallo");
+				prepState2.setString(3, "Du");
+				prepState2.execute();
+				
 				PreparedStatement prepState = conn.prepareStatement("INSERT INTO user values (?,?,?);");
 				prepState.setInt(1, 0);
 				prepState.setString(2, "Flo");
 				prepState.setString(3, "Hoh");
 				prepState.execute();
 				
-				PreparedStatement prepState2 = conn.prepareStatement("INSERT INTO user values (?,?,?);");
-				prepState.setInt(1, 0);
-				prepState2.setString(2, "Hallo");
-				prepState2.setString(3, "Du");
-				prepState2.execute();
+				
 			}
 		}
 	}
@@ -55,7 +57,7 @@ public class SQLTest {
 			getConnection();
 		}
 		
-		PreparedStatement prepState = conn.prepareStatement("INSERT INTO users VALUES (?, ?, ?);");
+		PreparedStatement prepState = conn.prepareStatement("INSERT INTO users VALUES (?,?,?);");
 		prepState.setString(2, firstname);
 		prepState.setString(3, lastname);
 		prepState.execute();
