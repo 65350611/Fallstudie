@@ -222,6 +222,7 @@ public class DbAbfragen {
 		
 	}
 	*/
+	
 	public static ArrayList<String> gibAusgaben(String userName)
 	{	
 		String columnValue;
@@ -258,9 +259,11 @@ public class DbAbfragen {
 		
 	}
 		
-	public static ResultSet gibAusgabenFuerZeitraum(String userName, String beginDate, String endDate)
+	public static ArrayList<String> gibAusgabenFuerZeitraum(String userName, String beginDate, String endDate)
 	{	
+		String columnValue;
 		ResultSet rs = null;
+		ArrayList<String> expInTimeList = new ArrayList<String>();
 		
 		try 
 		{
@@ -272,16 +275,15 @@ public class DbAbfragen {
 			
 			rs = prepState.executeQuery();
 			ResultSetMetaData rsmd = rs.getMetaData();
+			columnValue = rs.toString();
 	
 		   int columnsNumber = rsmd.getColumnCount();
 		   while (rs.next()) {
 		       for (int i = 1; i <= columnsNumber; i++) {
-		           if (i > 1) System.out.print(" ");
-		           String columnValue = rs.getString(i);
-		           System.out.print(columnValue);
+		           if (i > 1);
+		           columnValue = rs.getString(i);
+		           expInTimeList.add(columnValue);
 		       }
-		       
-		      System.out.println("");
 		   }
 		}
 		       
@@ -291,13 +293,15 @@ public class DbAbfragen {
 			e.printStackTrace();
 		}
 		
-		return rs;
+		return expInTimeList;
 		
 	}
 	
-	public static ResultSet gibAusgabenFuerKategorie(String userName, int catID)
+	public static ArrayList<String> gibAusgabenFuerKategorie(String userName, int catID)
 	{	
+		String columnValue;
 		ResultSet rs = null;
+		ArrayList<String> expInCatList = new ArrayList<String>();
 		
 		try 
 		{
@@ -308,16 +312,15 @@ public class DbAbfragen {
 			
 			rs = prepState.executeQuery();
 			ResultSetMetaData rsmd = rs.getMetaData();
+			columnValue = rs.toString();
 	
 		   int columnsNumber = rsmd.getColumnCount();
 		   while (rs.next()) {
 		       for (int i = 1; i <= columnsNumber; i++) {
-		           if (i > 1) System.out.print(" ");
-		           String columnValue = rs.getString(i);
-		          System.out.print(columnValue);
+		           if (i > 1);
+		           columnValue = rs.getString(i);
+		           expInCatList.add(columnValue);
 		       }
-		       
-		       System.out.println("");
 		   }
 		}
 		
@@ -327,7 +330,7 @@ public class DbAbfragen {
 			e.printStackTrace();
 		}
 		
-		return rs;
+		return expInCatList;
 		
 	}
 	
