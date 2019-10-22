@@ -186,18 +186,19 @@ public class Logik {
 	public static String[] getAlleAusgaben() {
 		if (!admGemeldet) {
 			ArrayList<String> ausgabenListe = DbAbfragen.gibAusgaben(usr.getName());
-			String[] ausgabenArray = new String[(ausgabenListe.size() / 7)];
+			String[] ausgabenArray = new String[(ausgabenListe.size() / 7)+1];
 			for (int i = 0; i < ausgabenArray.length; i++) {
 				ausgabenArray[i] = " ";
 			}
+			ausgabenArray[0] = "ID Bez  Usr   IDKat    BezKat    Betrag     Datum";
 			int x = 0;
 			int y = 0;
 			int h;
-			for (int i = 0; i < ausgabenArray.length; i++) {
+			for (int i = 1; i < ausgabenArray.length; i++) {
 				h = 0;
 				for (y = x; y < ausgabenListe.size(); y++) {
 					if (h <= 6) {
-						ausgabenArray[i] = ausgabenArray[i] + " " + ausgabenListe.get(y);
+						ausgabenArray[i] = ausgabenArray[i] + "    " + ausgabenListe.get(y);
 						x++;
 						h++;
 					}
