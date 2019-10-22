@@ -12,7 +12,7 @@ import backend.Logik;
 
 public class AusgabenAnzeigenPanel extends JPanel {
 
-    private String[] ausgabenArray = {"Ausgaben ID: 1; Kategorie: Wohnen; Titel: Miete; Betrag: 1000,00€; Datum: 2019-10-01", "Ausgaben ID: 2; Kategorie: Wohnen; Titel: GEZ; Betrag: 19,00€; Datum: 2019-10-01"};
+    private String[] ausgabenArray;
 
     private DefaultListModel listModel;
     private JList ausgabenListe;
@@ -20,7 +20,7 @@ public class AusgabenAnzeigenPanel extends JPanel {
     public AusgabenAnzeigenPanel(){
         setLayout(new BorderLayout());
 
-        //setAusgabenArray(TODO Logik.getAusgabenArray());
+        setAusgabenArray(Logik.getAlleAusgaben());
 
         listModel = new DefaultListModel();
 
@@ -32,12 +32,7 @@ public class AusgabenAnzeigenPanel extends JPanel {
     }
 
     public void update(){
-        //setAusgabenArray(TODO Logik.getAusgabenArray());
-        // setze Array String[] ausgaben = Logik.getAusgabenArray();
-        //TODO test -> remove
-        String[] test = {"Ausgaben ID: 1; Kategorie: Wohnen; Titel: Miete; Betrag: 1000,00€; Datum: 2019-10-01", "Ausgaben ID: 2; Kategorie: Wohnen; Titel: GEZ; Betrag: 19,00€; Datum: 2019-10-01", "updated"};
-        setAusgabenArray(test);
-
+        setAusgabenArray(Logik.getAlleAusgaben());
         addAusgabenAusArray2ListModel(); // listmodel mit neuem Array befüllen
     }
 
