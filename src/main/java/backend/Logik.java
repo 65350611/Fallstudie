@@ -42,41 +42,50 @@ public class Logik {
 
 	public static void deleteUser(String userName) throws UserHatNochAusgabenException {
 		if (admGemeldet) {
-			if(!DbAbfragen.loescheNutzer(userName)) {
+			if (!DbAbfragen.loescheNutzer(userName)) {
 				throw new UserHatNochAusgabenException();
-			};
+			}
 		}
-		
+
+	}
+
+	public static void deleteUserMitAusgaben(String userName) {
+		if (admGemeldet) {
+			if ((adm.getName().contentEquals(userName.toString()))) {
+				DbAbfragen.loescheAusgabenUndNutzer(userName);
+			}
+		}
 	}
 
 	public static void pwdAendern(String pwd) {
-		if(admGemeldet) {
+		if (admGemeldet) {
 			DbAbfragen.aenderePasswort(adm.getName(), pwd);
-		
-		}else {
+
+		} else {
 			DbAbfragen.aenderePasswort(usr.getName(), pwd);
 		}
 	}
+
 	public static void pwdAendern(String userName, String pwd) {
-		
+
 	}
 
 	public static String returnPwd() {
 		if (admGemeldet) {
 			return DbAbfragen.gibPasswort(adm.getName());
-		}else {
+		} else {
 			return DbAbfragen.gibPasswort(usr.getName());
 		}
-		
+
 	}
 
 	public static void usrAenderePwd(String pwd) {
 		DbAbfragen.aenderePasswort(usr.getName(), pwd);
-		
+
 	}
 
 	public static String[] getAusgabenArray() {
-		
+
 		return null;
 	}
 }
