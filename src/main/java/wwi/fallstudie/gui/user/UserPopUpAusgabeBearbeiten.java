@@ -11,7 +11,7 @@ public class UserPopUpAusgabeBearbeiten extends JFrame{
     private String momentaneKategorie;
 
     private JTextField ausgabenID;
-    private JComboBox kategorie;
+    private JTextField kategorie;
     private JTextField datum;
     private JLabel betragLabel;
     private JTextField betragField;
@@ -27,7 +27,7 @@ public class UserPopUpAusgabeBearbeiten extends JFrame{
 
         //initialise attributes
         ausgabenID = new JTextField("Ausgaben ID");
-        kategorie = new JComboBox();
+        kategorie = new JTextField("Kategorie");
         datum = new JTextField("YYYY-MM-DD");
         betragLabel = new JLabel("Betrag:");
         betragField = new JTextField(10);
@@ -48,13 +48,13 @@ public class UserPopUpAusgabeBearbeiten extends JFrame{
         });
 
         //edit kategorie
-        //TODO methode aufrufen die Kategorien als String[] zurückgibt => kategorie.addItem();
-        kategorie.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent itemEvent) {
-                if(!momentaneKategorie.equals(kategorie.getSelectedItem())){
-                    setMomentaneKategorie((String) kategorie.getSelectedItem()); //setze einen neue Kategorie
-                }
+        kategorie.setForeground(Color.LIGHT_GRAY);
+        kategorie.addFocusListener(new FocusAdapter() {
+            public void focusGained(FocusEvent e) {
+                JTextField source = (JTextField)e.getComponent();
+                source.setText("");
+                source.setForeground(Color.BLACK);
+                source.removeFocusListener(this);
             }
         });
 
