@@ -50,7 +50,8 @@ public class Logik {
 	}
 
 	public static void deleteUserMitAusgaben(String userName) {
-		System.out.println("Logik 1 hier sind wir" + "adm name= " + adm.getName().toString() + "usr name= " + userName.toString());
+		System.out.println(
+				"Logik 1 hier sind wir" + "adm name= " + adm.getName().toString() + "usr name= " + userName.toString());
 		if (admGemeldet) {
 			System.out.println("Logik 2 hier sind wir" + " " + admGemeldet);
 			if ((!adm.getName().contentEquals(userName.toString()))) {
@@ -69,6 +70,7 @@ public class Logik {
 		}
 	}
 
+	// PWD ändern als Admin
 	public static void pwdAendern(String userName, String pwd) {
 
 	}
