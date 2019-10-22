@@ -11,12 +11,12 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
 public class InsightsHeadPanel extends JPanel {
-    JLabel startDateLabel;
-    JLabel endDateLabel;
+    private JLabel startDateLabel;
+    private JLabel endDateLabel;
 
-    JTextField startDate;
-    JTextField endDate;
-    JButton suchen;
+    private JTextField startDate;
+    private JTextField endDate;
+    private JButton suchen;
 
     public InsightsHeadPanel(InsightsPanel insightsPanel){
         setLayout(new FlowLayout());
@@ -76,6 +76,22 @@ public class InsightsHeadPanel extends JPanel {
         add(endDateLabel);
         add(endDate);
         add(suchen);
+    }
+
+    public JTextField getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(JTextField startDate) {
+        this.startDate = startDate;
+    }
+
+    public JTextField getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(JTextField endDate) {
+        this.endDate = endDate;
     }
 }
 

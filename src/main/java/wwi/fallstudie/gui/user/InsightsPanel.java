@@ -1,11 +1,14 @@
 package wwi.fallstudie.gui.user;
 
+import backend.Logik;
+import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class InsightsPanel extends JPanel {
 
-    private String[] insightsArray = {"Sonstiges: 0€", "Wohnen: 1019€", "Essen: 100€"};
+    private String[] insightsArray;
 
     private InsightsHeadPanel headPanel;
 
@@ -17,7 +20,7 @@ public class InsightsPanel extends JPanel {
 
         headPanel = new InsightsHeadPanel(this);
 
-        //TODO setKategoriesierteAusgabenArray(Logik.getAusgabenArray());
+        insightsArray = null;
 
         listModel = new DefaultListModel(); // erstelle list model
         addKategorisierteausgabenausArray2ListModel(); // füge daten aus dem Array ins ListModel ein
@@ -30,11 +33,11 @@ public class InsightsPanel extends JPanel {
     }
 
     public void update(){
-        //setKategorisierteAusgabenArray(TODO Logik.getAusgabenArray());
-
-        //TODO remove
-        String[] test = {"Sonstiges: 0€", "Wohnen: 1019€", "Essen: 100€", "updated"};
-        setInsightsArray(test);
+        try {
+            setInsightsArray(Logik.getInsights(headPanel.getStartDate().getText(), headPanel.getEndDate().getText()));
+        } catch (Exception e){
+            new MessagePopup("Insights konnten nicht geladen werden");
+        }
 
         addKategorisierteausgabenausArray2ListModel(); // listmodel mit neuem Array befüllen
     }
