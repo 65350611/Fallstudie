@@ -1,5 +1,8 @@
 package wwi.fallstudie.gui.user;
 
+import backend.Logik;
+import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,19 +24,30 @@ public class InsightsHeadPanel extends JPanel {
         startDateLabel = new JLabel("Startdatum: ");
         endDateLabel = new JLabel("Enddatum");
 
-        startDate = new JTextField("YYYY-MM-DD");
-        endDate = new JTextField("YYYY-MM-DD");
+        startDate = new JTextField(15);
+        endDate = new JTextField(15);
 
         //edit suchen
         suchen = new JButton("Suchen");
         suchen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                insightsPanel.update();
+                try {
+                    if (Logik.pruefeDatum(startDate.getText()) && Logik.pruefeDatum(endDate.getText())) {
+                        insightsPanel.update();
+                    } else {
+                        new MessagePopup("Daten müssen im Format \"YYYY-MM-DD\" eingegeben werden!");
+                    }
+                } catch (NullPointerException e){
+                    new MessagePopup("Daten müssen im Format \"YYYY-MM-DD\" eingegeben werden!");
+                } catch (Exception e){
+                    new MessagePopup();
+                }
             }
         });
 
         //edit startDate
+        startDate.setText("YYYY-MM-DD");
         startDate.setForeground(Color.LIGHT_GRAY);
         startDate.addFocusListener(new FocusAdapter() {
             public void focusGained(FocusEvent e) {
@@ -45,6 +59,7 @@ public class InsightsHeadPanel extends JPanel {
         });
 
         //edit endDate
+        endDate.setText("YYYY-MM-DD");
         endDate.setForeground(Color.LIGHT_GRAY);
         endDate.addFocusListener(new FocusAdapter() {
             public void focusGained(FocusEvent e) {

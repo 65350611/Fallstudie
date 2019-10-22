@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class InsightsPanel extends JPanel {
 
-    private String[] kategorisierteAusgabenArray = {"Sonstiges: 0€", "Wohnen: 1019€", "Essen: 100€"};
+    private String[] insightsArray = {"Sonstiges: 0€", "Wohnen: 1019€", "Essen: 100€"};
 
     private InsightsHeadPanel headPanel;
 
@@ -34,25 +34,25 @@ public class InsightsPanel extends JPanel {
 
         //TODO remove
         String[] test = {"Sonstiges: 0€", "Wohnen: 1019€", "Essen: 100€", "updated"};
-        setKategorisierteAusgabenArray(test);
+        setInsightsArray(test);
 
         addKategorisierteausgabenausArray2ListModel(); // listmodel mit neuem Array befüllen
     }
 
-    public String[] getKategorisierteAusgabenArray() {
-        return kategorisierteAusgabenArray;
+    public String[] getInsightsArray() {
+        return insightsArray;
     }
 
-    public void setKategorisierteAusgabenArray(String[] kategorisierteAusgabenArray) {
-        this.kategorisierteAusgabenArray = kategorisierteAusgabenArray;
+    public void setInsightsArray(String[] insightsArray) {
+        this.insightsArray = insightsArray;
     }
 
     public void addKategorisierteausgabenausArray2ListModel(){
         listModel.removeAllElements(); // lösche alle elemente in dem List Modell, da durch die folgende Schleife neue hinzugefügt werden
 
-        for(int i=0; i < getKategorisierteAusgabenArray().length; i++){
+        for(int i = 0; i < getInsightsArray().length; i++){
             System.out.println("i = " + i);
-            listModel.addElement(getKategorisierteAusgabenArray()[i]);
+            listModel.addElement(getInsightsArray()[i]);
         }
     }
 }
