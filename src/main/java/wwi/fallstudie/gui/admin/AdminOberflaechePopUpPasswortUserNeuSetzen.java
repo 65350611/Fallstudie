@@ -85,8 +85,9 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if(Comparator.compatePasswords(passwordField.getPassword(), wdhPasswordField.getPassword())){
-                    //TODO pruefen
-                	Logik.usrAenderePwd(passwordField.getPassword().toString());
+                    System.out.println("gui -> User: " + usernameField.getText() + " Neues Pwd: " + new String(passwordField.getPassword()));
+                	Logik.pwdAendern(usernameField.getText(), new String(passwordField.getPassword()));
+                    System.out.println("gui -> pwd geändert");
                     dispose();
                 } else {
                     new MessagePopup("Passwörter stimmen nicht überein!");
