@@ -509,7 +509,7 @@ public class DbAbfragen {
 
 	}
 	
-	public static boolean neueAusgabe(String expLabel, String userName, int category, float amount, Date date)
+	public static boolean neueAusgabe(String expLabel, String userName, int category, String amount, String date)
 	{	
 		boolean ok = false;
 		
@@ -521,8 +521,8 @@ public class DbAbfragen {
 			prepState.setString(2, expLabel);
 			prepState.setString(3, userName);
 			prepState.setInt(4, category);
-			prepState.setFloat(5, amount);
-			prepState.setDate(6, date);
+			prepState.setString(5, amount);
+			prepState.setString(6, date);
 			
 			prepState.executeUpdate();
 			ok = true;
