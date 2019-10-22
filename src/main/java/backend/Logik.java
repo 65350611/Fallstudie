@@ -178,12 +178,12 @@ public class Logik {
 	}
 	public static String [] getAlleAusgaben() {
 		if (!admGemeldet) {
-			ArrayList<String> ausgabenListe = DbAbfragen.;
-			String[] arr = new String[ausgabenListe.size()];
+			ArrayList<String> ausgabenListe = DbAbfragen.gibAusgaben(usr.getName());
+			String[] ausgabenArray = new String[ausgabenListe.size()];
 			for (int i = 0; i < ausgabenListe.size(); i++) {
-				arr[i] = ausgabenListe.get(i);
+				ausgabenArray[i] = ausgabenListe.get(i);
 			}
-			return arr;
+			return ausgabenArray;
 		} else
 			return null;
 	}
