@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UserKopfLeistenButtonPanel extends JPanel {
-    private JButton kategorieHinzufuegen;
     private JButton ausgabeHinzufuegen;
     private JButton abmelden;
 
@@ -23,15 +22,6 @@ public class UserKopfLeistenButtonPanel extends JPanel {
             }
         });
 
-        kategorieHinzufuegen = new JButton("Kategorie hinzufügen");
-        kategorieHinzufuegen.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                //TODO neue Kategorie hinzufügen
-                new UserPopUpKategorieHinzufuegen(userOberflaeche);
-            }
-        });
-
         abmelden = new JButton("Abmelden");
         abmelden.addActionListener(new ActionListener() {
             @Override
@@ -42,7 +32,6 @@ public class UserKopfLeistenButtonPanel extends JPanel {
         });
 
         add(ausgabeHinzufuegen);
-        add(kategorieHinzufuegen);
         add(abmelden);
     }
 }
