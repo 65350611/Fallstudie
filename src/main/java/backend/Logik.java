@@ -191,13 +191,13 @@ public class Logik {
 			int y = 0;
 			for (int i = 0; i < ausgabenArray.length; i++) {
 				int h = 0;
-				for (y = x; y < ausgabenListe.size(); y++) {
-					if (h <= 7) {
+				while (h <= 7) {
+					for (y = x; y < ausgabenListe.size(); y++) {
 						if (y != x + 2) {
 							ausgabenArray[i] = ausgabenArray[i] + " " + ausgabenListe.get(y);
+							x++;
 						}
-						x++;
-					}
+					} h++;
 				}
 			}
 			return ausgabenArray;
