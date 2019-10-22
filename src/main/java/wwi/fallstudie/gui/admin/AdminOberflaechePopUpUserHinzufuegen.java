@@ -20,9 +20,9 @@ public class AdminOberflaechePopUpUserHinzufuegen extends JFrame {
     public AdminOberflaechePopUpUserHinzufuegen(AdminOberflaeche adminOberflaeche){
         super("Nutzer hinzufügen");
 
-        setLayout(new GridBagLayout()); //set Layout Manager
+        setLayout(new GridBagLayout()); //setze Layout Manager
 
-        //initialise variables
+        //initialisiere variables
         usernameField = new JTextField();
         hinzufuegen = new JButton("Hinzufügen");
         abbrechen = new JButton("Abbrechen");
