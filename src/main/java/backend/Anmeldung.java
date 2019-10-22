@@ -6,9 +6,9 @@ public interface Anmeldung {
 
 	public static void anmelden(String userName, String pwd) throws Exception {
 		
-		
+		//pwd validieren
 		if ( pwd.contentEquals(DbAbfragen.gibPasswort(userName).toString())){
-						
+			//rolle abfragen			
 			if (DbAbfragen.gibRolle(userName)== 1) { 
 				Logik.admMelden(userName);
 			} else {
