@@ -17,6 +17,14 @@ public class SQLiteApp {
 			catch (SQLException | ClassNotFoundException e) {
 				e.printStackTrace();
 			}
+			try {
+				
+				test.addUser("Paul", "Gaul");
+				
+			}
+			catch (SQLException | ClassNotFoundException e) {
+				e.printStackTrace();
+			}
 	}
 
 }
