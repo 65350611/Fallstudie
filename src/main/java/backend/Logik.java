@@ -274,6 +274,6 @@ public class Logik {
 	}
 
 	public static void exitProgram() {
-        //TODO schließe verbindung
+        DbAbfragen.schliesseVerbindung();
     }
 }
