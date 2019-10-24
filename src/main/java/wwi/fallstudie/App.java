@@ -13,19 +13,6 @@ import wwi.fallstudie.gui.user.*;
 
 public class App {
     public static void main(String[] args){
-
-    	//DbAbfragen.baueVerbindungAuf();
-        //Login fenster = new Login();
-
-<<<<<<< HEAD
-    	DbAbfragen.baueVerbindungAuf();
-        //DbAbfragen.baueVerbindungAuf4Mac();
-
-    	//DbAbfragen.baueVerbindungAuf();
-        //DbAbfragen.baueVerbindungAuf4Mac();
-
-        new Login();
-=======
         try {
             DbAbfragen.baueVerbindungAuf(); //try windows Connection DB
             new Login();
@@ -40,15 +27,5 @@ public class App {
                 System.out.println("Programm konnte nicht gestartet werden");
             }
         }
-
-
->>>>>>> branch 'master' of https://github.com/65350611/Fallstudie.git
-        //new AdminOberflaechePopUpUserHinzufuegen();
-        //new AdminOberflaechePopUpPasswortUserNeuSetzen();
-        //new PopUpPasswortAendern();
-        //new UserPopUpKategorieHinzufuegen();
-        //AdminOberflaeche ao = new AdminOberflaeche();
-        //new UserOberflaeche();
-        //new NutzerWirklichLoeschenDialog(ao, "Heinrich Heine");
     }
 }
