@@ -12,11 +12,11 @@ public class testNutzer {
 		//System.out.println(DbAbfragen.gibNutzer());
 		
 		//System.out.println(DbAbfragen.gibIDderKategorie("Sonstiges", "Frodo"));
-		//System.out.println(DbAbfragen.gibKategorienamen("Jonny"));
+		//System.out.println(DbAbfragen.gibKategorienamenFuerZeitraum("Frodo", "2000-01-01", "2020-01-01"));
 		//System.out.println(DbAbfragen.gibKategorienDesUsers("tester"));
 		
 		//System.out.println(DbAbfragen.gibAusgaben("Jonny"));
-		//System.out.println(DbAbfragen.gibAusgabenFuerZeitraum("Jonny", "2015-10-12", "2015-10-13"));
+		System.out.println(DbAbfragen.gibAusgabenFuerZeitraum("Frodo", "2000-01-01", "2020-01-01"));
 		//System.out.println(DbAbfragen.gibAusgabenFuerKategorie("Jonny", 3));
 		//System.out.println(DbAbfragen.gibAusgabenMitKategorienamen("Frodo"));
 				
