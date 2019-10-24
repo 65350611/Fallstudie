@@ -195,7 +195,7 @@ public class Logik {
 		} else
 			return null;
 	}
-	
+	/*
 	public static String[] getZeitraum() {
 		String untereZeitgrenze = "";
 		String obereZeitgrenze = "";
@@ -226,20 +226,29 @@ public class Logik {
 		}
 	}
 
+	 */
+
 	public static boolean pruefeDatum(String date) {
 		return (date.length() == 10 && date.charAt(4) == '-' && date.charAt(7) == '-');
 	}
 
 	public static String[] getInsights(String startDat, String endDat) {
 		if (!admGemeldet) {
-			ArrayList<String> insightListKategorien = DbAbfragen.gibKategorienamenFuerZeitraum(usr.getName(), startDat,
-					endDat);
-			ArrayList<String> insightListAusgaben = DbAbfragen.gibAusgabenFuerZeitraum(usr.getName(), startDat, endDat);
-			String[] arr = new String[insightListKategorien.size()];
-			for (int i = 0; i < insightListKategorien.size(); i++) {
-				arr[i] = insightListKategorien.get(i) + ": " + insightListAusgaben.get(i) + "€";
+
+			System.out.println("test1");
+
+
+			ArrayList<String> insightsList = DbAbfragen.gibAusgabenFuerZeitraumMitKategorienamen(usr.getName(), startDat, endDat);
+			String[] rueckgabeArray = new String[insightsList.size()/2];
+
+			int array_counter = 0;
+
+			for(int i = 0; i < insightsList.size(); i+=2){
+				rueckgabeArray[array_counter] = insightsList.get(i) + " : " + insightsList.get(i+1) + "€";
+				array_counter++;
 			}
-			return arr;
+
+			return rueckgabeArray;
 		}
 		return null;
 	}
