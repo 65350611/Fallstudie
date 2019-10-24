@@ -71,6 +71,26 @@ public class Logik {
 		}
 
 	}
+	
+	public static void deleteAusgaben(int ausID) {
+		
+		DbAbfragen.loescheAusgabe(ausID);
+	}
+	
+	public static void deleteKategorie(String katLabel) {
+		
+		int katID = DbAbfragen.gibIDderKategorie(katLabel, usr.getName());
+			
+		ArrayList<String> kategList = DbAbfragen.gibAusgabenFuerKategorie(usr.getName(), katID);
+	
+		if (kategList.size() == 0) {
+			DbAbfragen.loescheKategorie(usr.getName(), katID);
+		}
+		else {
+			DbAbfragen.aendereKategorieDerAusgabenAufSonstige(usr.getName(), katID);
+			DbAbfragen.loescheKategorie(usr.getName(), katID);
+		}
+	}
 
 	public static void deleteUserMitAusgaben(String userName) throws AdmKannSichNichtSelberLoeschenException {
 		if (admGemeldet) {
@@ -140,11 +160,28 @@ public class Logik {
 	}
 
 	public static void kategorieAendern(String katAlt, String katNeu) {
-
-	}
-
-	public static void kategorieLoeschen(String kateg) {
-
+		
+		int katIDAlt = DbAbfragen.gibIDderKategorie(katAlt, usr.getName());
+		
+			if (katNeu.contains("Sonstiges")) 
+			{
+				DbAbfragen.aendereKategorieDerAusgabenAufSonstiges(usr.getName(), katIDAlt);
+			} 
+			
+			else 
+			{
+				ArrayList<String> katList = DbAbfragen.gibKategorienamen(usr.getName());
+				boolean drin = katList.contains(katNeu);
+				
+				if (drin)
+				{
+					int katIDNeu = DbAbfragen.gibIDderKategorie(katNeu, usr.getName());
+					DbAbfragen.aendereKategorieDerAusgaben(katIDNeu, usr.getName(), katIDAlt);
+				} 
+				else {
+						DbAbfragen.aendereKategorieDerAusgabenAufNeu(katNeu, usr.getName(), katIDAlt);
+				}	
+			}
 	}
 
 	public static String[] getAlleKategorien() {
@@ -196,17 +233,31 @@ public class Logik {
 						x++;
 						h++;
 					}
-
 				}
 			}
 			return ausgabenArray;
 		} else
 			return null;
 	}
+	
 	public static void ausgabeAnlegen(String kateg, String date, String betrag, String titel) {
 		int x = DbAbfragen.gibIDderKategorie(kateg, usr.getName());
-		if (x!=0) {
 			DbAbfragen.neueAusgabe(titel, usr.getName(), x, Float.parseFloat(betrag), date);
-		}
+	}
+	
+	public static void ausgabeAendern(int ausID, String kateg, String date, String betrag, String titel) {
+		
+		int katAlt = DbAbfragen.gibIDderKategorieNachAusgabe(ausID);
+		int katNeu = DbAbfragen.gibIDderKategorie(kateg, usr.getName());
+			if (katAlt == katNeu) {
+				
+				DbAbfragen.aendereAusgabeKategorieBleibt(ausID, titel, Float.parseFloat(betrag), date);
+				
+			}
+			
+			else
+			{			
+				DbAbfragen.aendereAusgabe(ausID, titel, katNeu, Float.parseFloat(betrag), date);
+			}
 	}
 }

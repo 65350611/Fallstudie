@@ -24,7 +24,7 @@ public class UserOberflaecheBottomLeiste extends JPanel {
         ausgabeBearbeiten.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                new UserPopUpAusgabeBearbeiten(ausgabenAnzeigenPanel);
+                new UserPopUpAusgabeBearbeiten(ausgabenAnzeigenPanel, kategorienAnzeigenPanel);
             }
         });
 
@@ -32,7 +32,7 @@ public class UserOberflaecheBottomLeiste extends JPanel {
         ausgabeLoeschen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                new UserPopUpAusgabeLoeschen(ausgabenAnzeigenPanel);
+                new UserPopUpAusgabeLoeschen(ausgabenAnzeigenPanel, kategorienAnzeigenPanel);
             }
         });
 
@@ -40,7 +40,7 @@ public class UserOberflaecheBottomLeiste extends JPanel {
         kategorieBearbeiten.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                new UserPopUpKategorieBearbeiten(kategorienAnzeigenPanel);
+                new UserPopUpKategorieBearbeiten(kategorienAnzeigenPanel, ausgabenAnzeigenPanel);
             }
         });
 
@@ -48,7 +48,7 @@ public class UserOberflaecheBottomLeiste extends JPanel {
         kategorieLoeschen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                new UserPopUpKategorieLoeschen(kategorienAnzeigenPanel);
+                new UserPopUpKategorieLoeschen(ausgabenAnzeigenPanel, kategorienAnzeigenPanel);
             }
         });
 

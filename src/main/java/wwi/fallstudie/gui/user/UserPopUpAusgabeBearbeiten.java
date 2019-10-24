@@ -4,6 +4,9 @@ import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
 import wwi.fallstudie.gui.utilities.Window;
 
 import javax.swing.*;
+
+import backend.Logik;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -20,7 +23,7 @@ public class UserPopUpAusgabeBearbeiten extends JFrame{
     private JButton hinzufuegen;
     private JButton abbrechen;
 
-    public UserPopUpAusgabeBearbeiten(AusgabenAnzeigenPanel ausgabenAnzeigenPanel){
+    public UserPopUpAusgabeBearbeiten(AusgabenAnzeigenPanel ausgabenAnzeigenPanel, KategorienAnzeigenPanel kategorienAnzeigenPanel){
         super("Ausgabe bearbeiten");
 
         setLayout(new GridBagLayout()); //set Layout Manager
@@ -85,8 +88,20 @@ public class UserPopUpAusgabeBearbeiten extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try{
-                    //TODO füge neuen nutzer hinzu
+                    
+                     
+						if(Logik.pruefeDatum(datum.getText())) {
+							int ausID = Integer.parseInt(ausgabenID.getText());
+                        Logik.ausgabeAendern(ausID, kategorie.getText(), datum.getText(), betragField.getText(), bezeichnung.getText());
+                        System.out.println(ausID + " " + kategorie.getText() + " " + datum.getText() + " " + betragField.getText() + " " + bezeichnung.getText());
+                    } else {
+                        new MessagePopup("Daten müssen im Format \"YYYY-MM-DD\" eingegeben werden!");
+                    }
+                	
+                	
                     ausgabenAnzeigenPanel.update();
+                    kategorienAnzeigenPanel.update();
+                    dispose(); //popup schließen
                 } catch (Exception e){
                     e.printStackTrace();
                     new MessagePopup();

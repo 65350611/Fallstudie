@@ -19,7 +19,7 @@ public class UserPopUpAusgabeHinzufuegen extends JFrame {
     private JButton hinzufuegen;
     private JButton abbrechen;
 
-    public UserPopUpAusgabeHinzufuegen(AusgabenAnzeigenPanel ausgabenAnzeigenPanel){
+    public UserPopUpAusgabeHinzufuegen(AusgabenAnzeigenPanel ausgabenAnzeigenPanel, KategorienAnzeigenPanel kategorienAnzeigenPanel){
         super("Ausgabe hinzufügen");
 
         setLayout(new GridBagLayout()); //set Layout Manager
@@ -74,11 +74,13 @@ public class UserPopUpAusgabeHinzufuegen extends JFrame {
                 try {
                     //füge neue Ausgabe hinzu
                     if(Logik.pruefeDatum(datum.getText())) {
-                        Logik.ausgabeAnlegen(kategorie.getText(), datum.getText(), betragField.getText(), betragField.getText());
+                        Logik.ausgabeAnlegen(kategorie.getText(), datum.getText(), betragField.getText(), bezeichnung.getText());
+                        System.out.println(kategorie.getText() + " " + datum.getText() + " " + betragField.getText() + " " + bezeichnung.getText());
                     } else {
                         new MessagePopup("Daten müssen im Format \"YYYY-MM-DD\" eingegeben werden!");
                     }
                     ausgabenAnzeigenPanel.update();
+                    kategorienAnzeigenPanel.update();
                     dispose(); //popup schließen
                 } catch (Exception e){
                     e.printStackTrace();

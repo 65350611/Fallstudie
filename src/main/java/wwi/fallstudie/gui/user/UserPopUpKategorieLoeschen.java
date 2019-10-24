@@ -4,6 +4,9 @@ import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
 import wwi.fallstudie.gui.utilities.Window;
 
 import javax.swing.*;
+
+import backend.Logik;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +18,7 @@ public class UserPopUpKategorieLoeschen extends JFrame {
     private JButton loeschen;
     private JButton abbrechen;
 
-    public UserPopUpKategorieLoeschen(KategorienAnzeigenPanel kategorienAnzeigenPanel){
+    public UserPopUpKategorieLoeschen(AusgabenAnzeigenPanel ausgabenAnzeigenPanel, KategorienAnzeigenPanel kategorienAnzeigenPanel){
         super("Kategorie löschen");
 
         setLayout(new GridBagLayout()); //set Layout Manager
@@ -42,12 +45,16 @@ public class UserPopUpKategorieLoeschen extends JFrame {
         loeschen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
-                try{
-                    //TODO lösche alte kategorie
-                    kategorienAnzeigenPanel.update();
-                } catch (Exception e){
-                    new MessagePopup("Fehler beim Löschen. Bitte erneut versuchen");
+            	try {
+            		
+            		Logik.deleteKategorie(kategorie.getText());
+      
+            		kategorienAnzeigenPanel.update();
+            		ausgabenAnzeigenPanel.update();
+                dispose(); //popup schließen
+            } catch (Exception e){
+                    e.printStackTrace();
+                    new MessagePopup();
                 }
                 dispose(); // popup schließen
             }

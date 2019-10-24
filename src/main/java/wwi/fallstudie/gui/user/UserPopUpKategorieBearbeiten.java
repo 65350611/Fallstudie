@@ -4,6 +4,9 @@ import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
 import wwi.fallstudie.gui.utilities.Window;
 
 import javax.swing.*;
+
+import backend.Logik;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +19,7 @@ public class UserPopUpKategorieBearbeiten extends JFrame{
     private JButton aendern;
     private JButton abbrechen;
 
-    public UserPopUpKategorieBearbeiten(KategorienAnzeigenPanel kategorienAnzeigenPanel){
+    public UserPopUpKategorieBearbeiten(KategorienAnzeigenPanel kategorienAnzeigenPanel, AusgabenAnzeigenPanel ausgabenAnzeigenPanel){
         super("Kategorie bearbeiten");
 
         setLayout(new GridBagLayout()); //set Layout Manager
@@ -56,16 +59,22 @@ public class UserPopUpKategorieBearbeiten extends JFrame{
         aendern.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
-                try{
-                    //TODO lösche alte kategorie
-                    kategorienAnzeigenPanel.update();
-                } catch (Exception e){
-                    new MessagePopup("Fehler beim Ändern. Bitte erneut versuchen");
-                }
-                dispose(); // popup schließen
-            }
-        });
+            	if (alteKategorie.getText().equals("Sonstiges")) {
+            		new MessagePopup("Standardkategorie \"Sonstiges\" kann nicht bearbeitet werden");
+            	} else {
+            		try{
+                	
+            			Logik.kategorieAendern(alteKategorie.getText(), neueKategorie.getText());
+                    
+            			kategorienAnzeigenPanel.update();
+            			ausgabenAnzeigenPanel.update();
+            		} catch (Exception e){
+            			new MessagePopup("Fehler beim Ändern. Bitte erneut versuchen");
+            		}
+            		dispose(); // popup schließen
+            		}
+            	}
+        	});
 
         abbrechen.addActionListener(new ActionListener() {
             @Override
