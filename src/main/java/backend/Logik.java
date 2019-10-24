@@ -226,25 +226,42 @@ public class Logik {
 		return null;
 	}
 
+	/*
+	 * Diese Methode formatiert die Ausgaben aus der Datenbank in ein passendes Format für die GUI
+	 */
 	public static String[] getAlleAusgaben() {
 		if (!admGemeldet) {
 			ArrayList<String> ausgabenListe = DbAbfragen.gibAusgaben(usr.getName());
-			String[] ausgabenArray = new String[(ausgabenListe.size() / 7)+1];
-			for (int i = 0; i < ausgabenArray.length; i++) {
-				ausgabenArray[i] = " ";
-			}
-			ausgabenArray[0] = "   ID     Bez      Usr     IDKat    BezKat    Betrag   Datum";
-			int x = 0;
-			int y = 0;
-			int h;
-			for (int i = 1; i < ausgabenArray.length; i++) {
-				h = 0;
-				for (y = x; y < ausgabenListe.size(); y++) {
-					if (h <= 6) {
-						ausgabenArray[i] = ausgabenArray[i] + "    " + ausgabenListe.get(y);
-						x++;
-						h++;
-					}
+			String[] ausgabenArray = new String[(ausgabenListe.size() / 7) + 1];
+
+			System.out.println("inside get alle ausgeben");
+
+			// counter für bestimmte Stellen
+			int id_counter = 0;
+			int bezeichnungs_counter = 1;
+			int kategorieBezeichnung_counter = 4;
+			int betrag_counter = 5;
+			int datum_counter = 6;
+			int arrayCounter = 0;
+
+			//schleife Formatiert die Strings aus der ausgabenListe um und fügt sie in Array ein
+			for (int i = 0; i < ausgabenListe.size(); i++) {
+				if(i == id_counter){
+					ausgabenArray[arrayCounter] = "Ausgaben ID: " + ausgabenListe.get(i) + "; ";
+					id_counter += 7;
+				} else if(i == bezeichnungs_counter){
+					ausgabenArray[arrayCounter] += "Bezeichnung: " + ausgabenListe.get(i) + "; ";
+					bezeichnungs_counter += 7;
+				} else if(i == kategorieBezeichnung_counter){
+					ausgabenArray[arrayCounter] += "Kategorie: " + ausgabenListe.get(i) + "; ";
+					kategorieBezeichnung_counter += 7;
+				} else if(i == betrag_counter){
+					ausgabenArray[arrayCounter] += "Betrag: " + ausgabenListe.get(i) + "€; ";
+					betrag_counter += 7;
+				} else if(i == datum_counter){
+					ausgabenArray[arrayCounter] += "Datum: " + ausgabenListe.get(i);
+					datum_counter += 7;
+					arrayCounter++; // neue Zeile in Array
 				}
 			}
 			return ausgabenArray;

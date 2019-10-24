@@ -37,9 +37,10 @@ public class App {
                 new Login();
             } catch (Exception e2){
                 e.printStackTrace();
+                System.out.println("Programm konnte nicht gestartet werden");
             }
         }
-        System.out.println("Programm konnte nicht gestartet werden");
+
 
 >>>>>>> branch 'master' of https://github.com/65350611/Fallstudie.git
         //new AdminOberflaechePopUpUserHinzufuegen();
