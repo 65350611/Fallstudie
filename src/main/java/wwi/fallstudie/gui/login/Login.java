@@ -71,6 +71,7 @@ public class Login extends JFrame {
         setSize(320, 380);
         Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
         setVisible(true);
     }
 }

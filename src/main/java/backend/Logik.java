@@ -262,6 +262,6 @@ public class Logik {
 	}
 
 	public static void exitProgram() {
-        //TODO
+        //TODO schließe verbindung
     }
 }
