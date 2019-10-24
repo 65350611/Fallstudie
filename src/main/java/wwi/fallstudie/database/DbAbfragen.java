@@ -68,11 +68,8 @@ public class DbAbfragen {
 
 		try
 		{
-<<<<<<< HEAD
-			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/wilhelma?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC","root","kochkoch");
-=======
-			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/haushaltsbuch?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC","root","kochkoch");
->>>>>>> branch 'master' of https://github.com/65350611/Fallstudie.git
+			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/haushaltsbuch");
+
 			System.out.println("Verbindung aufgebaut");
 		}
 

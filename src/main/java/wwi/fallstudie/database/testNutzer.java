@@ -18,7 +18,7 @@ public class testNutzer {
 		//System.out.println(DbAbfragen.gibAusgaben("Jonny"));
 		//System.out.println(DbAbfragen.gibAusgabenFuerZeitraum("Jonny", "2015-10-12", "2015-10-13"));
 		//System.out.println(DbAbfragen.gibAusgabenFuerKategorie("Jonny", 3));
-		System.out.println(DbAbfragen.gibAusgabenMitKategorienamen("Frodo"));
+		//System.out.println(DbAbfragen.gibAusgabenMitKategorienamen("Frodo"));
 				
 		//System.out.println(DbAbfragen.neuerNutzer(1, "1111", "tester4"));
 		//System.out.println(DbAbfragen.neueKategorie("testKat6"));

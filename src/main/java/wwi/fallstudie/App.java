@@ -17,13 +17,12 @@ public class App {
     	//DbAbfragen.baueVerbindungAuf();
         //Login fenster = new Login();
 
-<<<<<<< HEAD
     	DbAbfragen.baueVerbindungAuf();
         //DbAbfragen.baueVerbindungAuf4Mac();
-=======
+
     	//DbAbfragen.baueVerbindungAuf();
-        DbAbfragen.baueVerbindungAuf4Mac();
->>>>>>> branch 'master' of https://github.com/65350611/Fallstudie.git
+        //DbAbfragen.baueVerbindungAuf4Mac();
+
         new Login();
         //new AdminOberflaechePopUpUserHinzufuegen();
         //new AdminOberflaechePopUpPasswortUserNeuSetzen();

@@ -198,10 +198,10 @@ public class Logik {
 	
 	public static String[] getZeitraum() {
 		if (!admGemeldet) {
-			ArrayList<String> kategList = DbAbfragen.gibKategorienamen(usr.getName());
-			String[] arr = new String[kategList.size()];
-			for (int i = 0; i < kategList.size(); i++) {
-				arr[i] = kategList.get(i);
+			ArrayList<String> timeList = DbAbfragen.gibKategorienamen(usr.getName());
+			String[] arr = new String[timeList.size()];
+			for (int i = 0; i < timeList.size(); i++) {
+				arr[i] = timeList.get(i);
 			}
 			return arr;
 		} else
