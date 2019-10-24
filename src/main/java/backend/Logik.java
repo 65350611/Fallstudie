@@ -87,7 +87,7 @@ public class Logik {
 			DbAbfragen.loescheKategorie(usr.getName(), katID);
 		}
 		else {
-			DbAbfragen.aendereKategorieDerAusgabenAufSonstige(usr.getName(), katID);
+			DbAbfragen.aendereKategorieDerAusgabenAufSonstiges(usr.getName(), katID);
 			DbAbfragen.loescheKategorie(usr.getName(), katID);
 		}
 	}
@@ -116,7 +116,7 @@ public class Logik {
 			UsrNichtGefundenException{
 		if (admGemeldet && !adm.getName().contentEquals(userName)) {
 
-			if (DbAbfragen.aenderePasswort(userName, pwd) == 0) {
+			if (DbAbfragen.aenderePasswort(userName, pwd) == false) {
 				throw new UsrNichtGefundenException();
 			}
 		} else {
@@ -185,6 +185,18 @@ public class Logik {
 	}
 
 	public static String[] getAlleKategorien() {
+		if (!admGemeldet) {
+			ArrayList<String> kategList = DbAbfragen.gibKategorienamen(usr.getName());
+			String[] arr = new String[kategList.size()];
+			for (int i = 0; i < kategList.size(); i++) {
+				arr[i] = kategList.get(i);
+			}
+			return arr;
+		} else
+			return null;
+	}
+	
+	public static String[] getZeitraum() {
 		if (!admGemeldet) {
 			ArrayList<String> kategList = DbAbfragen.gibKategorienamen(usr.getName());
 			String[] arr = new String[kategList.size()];

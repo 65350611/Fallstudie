@@ -51,6 +51,45 @@ public class DbAbfragen {
 			e.printStackTrace();
 		}  
 	}
+
+	public static void baueVerbindungAuf4Mac()
+	{
+		try
+		{
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			System.out.println("Treiber gefunden");
+		}
+
+		catch (ClassNotFoundException e)
+		{
+			System.out.println("Treiber NICHT gefunden");
+			e.printStackTrace();
+		}
+
+		try
+		{
+			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/wilhelma?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC","root","kochkoch");
+			System.out.println("Verbindung aufgebaut");
+		}
+
+		catch (SQLException e)
+		{
+			System.out.println("Verbindung NICHT augebaut");
+			e.printStackTrace();
+		}
+
+		try
+		{
+			stmt=conn.createStatement();
+			System.out.println("Statement erzeugt");
+		}
+
+		catch (SQLException e)
+		{
+			System.out.println("Statement NICHT erzeugt");
+			e.printStackTrace();
+		}
+	}
 	
 	public static ArrayList<String> gibNutzer()
 	{	
@@ -323,6 +362,42 @@ public class DbAbfragen {
 		
 	}
 	
+	/*public static ArrayList<String> gibAusgabenMitKategorienamen(String userName)
+	{
+		ResultSet rs;
+		String columnValue;
+		ArrayList<String> catInTimeList = new ArrayList<String>();
+		
+		try
+		{
+			PreparedStatement prepState = conn.prepareStatement
+					("select catLabel from kategorien where catID in (select distinct category from ausgaben where name=(?) order by date);");
+			prepState.setString(1, userName);
+			
+			rs = prepState.executeQuery();
+			ResultSetMetaData rsmd = rs.getMetaData();
+
+			int columnsNumber = rsmd.getColumnCount();
+			
+			while (rs.next()) {
+				for (int i = 1; i <= columnsNumber; i++) {
+					if (i > 1);
+					columnValue = rs.getString("catLabel");
+					catInTimeList.add(columnValue);		
+				}
+			}
+		}
+		
+		catch (SQLException e)
+		{
+			System.out.println("Kategorien konnten nicht ausgegeben werden");
+			e.printStackTrace();
+		}
+		
+		return catInTimeList;
+		
+	}*/
+	
 	public static ArrayList<String> gibAusgaben(String userName)
 	{	
 		String columnValue;
@@ -408,6 +483,43 @@ public class DbAbfragen {
 		try 
 		{
 			PreparedStatement prepState = conn.prepareStatement
+					("select sum(amount) from ausgaben where name=(?) group by category order by date");
+			prepState.setString(1, userName);
+			
+			rs = prepState.executeQuery();
+			ResultSetMetaData rsmd = rs.getMetaData();
+			columnValue = rs.toString();
+	
+		   int columnsNumber = rsmd.getColumnCount();
+		   
+		   while (rs.next()) {
+		       for (int i = 1; i <= columnsNumber; i++) {
+		           if (i > 1);
+		           columnValue = rs.getString(i);
+		           expInCatList.add(columnValue);
+		       }
+		   }
+		}
+		
+		catch (SQLException e)
+		{
+			System.out.println("Ausgabe konnte nicht ausgegeben werden");
+			e.printStackTrace();
+		}
+		
+		return expInCatList;
+		
+	}
+	
+	/*public static ArrayList<String> gibAusgabenFuerKategorie(String userName, int catID)
+	{	
+		String columnValue;
+		ResultSet rs = null;
+		ArrayList<String> expInCatList = new ArrayList<String>();
+		
+		try 
+		{
+			PreparedStatement prepState = conn.prepareStatement
 					("select * from ausgaben where name=(?) and category=(?) order by date");
 			prepState.setString(1, userName);
 			prepState.setInt(2, catID);
@@ -434,6 +546,43 @@ public class DbAbfragen {
 		}
 		
 		return expInCatList;
+		
+	}*/
+	
+	public static ArrayList<String> gibZeitraum(String userName)
+	{
+		String columnValue;
+		ResultSet rs = null;
+		ArrayList<String> TimeList = new ArrayList<String>();
+		
+		try 
+		{
+			PreparedStatement prepState = conn.prepareStatement
+					("select min(date), max(date) from ausgaben where name=(?)");
+			prepState.setString(1, userName);
+			
+			rs = prepState.executeQuery();
+			ResultSetMetaData rsmd = rs.getMetaData();
+			columnValue = rs.toString();
+	
+		   int columnsNumber = rsmd.getColumnCount();
+		   
+		   while (rs.next()) {
+		       for (int i = 1; i <= columnsNumber; i++) {
+		           if (i > 1);
+		           columnValue = rs.getString(i);
+		           TimeList.add(columnValue);
+		       }
+		   }
+		}
+		
+		catch (SQLException e)
+		{
+			System.out.println("Zeitraum konnte nicht ausgegeben werden");
+			e.printStackTrace();
+		}
+		
+		return TimeList;
 		
 	}
 	
@@ -863,5 +1012,25 @@ public class DbAbfragen {
 	
 	}
 
+	public static boolean schliesseVerbindung()
+	{
+		boolean ok = false;
+		Statement stmt;
+		try {
+			stmt = conn.createStatement();
+			stmt.close();
+			System.out.println("Verbindung geschlossen");
+		} 
+		
+		catch (SQLException e)
+		{
+			System.out.println("Verbindung konnte nicht geschlossen werden");
+			e.printStackTrace();
+		}
+		
+		return ok;
+		
+	}
+	
 }
 
