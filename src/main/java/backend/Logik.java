@@ -243,7 +243,7 @@ public class Logik {
 
 			int array_counter = 0;
 
-			//schleife durchläuft jede zweite position in Liste und schreibt Kategorie mit Betrag formatiert in Array
+
 			for(int i = 0; i < insightsList.size(); i+=2){
 				rueckgabeArray[array_counter] = insightsList.get(i) + " : " + insightsList.get(i+1) + "€";
 				array_counter++;
