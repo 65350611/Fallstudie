@@ -248,8 +248,9 @@ public class Logik {
 				}
 			}
 			return ausgabenArray;
-		} else
+		} else {
 			return null;
+		}
 	}
 	
 	public static void ausgabeAnlegen(String kateg, String date, String betrag, String titel) {
@@ -274,6 +275,6 @@ public class Logik {
 	}
 
 	public static void exitProgram() {
-        //TODO schließe verbindung
+        DbAbfragen.schliesseVerbindung();
     }
 }
