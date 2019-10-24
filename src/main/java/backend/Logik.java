@@ -197,16 +197,38 @@ public class Logik {
 	}
 	
 	public static String[] getZeitraum() {
-		if (!admGemeldet) {
-			ArrayList<String> timeList = DbAbfragen.gibKategorienamen(usr.getName());
-			String[] arr = new String[timeList.size()];
-			for (int i = 0; i < timeList.size(); i++) {
-				arr[i] = timeList.get(i);
+		String[] arr = null;
+		String zeit1= null;
+		String zeit2= null;
+		String[] arr2;
+		
+		if (!admGemeldet) 
+		{
+			ArrayList<String> timeList = DbAbfragen.gibZeitraum(usr.getName());
+			arr = new String[timeList.size()];
+			
+			//for (int i = 0; i < timeList.size(); i++) {
+				arr[0] = timeList.get(0);
 			}
-			return arr;
-		} else
-			return null;
-	}
+			
+			System.out.println(arr[0]);
+			
+			//arr[0] = zeit1;
+			//arr[1] = zeit2;
+			System.out.println(zeit1 + " " + zeit2);
+			
+			
+			ArrayList<String> listKategorien = DbAbfragen.gibKategorienamenFuerZeitraum(usr.getName(), zeit1,
+					zeit2);
+			ArrayList<String> listAusgaben = DbAbfragen.gibAusgabenFuerZeitraum(usr.getName(), zeit1, zeit2);
+			arr2 = new String[listKategorien.size()];
+			
+			for (int i = 0; i < listKategorien.size(); i++) {
+				arr[i] = listKategorien.get(i) + ": " + listAusgaben.get(i) + "€";
+			}
+	
+			return arr2;
+		} 
 
 	public static boolean pruefeDatum(String date) {
 		return (date.length() == 10 && date.charAt(4) == '-' && date.charAt(7) == '-');
