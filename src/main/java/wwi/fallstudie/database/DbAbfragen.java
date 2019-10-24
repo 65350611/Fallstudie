@@ -68,7 +68,7 @@ public class DbAbfragen {
 
 		try
 		{
-			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/haushaltsbuch");
+			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/haushaltsbuch?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC","root","kochkoch");
 
 			System.out.println("Verbindung aufgebaut");
 		}
