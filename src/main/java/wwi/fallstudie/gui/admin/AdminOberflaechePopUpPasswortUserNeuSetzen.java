@@ -24,7 +24,7 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
 	private JTextField usernameField;
 	private JPasswordField passwordField;
 	private JPasswordField wdhPasswordField;
-	private JButton hinzufuegen;
+	private JButton passwortAendern;
 	private JButton abbrechen;
 
 	public AdminOberflaechePopUpPasswortUserNeuSetzen() {
@@ -36,7 +36,7 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
 		usernameField = new JTextField();
 		passwordField = new JPasswordField();
 		wdhPasswordField = new JPasswordField();
-		hinzufuegen = new JButton("Hinzufügen");
+		passwortAendern = new JButton("Passwort ändern");
 		abbrechen = new JButton("Abbrechen");
 
 		// edit usernameField
@@ -81,7 +81,7 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
 		});
 
 		// set buttons on clicklistener
-		hinzufuegen.addActionListener(new ActionListener() {
+		passwortAendern.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent actionEvent) {
 				if (Comparator.compatePasswords(passwordField.getPassword(), wdhPasswordField.getPassword())) {
@@ -156,7 +156,7 @@ public class AdminOberflaechePopUpPasswortUserNeuSetzen extends JFrame {
 		// hinzufuegen
 		gc.gridx = 0;
 		gc.gridy = 3;
-		add(hinzufuegen, gc);
+		add(passwortAendern, gc);
 
 		// abbrechen
 		gc.gridx = 1;

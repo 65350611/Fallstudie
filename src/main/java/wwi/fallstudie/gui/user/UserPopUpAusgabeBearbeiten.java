@@ -20,7 +20,7 @@ public class UserPopUpAusgabeBearbeiten extends JFrame{
     private JTextField betragField;
     private JLabel euroLabel;
     private JTextField bezeichnung;
-    private JButton hinzufuegen;
+    private JButton aendern;
     private JButton abbrechen;
 
     public UserPopUpAusgabeBearbeiten(AusgabenAnzeigenPanel ausgabenAnzeigenPanel, KategorienAnzeigenPanel kategorienAnzeigenPanel){
@@ -36,7 +36,7 @@ public class UserPopUpAusgabeBearbeiten extends JFrame{
         betragField = new JTextField(10);
         euroLabel = new JLabel("Euro");
         bezeichnung = new JTextField("Titel der Ausgabe");
-        hinzufuegen = new JButton("Hinzufügen");
+        aendern = new JButton("Ändern");
         abbrechen = new JButton("Abbrechen");
 
         //edit ausgabenID
@@ -84,29 +84,28 @@ public class UserPopUpAusgabeBearbeiten extends JFrame{
         });
 
         //set buttons on clicklistener
-        hinzufuegen.addActionListener(new ActionListener() {
+        aendern.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try{
-                    
-                     
-						if(Logik.pruefeDatum(datum.getText())) {
-							int ausID = Integer.parseInt(ausgabenID.getText());
+                    if(Logik.pruefeDatum(datum.getText())) {
+                        if(kategorie.getText().equals("")) {
+                            kategorie.setText("Sonstiges");
+                        }
+                        int ausID = Integer.parseInt(ausgabenID.getText());
                         Logik.ausgabeAendern(ausID, kategorie.getText(), datum.getText(), betragField.getText(), bezeichnung.getText());
                         System.out.println(ausID + " " + kategorie.getText() + " " + datum.getText() + " " + betragField.getText() + " " + bezeichnung.getText());
+
+                        ausgabenAnzeigenPanel.update();
+                        kategorienAnzeigenPanel.update();
+                        dispose(); //popup schließen
                     } else {
                         new MessagePopup("Daten müssen im Format \"YYYY-MM-DD\" eingegeben werden!");
                     }
-                	
-                	
-                    ausgabenAnzeigenPanel.update();
-                    kategorienAnzeigenPanel.update();
-                    dispose(); //popup schließen
                 } catch (Exception e){
                     e.printStackTrace();
                     new MessagePopup();
                 }
-                dispose(); // popup schließen
             }
         });
 
@@ -192,7 +191,7 @@ public class UserPopUpAusgabeBearbeiten extends JFrame{
         gc.gridx = 0;
         gc.gridy = 5;
         gc.gridwidth = 2;
-        add(hinzufuegen, gc);
+        add(aendern, gc);
 
         //abbrechen
         gc.gridx = 2;

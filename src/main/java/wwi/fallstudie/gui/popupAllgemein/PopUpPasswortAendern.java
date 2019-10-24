@@ -4,26 +4,18 @@ import backend.Logik;
 import wwi.fallstudie.gui.utilities.Comparator;
 import wwi.fallstudie.gui.utilities.Window;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 
 public class PopUpPasswortAendern extends JFrame{
     private JPasswordField altesPasswordField;
     private JPasswordField passwordField;
     private JPasswordField wdhPasswordField;
-    private JButton hinzufuegen;
+    private JButton passwortAendern;
     private JButton abbrechen;
 
     public PopUpPasswortAendern(){
@@ -35,7 +27,7 @@ public class PopUpPasswortAendern extends JFrame{
         altesPasswordField = new JPasswordField();
         passwordField = new JPasswordField();
         wdhPasswordField = new JPasswordField();
-        hinzufuegen = new JButton("Hinzufügen");
+        passwortAendern = new JButton("Passwort ändern");
         abbrechen = new JButton("Abbrechen");
 
         //edit altesPasswordField
@@ -81,7 +73,7 @@ public class PopUpPasswortAendern extends JFrame{
         });
 
         //set buttons on clicklistener
-        hinzufuegen.addActionListener(new ActionListener() {
+        passwortAendern.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if(Comparator.compatePasswords(passwordField.getPassword(), wdhPasswordField.getPassword())){ //prüfen ob passwort und wiederholung gleich sind
@@ -161,7 +153,7 @@ public class PopUpPasswortAendern extends JFrame{
         //hinzufuegen
         gc.gridx = 0;
         gc.gridy = 3;
-        add(hinzufuegen, gc);
+        add(passwortAendern, gc);
 
         //abbrechen
         gc.gridx = 1;
