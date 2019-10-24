@@ -63,7 +63,7 @@ public class Login extends JFrame {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
                 e.getWindow().dispose(); //schließe fenster
-                Logik.exitProgram(); //schliesse das Programm und DB Connection
+                Logik.exitProgram(); //schliesse DB Connection
             }
         });
 

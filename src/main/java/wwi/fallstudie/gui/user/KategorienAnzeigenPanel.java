@@ -15,7 +15,7 @@ public class KategorienAnzeigenPanel extends JPanel {
     public KategorienAnzeigenPanel(){
         setLayout(new BorderLayout());
 
-        setKategorienArray(Logik.getZeitraum());
+        setKategorienArray(Logik.getAlleKategorien());
 
         listModel = new DefaultListModel();
         addKategorienAusArray2ListModel();
@@ -26,7 +26,7 @@ public class KategorienAnzeigenPanel extends JPanel {
     }
 
     public void update(){
-        setKategorienArray(Logik.getZeitraum());
+        setKategorienArray(Logik.getAlleKategorien());
         addKategorienAusArray2ListModel();
     }
 

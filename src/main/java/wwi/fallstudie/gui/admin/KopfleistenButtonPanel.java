@@ -1,5 +1,6 @@
 package wwi.fallstudie.gui.admin;
 
+import backend.Logik;
 import wwi.fallstudie.gui.login.Login;
 
 import javax.swing.*;

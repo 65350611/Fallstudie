@@ -20,8 +20,6 @@ public class InsightsPanel extends JPanel {
 
         headPanel = new InsightsHeadPanel(this);
 
-        //insightsArray = null;
-
         listModel = new DefaultListModel(); // erstelle list model
         addKategorisierteausgabenausArray2ListModel(); // füge daten aus dem Array ins ListModel ein
         ausgabenListe = new JList(listModel); // erstelle JList mit default list model
