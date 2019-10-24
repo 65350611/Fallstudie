@@ -53,12 +53,15 @@ public class UserOberflaecheBottomLeiste extends JPanel {
         });
 
         ausgabenAnzeigen = new JButton("Ausgaben anzeigen");
-        ausgabenAnzeigen.setForeground(Color.BLUE);
+        ausgabenAnzeigen.setForeground(Color.GRAY);
         ausgabenAnzeigen.setOpaque(true);
         ausgabenAnzeigen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //TODO change to ausgabenAnzeigenPanel
+                ausgabenAnzeigen.setForeground(Color.GRAY);
+                kategorienAnzeigen.setForeground(Color.BLUE);
+                insights.setForeground(Color.BLUE);
+
                 anzeigePanel.removeAll();
                 anzeigePanel.add(ausgabenAnzeigenPanel);
                 anzeigePanel.repaint();
@@ -72,7 +75,10 @@ public class UserOberflaecheBottomLeiste extends JPanel {
         kategorienAnzeigen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //TODO change to KategorienAnzeigenPanel
+                ausgabenAnzeigen.setForeground(Color.BLUE);
+                kategorienAnzeigen.setForeground(Color.GRAY);
+                insights.setForeground(Color.BLUE);
+
                 anzeigePanel.removeAll();
                 anzeigePanel.add(kategorienAnzeigenPanel);
                 anzeigePanel.repaint();
@@ -86,7 +92,10 @@ public class UserOberflaecheBottomLeiste extends JPanel {
         insights.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //TODO change to InsightsAnzeigenPanel
+                ausgabenAnzeigen.setForeground(Color.BLUE);
+                kategorienAnzeigen.setForeground(Color.BLUE);
+                insights.setForeground(Color.GRAY);
+
                 anzeigePanel.removeAll();
                 anzeigePanel.add(insightsPanel);
                 anzeigePanel.repaint();

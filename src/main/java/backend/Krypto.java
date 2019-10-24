@@ -13,7 +13,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
 
-public class CryptoUtil {
+public class Krypto {
     private static String key="ez3on8547dd";
     private static Cipher ecipher;
     private static Cipher dcipher;
@@ -25,7 +25,7 @@ public class CryptoUtil {
     // Iteration count
     static int iterationCount = 19;
 
-    private CryptoUtil() {
+    private Krypto() {
 
     }
 

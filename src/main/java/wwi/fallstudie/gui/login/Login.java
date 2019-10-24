@@ -58,11 +58,20 @@ public class Login extends JFrame {
         add(loginPanel, BorderLayout.CENTER);
         add(einloggen, BorderLayout.SOUTH);
 
+        /// listener auf Exit Button
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                e.getWindow().dispose(); //schließe fenster
+                Logik.exitProgram(); //schliesse das Programm und DB Connection
+            }
+        });
 
         //set Frame
         setSize(320, 380);
         Window.centerFrame(this);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
         setVisible(true);
     }
 }

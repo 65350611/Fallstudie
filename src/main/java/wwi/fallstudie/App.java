@@ -9,8 +9,7 @@ import wwi.fallstudie.gui.admin.AdminOberflaechePopUpUserHinzufuegen;
 import wwi.fallstudie.gui.admin.NutzerWirklichLoeschenDialog;
 import wwi.fallstudie.gui.login.Login;
 import wwi.fallstudie.gui.popupAllgemein.PopUpPasswortAendern;
-import wwi.fallstudie.gui.user.UserOberflaeche;
-import wwi.fallstudie.gui.user.UserPopUpAusgabeHinzufuegen;
+import wwi.fallstudie.gui.user.*;
 
 public class App {
     public static void main(String[] args){
@@ -18,14 +17,18 @@ public class App {
     	//DbAbfragen.baueVerbindungAuf();
         //Login fenster = new Login();
 
+<<<<<<< HEAD
     	DbAbfragen.baueVerbindungAuf();
         //DbAbfragen.baueVerbindungAuf4Mac();
+=======
+    	//DbAbfragen.baueVerbindungAuf();
+        DbAbfragen.baueVerbindungAuf4Mac();
+>>>>>>> branch 'master' of https://github.com/65350611/Fallstudie.git
         new Login();
         //new AdminOberflaechePopUpUserHinzufuegen();
         //new AdminOberflaechePopUpPasswortUserNeuSetzen();
         //new PopUpPasswortAendern();
         //new UserPopUpKategorieHinzufuegen();
-        //new UserPopUpAusgabeHinzufuegen();
         //AdminOberflaeche ao = new AdminOberflaeche();
         //new UserOberflaeche();
         //new NutzerWirklichLoeschenDialog(ao, "Heinrich Heine");

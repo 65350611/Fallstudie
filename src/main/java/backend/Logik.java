@@ -272,4 +272,8 @@ public class Logik {
 				DbAbfragen.aendereAusgabe(ausID, titel, katNeu, Float.parseFloat(betrag), date);
 			}
 	}
+
+	public static void exitProgram() {
+        //TODO schließe verbindung
+    }
 }
