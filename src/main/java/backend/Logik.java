@@ -87,7 +87,7 @@ public class Logik {
 			DbAbfragen.loescheKategorie(usr.getName(), katID);
 		}
 		else {
-			DbAbfragen.aendereKategorieDerAusgabenAufSonstige(usr.getName(), katID);
+			DbAbfragen.aendereKategorieDerAusgabenAufSonstiges(usr.getName(), katID);
 			DbAbfragen.loescheKategorie(usr.getName(), katID);
 		}
 	}
@@ -116,7 +116,7 @@ public class Logik {
 			UsrNichtGefundenException{
 		if (admGemeldet && !adm.getName().contentEquals(userName)) {
 
-			if (DbAbfragen.aenderePasswort(userName, pwd) == 0) {
+			if (DbAbfragen.aenderePasswort(userName, pwd) == false) {
 				throw new UsrNichtGefundenException();
 			}
 		} else {

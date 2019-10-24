@@ -18,7 +18,8 @@ public class App {
     	//DbAbfragen.baueVerbindungAuf();
         //Login fenster = new Login();
 
-    	DbAbfragen.baueVerbindungAuf();
+    	//DbAbfragen.baueVerbindungAuf();
+        DbAbfragen.baueVerbindungAuf4Mac();
         new Login();
         //new AdminOberflaechePopUpUserHinzufuegen();
         //new AdminOberflaechePopUpPasswortUserNeuSetzen();

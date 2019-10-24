@@ -51,6 +51,45 @@ public class DbAbfragen {
 			e.printStackTrace();
 		}  
 	}
+
+	public static void baueVerbindungAuf4Mac()
+	{
+		try
+		{
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			System.out.println("Treiber gefunden");
+		}
+
+		catch (ClassNotFoundException e)
+		{
+			System.out.println("Treiber NICHT gefunden");
+			e.printStackTrace();
+		}
+
+		try
+		{
+			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/wilhelma?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC","root","kochkoch");
+			System.out.println("Verbindung aufgebaut");
+		}
+
+		catch (SQLException e)
+		{
+			System.out.println("Verbindung NICHT augebaut");
+			e.printStackTrace();
+		}
+
+		try
+		{
+			stmt=conn.createStatement();
+			System.out.println("Statement erzeugt");
+		}
+
+		catch (SQLException e)
+		{
+			System.out.println("Statement NICHT erzeugt");
+			e.printStackTrace();
+		}
+	}
 	
 	public static ArrayList<String> gibNutzer()
 	{	
