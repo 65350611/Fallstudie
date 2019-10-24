@@ -173,7 +173,7 @@ public class UserPopUpAusgabeHinzufuegen extends JFrame {
 
 
         //set JFrame
-        setSize(320, 400);
+        setSize(320, 235);
         Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);

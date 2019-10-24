@@ -3,6 +3,7 @@ package wwi.fallstudie.gui.user;
 import wwi.fallstudie.gui.admin.AdminOberflaecheBottomLeiste;
 import wwi.fallstudie.gui.admin.AdminOberflaechePopUpUserHinzufuegen;
 import wwi.fallstudie.gui.admin.KopfLeistenPanel;
+import wwi.fallstudie.gui.login.Login;
 import wwi.fallstudie.gui.utilities.Window;
 
 import javax.swing.*;
@@ -39,6 +40,15 @@ public class UserOberflaeche extends JFrame{
         add(headpanel, BorderLayout.NORTH);
         add(anzeigePanel, BorderLayout.CENTER);
         add(bottomLeiste, BorderLayout.SOUTH);
+
+        // listener auf Exit Button
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                new Login(); //öffne login fenster
+                e.getWindow().dispose(); //schließe fenster
+            }
+        });
 
         //set JFrame
         setSize(1150, 450);

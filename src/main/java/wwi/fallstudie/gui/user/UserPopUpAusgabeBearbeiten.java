@@ -202,7 +202,7 @@ public class UserPopUpAusgabeBearbeiten extends JFrame{
 
 
         //set JFrame
-        setSize(320, 420);
+        setSize(320, 280);
         Window.centerFrame(this);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);

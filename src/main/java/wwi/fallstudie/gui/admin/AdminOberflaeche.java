@@ -1,6 +1,7 @@
 package wwi.fallstudie.gui.admin;
 
 import backend.Logik;
+import wwi.fallstudie.gui.login.Login;
 import wwi.fallstudie.gui.popupAllgemein.MessagePopup;
 import wwi.fallstudie.gui.utilities.Window;
 
@@ -41,6 +42,15 @@ public class AdminOberflaeche extends JFrame {
        add(headpanel, BorderLayout.NORTH);
        add(new JScrollPane(nutzerliste), BorderLayout.CENTER);
        add(bottomLeiste, BorderLayout.SOUTH);
+
+        // listener auf Exit Button
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                new Login(); //öffne login fenster
+                e.getWindow().dispose(); //schließe fenster
+            }
+        });
 
         //setze JFrame
         setSize(500, 450);
