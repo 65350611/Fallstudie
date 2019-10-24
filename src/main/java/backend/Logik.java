@@ -248,8 +248,9 @@ public class Logik {
 				}
 			}
 			return ausgabenArray;
-		} else
+		} else {
 			return null;
+		}
 	}
 	
 	public static void ausgabeAnlegen(String kateg, String date, String betrag, String titel) {

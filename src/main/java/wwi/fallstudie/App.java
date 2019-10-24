@@ -17,14 +17,21 @@ public class App {
     	//DbAbfragen.baueVerbindungAuf();
         //Login fenster = new Login();
 
-<<<<<<< HEAD
-    	DbAbfragen.baueVerbindungAuf();
-        //DbAbfragen.baueVerbindungAuf4Mac();
-=======
-    	//DbAbfragen.baueVerbindungAuf();
-        DbAbfragen.baueVerbindungAuf4Mac();
->>>>>>> branch 'master' of https://github.com/65350611/Fallstudie.git
-        new Login();
+        try {
+            DbAbfragen.baueVerbindungAuf(); //try windows Connection DB
+            new Login();
+        } catch (Exception e){
+            e.printStackTrace();
+
+            try{
+                DbAbfragen.baueVerbindungAuf4Mac(); //try Mac Connection DB
+                new Login();
+            } catch (Exception e2){
+                e.printStackTrace();
+            }
+        }
+        System.out.println("Programm konnte nicht gestartet werden");
+
         //new AdminOberflaechePopUpUserHinzufuegen();
         //new AdminOberflaechePopUpPasswortUserNeuSetzen();
         //new PopUpPasswortAendern();
