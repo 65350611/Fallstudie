@@ -16,7 +16,6 @@ import backend_exceptions.AdmKannSichNichtSelberLoeschenException;
 import backend_exceptions.FalscheAdmPwdAendernMethodeException;
 import backend_exceptions.UserHatNochAusgabenException;
 import backend_exceptions.UsrNichtGefundenException;
-import haushaltsbuch.dbConnector;
 import wwi.fallstudie.database.DbAbfragen;
 import wwi.fallstudie.pojos.AdmPojo;
 import wwi.fallstudie.pojos.UserPojo;
@@ -25,7 +24,6 @@ public class Logik {
 	private static UserPojo usr;
 	private static AdmPojo adm;
 	private static boolean admGemeldet;
-	static final dbConnector con = new dbConnector();
 
 	private Logik() {
 
