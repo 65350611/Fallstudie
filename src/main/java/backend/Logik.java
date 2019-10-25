@@ -237,6 +237,33 @@ public class Logik {
 	public static boolean pruefeDatum(String date) {
 		return (date.length() == 10 && date.charAt(4) == '-' && date.charAt(7) == '-');
 	}
+	
+	public static String[] getAllCategories() {
+        String untereZeitgrenze = "";
+        String obereZeitgrenze = "";
+        
+        if (!admGemeldet) 
+        {
+                     ArrayList<String> timeList = DbAbfragen.gibZeitraum(usr.getName());
+                     
+                     untereZeitgrenze = timeList.get(0);
+                     obereZeitgrenze = timeList.get(1);
+                     
+                     ArrayList<String> insightsList = DbAbfragen.gibAusgabenFuerZeitraumMitKategorienamen(usr.getName(), untereZeitgrenze, obereZeitgrenze);
+                     String[] rueckgabeArray = new String[insightsList.size()/2];
+
+                     int array_counter = 0;
+
+
+                     for(int i = 0; i < insightsList.size(); i+=2){
+                                  rueckgabeArray[array_counter] = insightsList.get(i) + " : " + insightsList.get(i+1) + "€";
+                                  array_counter++;
+                     }
+
+                     return rueckgabeArray;
+        }
+        return null;
+}
 
 	public static String[] getInsights(String startDat, String endDat) {
 		if (!admGemeldet) {
