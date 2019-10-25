@@ -352,5 +352,6 @@ public class Logik {
 
 	public static void exitProgram() {
         DbAbfragen.schliesseVerbindung();
+        System.exit(0);
     }
 }
