@@ -31,8 +31,10 @@ public class Logik {
 
 	}
 
-	public static void nutzerAnlegen(int rolle, String userName, String pwd) {
-		DbAbfragen.neuerNutzer(rolle, pwd, userName);
+	public static void nutzerAnlegen(int rolle, String userName, String pwd) throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException
+	{
+//		DbAbfragen.neuerNutzer(rolle, pwd, userName);
+		DbAbfragen.neuerNutzer(rolle, Krypto.encrypt(pwd), userName);
 	}
 
 	public static void admMelden(String name) {
@@ -101,22 +103,26 @@ public class Logik {
 			}
 		}
 	}
-
-	public static void pwdAendern(String pwd){
+//Usr/adm aendert pwd fuer sich selbst
+	public static void pwdAendern(String pwd) throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException{
 		if (admGemeldet) {
-			DbAbfragen.aenderePasswort(adm.getName(), pwd);
+//			DbAbfragen.aenderePasswort(adm.getName(), pwd);
+			DbAbfragen.aenderePasswort(adm.getName(), Krypto.encrypt(pwd));
 
 		} else {
-			DbAbfragen.aenderePasswort(usr.getName(), pwd);
+//			DbAbfragen.aenderePasswort(usr.getName(), pwd);
+			DbAbfragen.aenderePasswort(usr.getName(), Krypto.encrypt(pwd));
 		}
 	}
 
-	// PWD ändern als Admin
+	// PWD ändern als Admin von User
 	public static void pwdAendern(String userName, String pwd) throws FalscheAdmPwdAendernMethodeException,
-			UsrNichtGefundenException{
+			UsrNichtGefundenException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException{
 		if (admGemeldet && !adm.getName().contentEquals(userName)) {
 
-			if (DbAbfragen.aenderePasswort(userName, pwd) == false) {
+//			if (DbAbfragen.aenderePasswort(userName, pwd) == false) 
+			if (DbAbfragen.aenderePasswort(userName, Krypto.encrypt(pwd)) == false)
+			{
 				throw new UsrNichtGefundenException();
 			}
 		} else {
@@ -124,21 +130,21 @@ public class Logik {
 		}
 	}
 
-	public static String returnPwd() {
+	public static String returnPwd() throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, IOException {
 		if (admGemeldet) {
-//			return CryptoUtil.decrypt(DbAbfragen.gibPasswort(adm.getName()));
-			return DbAbfragen.gibPasswort(adm.getName());
+			return Krypto.decrypt(DbAbfragen.gibPasswort(adm.getName()));
+//			return DbAbfragen.gibPasswort(adm.getName());
 		} else {
-//			return CryptoUtil.decrypt(DbAbfragen.gibPasswort(usr.getName()));
-			return DbAbfragen.gibPasswort(usr.getName());
+			return Krypto.decrypt(DbAbfragen.gibPasswort(usr.getName()));
+//			return DbAbfragen.gibPasswort(usr.getName());
 		}
 
 	}
 
-	public static void usrAenderePwd(String pwd) {
-		DbAbfragen.aenderePasswort(usr.getName(), pwd);
-
-	}
+//	public static void usrAenderePwd(String pwd) {
+//		DbAbfragen.aenderePasswort(usr.getName(), pwd);
+//
+//	}
 
 	public static String[] getAlleNutzer() {
 		if (admGemeldet) {
