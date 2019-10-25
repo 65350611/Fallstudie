@@ -24,9 +24,9 @@ public class testNutzer {
 		//System.out.println(DbAbfragen.neueKategorie("testKat6"));
 		//System.out.println(DbAbfragen.neueAusgabe("testAusgabe17", "Uni", 1, 17f, "2015-10-12"));
 		
-		//System.out.println(DbAbfragen.aenderePasswort("Nico", "floflo"));
+		//System.out.println(DbAbfragen.aenderePasswort("Nico", "niconico"));
 		//System.out.println(DbAbfragen.aendereKategorieDerAusgabenAufSonstige("tester2", 40));
-		//System.out.println(DbAbfragen.aendereKategorieDerAusgaben("BlorgsBlargs", "tester2", 26));
+		//System.out.println(DbAbfragen.aendereKategorieDerAusgaben("Urlaub", "tester2", 26));
 		//System.out.println(DbAbfragen.aendereAusgabe("testAusgabeXXX", 2, 121212f, sqlDate, "Jonny", 12));
 		//System.out.println(DbAbfragen.aendereKategorieDerAusgabenAufNeu("Auto", "tester2", 3));
 		

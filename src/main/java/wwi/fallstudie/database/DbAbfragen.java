@@ -287,7 +287,7 @@ public class DbAbfragen {
 		
 	}
 	
-	public static ArrayList<String> gibKategorienamenFuerZeitraum(String userName, String beginDate, String endDate)
+	/*public static ArrayList<String> gibKategorienamenFuerZeitraum(String userName, String beginDate, String endDate)
 	{
 		ResultSet rs;
 		String columnValue;
@@ -323,9 +323,8 @@ public class DbAbfragen {
 		
 		return catInTimeList;
 		
-	}
+	}*/
 
-	
 	public static ArrayList<String> gibAusgaben(String userName)
 	{	
 		String columnValue;
@@ -516,7 +515,7 @@ public class DbAbfragen {
 		
 	}*/
 	
-	public static ArrayList<String> gibZeitraum(String userName)
+	/*public static ArrayList<String> gibZeitraum(String userName)
 	{
 		String columnValue;
 		ResultSet rs = null;
@@ -551,7 +550,7 @@ public class DbAbfragen {
 		
 		return TimeList;
 		
-	}
+	}*/
 	
 	public static boolean neuerNutzer(int userRole, String password, String userName)
 	{	
