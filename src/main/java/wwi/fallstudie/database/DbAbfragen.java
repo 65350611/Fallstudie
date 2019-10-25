@@ -515,7 +515,7 @@ public class DbAbfragen {
 		
 	}*/
 	
-	/*public static ArrayList<String> gibZeitraum(String userName)
+	public static ArrayList<String> gibZeitraum(String userName)
 	{
 		String columnValue;
 		ResultSet rs = null;
@@ -550,7 +550,7 @@ public class DbAbfragen {
 		
 		return TimeList;
 		
-	}*/
+	}
 	
 	public static boolean neuerNutzer(int userRole, String password, String userName)
 	{	
