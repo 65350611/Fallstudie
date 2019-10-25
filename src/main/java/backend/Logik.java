@@ -31,11 +31,11 @@ public class Logik {
 
 	}
 
-	public static void nutzerAnlegen(int rolle, String userName, String pwd) throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException
-	{
-//		DbAbfragen.neuerNutzer(rolle, pwd, userName);
-		DbAbfragen.neuerNutzer(rolle, Krypto.encrypt(pwd), userName);
-	}
+//	public static void nutzerAnlegen(int rolle, String userName, String pwd) throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException
+//	{
+////		DbAbfragen.neuerNutzer(rolle, pwd, userName);
+//		DbAbfragen.neuerNutzer(rolle, Krypto.encrypt(pwd), userName);
+//	}
 
 	public static void admMelden(String name) {
 		adm = new AdmPojo(name);
@@ -51,9 +51,14 @@ public class Logik {
 		return admGemeldet;
 	}
 
-	public static void userErzeugen(String userName) {
+//	public static void userErzeugen(String userName) {
+//		if (admGemeldet) {
+//			DbAbfragen.neuerNutzer(2, "start123", userName);
+//		}
+//	}
+	public static void userErzeugen(String userName) throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
 		if (admGemeldet) {
-			DbAbfragen.neuerNutzer(2, "start123", userName);
+			DbAbfragen.neuerNutzer(2, Krypto.encrypt("123"), userName);
 		}
 	}
 
@@ -159,11 +164,6 @@ public class Logik {
 
 	}
 
-	public static void kategorieAnlegen(String kateg) {
-		if (!admGemeldet) {
-
-		}
-	}
 
 	public static void kategorieAendern(String katAlt, String katNeu) {
 		
