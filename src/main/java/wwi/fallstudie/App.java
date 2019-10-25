@@ -19,13 +19,13 @@ public class App {
         } catch (Exception e){
             e.printStackTrace();
 
-            try{
+           /* try{
                 DbAbfragen.baueVerbindungAuf4Mac(); //try Mac Connection DB
                 new Login();
             } catch (Exception e2){
                 e.printStackTrace();
                 System.out.println("Programm konnte nicht gestartet werden");
-            }
+            }*/
         }
     }
 }
